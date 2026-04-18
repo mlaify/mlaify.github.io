@@ -21,7 +21,7 @@ footer_content: "OpenSift • Sift faster. Study smarter."
 # Enable "Edit this page" (optional)
 gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub"
-gh_edit_repository: "https://github.com/OpenSift/opensift.github.io"
+gh_edit_repository: "https://github.com/MLxyz/opensift.github.io"
 gh_edit_branch: "main"
 gh_edit_source: ""
 gh_edit_view_mode: "tree"
