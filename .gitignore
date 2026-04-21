@@ -436,3 +436,9 @@ Thumbs.db
 # Ruby
 *.gem
 Gemfile.lock
+
+# Hugo
+public/
+resources/_gen/
+.hugo_build.lock
+hugo_stats.json
