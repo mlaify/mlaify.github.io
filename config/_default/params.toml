@@ -1,0 +1,109 @@
+# Hugo
+title = "ML AI Project Hub"
+description = "Project hub for ML AI repositories, architecture notes, and implementation status."
+images = ["cover.png"]
+
+# mainSections
+mainSections = ["docs"]
+
+math = false
+mathEngine = "KaTeX"
+
+[doks]
+  colorMode = "auto"
+  colorModeToggler = true
+
+  navbarSticky = true
+  containerBreakpoint = "fluid"
+
+  navBarButton = true
+  navBarButtonUrl = "/docs/projects/"
+  navBarButtonText = "Explore Projects"
+
+  flexSearch = true
+  searchExclKinds = []
+  searchExclTypes = []
+  showSearch = []
+  indexSummary = false
+
+  showDate = false
+  showSummary = true
+  searchLimit = 99
+
+  alert = false
+  alertDismissable = true
+
+  bootstrapJavascript = false
+
+  sectionSwitcher = false
+  sectionNav = ["docs"]
+  toTopButton = true
+  breadcrumbTrail = true
+  headlineHash = true
+  scrollSpy = true
+
+  multilingualMode = false
+  showMissingLanguages = true
+
+  docsVersioning = false
+  docsVersion = "1.0"
+
+  headerBar = false
+  backgroundDots = true
+  aiButtons = false
+
+  sectionFooter = false
+
+  relatedPosts = false
+  imageList = true
+  imageSingle = true
+
+  editPage = false
+  lastMod = false
+  repoHost = "GitHub"
+  docsRepo = "https://github.com/mlaify/mlaify.github.io"
+  docsRepoBranch = "main"
+  docsRepoSubPath = ""
+
+  krokiURL = "https://kroki.io"
+
+[render_hooks.image]
+  errorLevel = 'ignore'
+
+[render_hooks.link]
+  errorLevel = 'ignore'
+  highlightBroken = false
+
+[thulite_images]
+  [thulite_images.defaults]
+    decoding = "async"
+    fetchpriority = "auto"
+    loading = "lazy"
+    widths = [480, 576, 768, 1025, 1200, 1440]
+    sizes = "auto"
+    process = ""
+    lqip = "16x webp q20"
+
+[inline_svg]
+  iconSetDir = "tabler-icons"
+  iconSetVariant = "outline"
+
+[seo]
+  [seo.title]
+    separator = ""
+    suffix = ""
+  [seo.description]
+    summaryFallback = ""
+  [seo.favicons]
+    icon = "favicon.png"
+    svgIcon = "favicon.svg"
+  [seo.schemas]
+    type = "Organization"
+    logo = "favicon-512x512.png"
+    name = "MLAI"
+    sameAs = ["https://github.com/mlaify"]
+    images = ["cover.png"]
+    article = []
+    newsArticle = []
+    blogPosting = []
+    product = []

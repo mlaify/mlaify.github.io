@@ -1,58 +1,51 @@
-# opensift.github.io
+# mlaify.github.io
 
-Documentation site for [OpenSift](https://github.com/OpenSift/OpenSift).
+ML AI project hub website built with **Hugo** and the **Doks** theme (Thulite).
 
-Built with:
-- Jekyll
-- Just the Docs
-- Markdown-first structure
-- GitHub Pages
+## Stack
+
+- Hugo (extended)
+- Doks (`@thulite/doks-core`)
+- Node.js/npm for theme dependencies
 
 ## Local development
 
-1. Check Ruby:
+1. Install dependencies:
 
 ```bash
-ruby -v
+npm install
 ```
 
-2. Install dependencies:
+2. Start dev server:
 
 ```bash
-bundle install
+npm run dev
 ```
 
-3. Run the docs site:
+3. Build production output:
 
 ```bash
-bundle exec jekyll serve
+npm run build
 ```
 
-4. Open [http://localhost:4000](http://localhost:4000).
-
-## Deploy
-
-Push to `main`. GitHub Pages builds from root (`/`) in this repo.
-
-## Docs structure
+## Content layout
 
 ```text
-/
-├── _config.yml
-├── Gemfile
-├── index.md
-├── docs/
-│   ├── index.md
-│   ├── quickstart.md
-│   ├── ui.md
-│   ├── ingestion.md
-│   ├── providers.md
-│   ├── security.md
-│   ├── troubleshooting.md
-│   └── roadmap.md
-└── assets/
+content/
+  _index.md
+  docs/
+    _index.md
+    about.md
+    projects.md
+    project-omekarapper.md
+    project-opensift.md
+    project-opencontractrx.md
+    project-aegis.md
+    build-principles.md
+    direction.md
+    contribute-contact.md
 ```
 
-## License
+## Domain
 
-MIT
+Custom domain is set with `CNAME` and copied into Hugo output via `static/CNAME`.

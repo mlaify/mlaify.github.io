@@ -1,0 +1,79 @@
+title = "ML AI Project Hub"
+baseurl = "https://mlaify.io/"
+disableAliases = true
+disableHugoGeneratorInject = true
+disableKinds = ["taxonomy", "term"]
+enableEmoji = true
+enableGitInfo = false
+enableRobotsTXT = true
+languageCode = "en-US"
+rssLimit = 10
+summarylength = 30
+
+# Multilingual
+defaultContentLanguage = "en"
+disableLanguages = ["de", "nl"]
+defaultContentLanguageInSubdir = false
+
+copyRight = "ML AI Project Hub"
+
+[build.buildStats]
+  enable = true
+
+[outputs]
+  home = ["html", "rss", "sitemap", "searchIndex", "llms"]
+  page = ["html", "markdown"]
+  section = ["html", "rss", "sitemap"]
+
+[outputFormats.searchIndex]
+  mediaType = "application/json"
+  baseName = "search-index"
+  isPlainText = true
+  notAlternative = true
+
+[outputFormats.markdown]
+  baseName = "index"
+  isHTML = false
+  isPlainText = true
+  mediaType = "text/markdown"
+
+[outputFormats.llms]
+  baseName = "llms"
+  isHTML = false
+  isPlainText = true
+  mediaType = "text/plain"
+
+[outputFormats.sitemap]
+  mediaType = "application/xml"
+  baseName = "sitemap"
+  isHTML = false
+  isPlainText = true
+  noUgly = true
+  rel = "sitemap"
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.6
+
+[caches]
+  [caches.getresource]
+    dir = ":cacheDir/:project"
+    maxAge = -1
+
+[permalinks]
+  docs = "/docs/:slug/"
+
+[minify.tdewolff.html]
+  keepComments = true
+  keepWhitespace = false
+
+[pagination]
+  pagerSize = 10
+
+[imaging]
+  anchor = "Center"
+  bgColor = "#ffffff"
+  hint = "photo"
+  quality = 85
+  resampleFilter = "Lanczos"

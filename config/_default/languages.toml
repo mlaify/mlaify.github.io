@@ -1,0 +1,32 @@
+[en]
+  languageName = "English"
+  contentDir = "content/en"
+  weight = 10
+  [en.params]
+    languageISO = "EN"
+    languageTag = "en-US"
+    footer = ''
+    alertText = ''
+
+[de]
+  languageName = "German"
+  contentDir = "content/de"
+  weight = 15
+  [de.params]
+    languageISO = "DE"
+    languageTag = "de-DE"
+    footer = ''
+    alertText = ''
+
+[nl]
+  languageName = "Nederlands"
+  contentDir = "content/nl"
+  weight = 20
+  [nl.params]
+    languageISO = "NL"
+    languageTag = "nl-NL"
+    titleAddition = "Modern documentatie-thema"
+    description = "Doks is een Hugo-thema waarmee je moderne documentatie-websites kunt bouwen die veilig, snel en klaar voor SEO zijn — standaard."
+    titleHome = "Doks thema"
+    footer = ''
+    alertText = ''
