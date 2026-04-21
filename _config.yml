@@ -14,14 +14,14 @@ nav_sort: case_sensitive
 
 aux_links:
   "OpenSift on GitHub":
-    - "https://github.com/MLxyz/OpenSift"
+    - "https://github.com/mlaify/OpenSift"
 
 footer_content: "OpenSift • Sift faster. Study smarter."
 
 # Enable "Edit this page" (optional)
 gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub"
-gh_edit_repository: "https://github.com/MLxyz/opensift.github.io"
+gh_edit_repository: "https://github.com/mlaify/mlaify.github.io"
 gh_edit_branch: "main"
 gh_edit_source: ""
 gh_edit_view_mode: "tree"
