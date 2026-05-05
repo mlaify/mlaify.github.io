@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.get_login_creds"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.aegis.android",
+      "sha256_cert_fingerprints": [
+        "C4:F4:BD:65:87:74:C5:99:22:05:06:2A:F1:40:B9:95:D7:C5:B8:A3:63:B9:9A:A4:A0:EC:60:04:6B:0A:C5:7A",
+      ]
+    }
+  }
+]
