@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- **OmekaRapper project page** (`/docs/project-omekarapper/`) significantly expanded with full architecture detail sourced from the OmekaRapper docs site: provider matrix and request strategy, curator workflow, PDF + OCR behavior, runtime flow, controller endpoints, response schema, request/apply/failure policies, configuration reference, installation, FAQ, and troubleshooting. Confirms the new repo location at [mlaify/OmekaRapper](https://github.com/mlaify/OmekaRapper) and clarifies what is intentionally out of scope today (no Python worker, no pgvector, no transcription, no review queue).
+- `/docs/projects/` blurb for OmekaRapper updated with provider list, PDF+OCR support, async behavior, and the suggest-and-apply (never silent) framing.
+
 ### Added
 
 - **Custom Hugo theme** built on Tailwind CSS v3 + Pagefind, replacing the previous Doks/Thulite theme. Includes dark mode, mobile navigation, on-site search, JSON-LD structured data, and per-product accent colors.

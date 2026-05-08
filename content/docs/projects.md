@@ -12,7 +12,7 @@ Aegis and AttackMap have their own top-level sections. The list below is the res
 
 ## OmekaRapper
 
-AI-assisted Omeka S cataloging module. Generates Dublin Core metadata suggestions from text, PDFs, OCR, and web content; integrates into the Omeka admin panel as a suggest-and-apply workflow with pluggable AI providers.
+AI-assisted Omeka S cataloging module. Drops an assistant panel into the standard Omeka item add/edit screens; turns pasted text or uploaded PDFs into reviewable Dublin Core metadata suggestions that the curator applies into the form. Five pluggable providers (`dummy`, `chatgpt`, `codex`, `claude`, `ollama`), PDF + OCR support, async background jobs for heavy requests, and graceful heuristic fallback when a provider call fails. Suggest-and-apply only — never silent.
 
 [Project page →](/docs/project-omekarapper/) · [Repository →](https://github.com/mlaify/OmekaRapper)
 
