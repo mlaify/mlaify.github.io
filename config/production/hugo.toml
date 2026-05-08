@@ -1,2 +1,4 @@
-# Overrides for production environment
-baseurl = "/"
+# Production environment overrides.
+#
+# baseurl is inherited from config/_default/hugo.toml (https://mlaify.io/).
+# Netlify deploy previews override via --baseURL "${URL}" in netlify.toml.

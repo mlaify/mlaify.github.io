@@ -1,0 +1,28 @@
+{{- /*
+  hero: section landing hero block.
+  Args:
+    .title       string
+    .tagline     string
+    .lead        string
+    .status      string  (alpha|beta|stable)
+    .primaryCTA  dict    { label, url }
+    .secondaryCTA dict   { label, url }
+    .accent      string  (aegis|attackmap|brand)
+*/ -}}
+<section class="relative overflow-hidden border-b border-ink-200/60 dark:border-ink-800/60" {{ with .accent }}data-accent="{{ . }}"{{ end }}>
+  <div class="bg-grid absolute inset-0 -z-10 opacity-60"></div>
+  <div class="container-page py-20 lg:py-24">
+    <div class="max-w-3xl">
+      <div class="flex items-center gap-3 text-sm">
+        {{ with .status }}<span class="status-badge status-{{ . }}">{{ . }}</span>{{ end }}
+        {{ with .tagline }}<span class="text-ink-600 dark:text-ink-400">{{ . }}</span>{{ end }}
+      </div>
+      <h1 class="mt-4 text-balance text-5xl font-semibold tracking-tight text-ink-900 sm:text-6xl dark:text-white">{{ .title }}</h1>
+      {{ with .lead }}<p class="mt-5 max-w-2xl text-lg text-ink-600 dark:text-ink-300">{{ . | safeHTML }}</p>{{ end }}
+      <div class="mt-8 flex flex-wrap gap-3">
+        {{ with .primaryCTA }}<a href="{{ .url }}" class="btn btn-primary">{{ .label }}</a>{{ end }}
+        {{ with .secondaryCTA }}<a href="{{ .url }}" class="btn btn-ghost">{{ .label }}</a>{{ end }}
+      </div>
+    </div>
+  </div>
+</section>

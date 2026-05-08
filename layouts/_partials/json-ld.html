@@ -1,0 +1,44 @@
+{{- $org := site.Params.org -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ $org.name }}",
+  "legalName": "{{ $org.legalName }}",
+  "url": "{{ $org.url }}",
+  "logo": "{{ $org.logo }}",
+  "sameAs": [
+    {{- range $i, $url := $org.sameAs -}}
+      {{- if $i }}, {{ end -}}"{{ $url }}"
+    {{- end -}}
+  ]
+}
+</script>
+
+{{- /* Per-product Product schema on product landing pages. */ -}}
+{{- $product := "" -}}
+{{- if eq .Section "aegis" -}}{{ $product = index site.Params.products "aegis" }}{{ end -}}
+{{- if eq .Section "attackmap" -}}{{ $product = index site.Params.products "attackmap" }}{{ end -}}
+{{- if and $product .IsSection -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ $product.name }}",
+  "description": "{{ $product.tagline }}",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform",
+  "url": "{{ .Permalink }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ $org.name }}",
+    "url": "{{ $org.url }}"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+{{- end -}}

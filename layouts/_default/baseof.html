@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="{{ with site.Language.Locale }}{{ . }}{{ else }}en{{ end }}" class="h-full">
+  <head>
+    {{- partial "head.html" . -}}
+  </head>
+  <body class="flex min-h-full flex-col" {{ with .Params.accent }}data-accent="{{ . }}"{{ end }}>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:font-medium focus:text-ink-900 focus:shadow">Skip to content</a>
+    {{- partial "header.html" . -}}
+    <main id="main" class="flex-1">
+      {{- block "main" . }}{{ end -}}
+    </main>
+    {{- partial "footer.html" . -}}
+    {{- partial "search-dialog.html" . -}}
+    {{- $themeToggle := resources.Get "js/theme-toggle.js" | js.Build (dict "minify" true) | fingerprint -}}
+    <script src="{{ $themeToggle.RelPermalink }}" defer></script>
+    {{- $mobileNav := resources.Get "js/mobile-nav.js" | js.Build (dict "minify" true) | fingerprint -}}
+    <script src="{{ $mobileNav.RelPermalink }}" defer></script>
+    {{- $search := resources.Get "js/search.js" | js.Build (dict "minify" true) | fingerprint -}}
+    <script src="{{ $search.RelPermalink }}" defer></script>
+  </body>
+</html>

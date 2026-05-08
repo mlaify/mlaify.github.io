@@ -1,0 +1,54 @@
+{{- $current := .RelPermalink -}}
+<header class="sticky top-0 z-30 border-b border-ink-200/60 bg-white/80 backdrop-blur dark:border-ink-800/60 dark:bg-ink-950/80">
+  <div class="container-page flex h-16 items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-2 text-base font-semibold tracking-tight text-ink-900 dark:text-white">
+      {{- partial "svg-icon.html" (dict "name" "shield-half-filled" "class" "h-6 w-6 text-brand-600 dark:text-brand-400") -}}
+      <span>mlaify</span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden md:block">
+      <ul class="flex items-center gap-6">
+        {{- range site.Menus.main }}
+          {{- $isActive := or (eq $current .URL) (and (ne .URL "/") (hasPrefix $current .URL)) -}}
+          <li>
+            <a href="{{ .URL }}" class="nav-link{{ if $isActive }} active{{ end }}"{{ if $isActive }} aria-current="page"{{ end }}>{{ .Name }}</a>
+          </li>
+        {{- end }}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <button type="button" data-search-trigger class="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-3 py-1.5 text-sm text-ink-500 hover:border-ink-300 hover:text-ink-700 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-400 dark:hover:border-ink-600 dark:hover:text-ink-200" aria-label="Search">
+        {{ partial "svg-icon.html" (dict "name" "search" "class" "h-4 w-4") }}
+        <span class="hidden sm:inline">Search</span>
+        <kbd class="hidden rounded bg-ink-100 px-1.5 py-0.5 text-[10px] font-mono text-ink-500 sm:inline dark:bg-ink-800 dark:text-ink-400">⌘K</kbd>
+      </button>
+
+      <button type="button" data-theme-toggle class="inline-flex h-9 w-9 items-center justify-center rounded-full text-ink-500 hover:bg-ink-100 hover:text-ink-700 dark:text-ink-400 dark:hover:bg-ink-800 dark:hover:text-ink-200" aria-label="Toggle dark mode">
+        <span class="block dark:hidden">{{ partial "svg-icon.html" (dict "name" "moon" "class" "h-5 w-5") }}</span>
+        <span class="hidden dark:block">{{ partial "svg-icon.html" (dict "name" "sun" "class" "h-5 w-5") }}</span>
+      </button>
+
+      <a href="{{ site.Params.githubOrg }}" class="hidden h-9 w-9 items-center justify-center rounded-full text-ink-500 hover:bg-ink-100 hover:text-ink-700 sm:inline-flex dark:text-ink-400 dark:hover:bg-ink-800 dark:hover:text-ink-200" aria-label="mlaify on GitHub">
+        {{ partial "svg-icon.html" (dict "name" "brand-github" "class" "h-5 w-5") }}
+      </a>
+
+      <button type="button" data-mobile-nav-trigger aria-expanded="false" class="inline-flex h-9 w-9 items-center justify-center rounded-full text-ink-700 hover:bg-ink-100 md:hidden dark:text-ink-200 dark:hover:bg-ink-800" aria-label="Open menu">
+        {{ partial "svg-icon.html" (dict "name" "menu-2" "class" "h-5 w-5") }}
+      </button>
+    </div>
+  </div>
+
+  <div data-mobile-nav-panel hidden class="border-t border-ink-200 bg-white md:hidden dark:border-ink-800 dark:bg-ink-950">
+    <nav aria-label="Mobile" class="container-page py-4">
+      <ul class="flex flex-col gap-3">
+        {{- range site.Menus.main }}
+          {{- $isActive := or (eq $current .URL) (and (ne .URL "/") (hasPrefix $current .URL)) -}}
+          <li>
+            <a href="{{ .URL }}" class="block rounded-lg px-3 py-2 text-base font-medium {{ if $isActive }}bg-ink-100 text-ink-900 dark:bg-ink-800 dark:text-white{{ else }}text-ink-700 hover:bg-ink-50 dark:text-ink-300 dark:hover:bg-ink-900{{ end }}">{{ .Name }}</a>
+          </li>
+        {{- end }}
+      </ul>
+    </nav>
+  </div>
+</header>

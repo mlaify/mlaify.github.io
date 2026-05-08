@@ -1,0 +1,152 @@
+{{ define "main" }}
+{{ $aegis := index site.Params.products "aegis" }}
+{{ $attackmap := index site.Params.products "attackmap" }}
+
+<!-- Hero -->
+<section class="relative overflow-hidden border-b border-ink-200/60 dark:border-ink-800/60">
+  <div class="bg-grid absolute inset-0 -z-10 opacity-60"></div>
+  <div class="container-page py-20 lg:py-28">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 ring-1 ring-inset ring-brand-200 dark:bg-brand-900/30 dark:text-brand-200 dark:ring-brand-800">
+        {{ partial "svg-icon.html" (dict "name" "sparkles" "class" "h-3.5 w-3.5") }}
+        Open-source security tooling and AI-assisted workflows
+      </p>
+      <h1 class="text-balance text-5xl font-semibold tracking-tight text-ink-900 sm:text-6xl lg:text-7xl dark:text-white">
+        Build software you can <span class="text-brand-600 dark:text-brand-400">defend</span>.
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-balance text-lg text-ink-600 dark:text-ink-300">
+        mlaify is the home of <strong>Aegis</strong> &mdash; post-quantum encrypted messaging &mdash; and <strong>AttackMap</strong> &mdash; defensive security analysis for real codebases. Plus a portfolio of AI-assisted workflow tools, all open source.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/aegis/" class="btn btn-primary">Explore Aegis</a>
+        <a href="/attackmap/" class="btn btn-ghost">Explore AttackMap</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Headline products -->
+<section class="container-page py-20">
+  <div class="mb-12 max-w-2xl">
+    <h2 class="text-3xl font-semibold tracking-tight text-ink-900 dark:text-white">Headline products</h2>
+    <p class="mt-3 text-ink-600 dark:text-ink-400">Two flagship initiatives in active development. Protocol-first, evidence-first, security-first.</p>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-2">
+    <!-- Aegis card -->
+    <a href="/aegis/" data-accent="aegis" class="card card-hover group flex flex-col">
+      <div class="flex items-start justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="feature-icon !mb-0">
+            {{ partial "svg-icon.html" (dict "name" "shield-lock" "class" "h-5 w-5") }}
+          </span>
+          <h3 class="text-2xl font-semibold tracking-tight text-ink-900 dark:text-white">{{ $aegis.name }}</h3>
+        </div>
+        <span class="status-badge status-{{ $aegis.status }}">{{ $aegis.status }}</span>
+      </div>
+      <p class="mt-4 text-ink-600 dark:text-ink-300">{{ $aegis.tagline }}</p>
+      <ul class="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-ink-600 dark:text-ink-400">
+        <li class="flex items-center gap-2">{{ partial "svg-icon.html" (dict "name" "lock-square-rounded" "class" "h-4 w-4 accent-text") }} ML-KEM-768 / ML-DSA-65</li>
+        <li class="flex items-center gap-2">{{ partial "svg-icon.html" (dict "name" "device-mobile" "class" "h-4 w-4 accent-text") }} iOS, macOS, Android, web, CLI</li>
+        <li class="flex items-center gap-2">{{ partial "svg-icon.html" (dict "name" "key" "class" "h-4 w-4 accent-text") }} WebAuthn / Passkey unlock</li>
+        <li class="flex items-center gap-2">{{ partial "svg-icon.html" (dict "name" "server-2" "class" "h-4 w-4 accent-text") }} Zero-trust relay</li>
+      </ul>
+      <span class="mt-6 inline-flex items-center gap-1 text-sm font-semibold accent-text">
+        Explore Aegis
+        {{ partial "svg-icon.html" (dict "name" "arrow-right" "class" "h-4 w-4") }}
+      </span>
+    </a>
+
+    <!-- AttackMap card -->
+    <a href="/attackmap/" data-accent="attackmap" class="card card-hover group flex flex-col">
+      <div class="flex items-start justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="feature-icon !mb-0">
+            {{ partial "svg-icon.html" (dict "name" "radar-2" "class" "h-5 w-5") }}
+          </span>
+          <h3 class="text-2xl font-semibold tracking-tight text-ink-900 dark:text-white">{{ $attackmap.name }}</h3>
+        </div>
+        <span class="status-badge status-{{ $attackmap.status }}">{{ $attackmap.status }}</span>
+      </div>
+      <p class="mt-4 text-ink-600 dark:text-ink-300">{{ $attackmap.tagline }}</p>
+      <ul class="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-ink-600 dark:text-ink-400">
+        <li class="flex items-center gap-2">{{ partial "svg-icon.html" (dict "name" "code" "class" "h-4 w-4 accent-text") }} 10+ language analyzers</li>
+        <li class="flex items-center gap-2">{{ partial "svg-icon.html" (dict "name" "route" "class" "h-4 w-4 accent-text") }} Attack-path generation</li>
+        <li class="flex items-center gap-2">{{ partial "svg-icon.html" (dict "name" "report-search" "class" "h-4 w-4 accent-text") }} Defensive review reports</li>
+        <li class="flex items-center gap-2">{{ partial "svg-icon.html" (dict "name" "puzzle" "class" "h-4 w-4 accent-text") }} Plugin ecosystem</li>
+      </ul>
+      <span class="mt-6 inline-flex items-center gap-1 text-sm font-semibold accent-text">
+        Explore AttackMap
+        {{ partial "svg-icon.html" (dict "name" "arrow-right" "class" "h-4 w-4") }}
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- Why mlaify / principles strip -->
+<section class="border-y border-ink-200 bg-ink-50/60 py-16 dark:border-ink-800 dark:bg-ink-900/40">
+  <div class="container-page">
+    <div class="grid gap-10 lg:grid-cols-3">
+      <div>
+        <span class="feature-icon">{{ partial "svg-icon.html" (dict "name" "shield-check" "class" "h-5 w-5") }}</span>
+        <h3 class="text-lg font-semibold text-ink-900 dark:text-white">Security as design work</h3>
+        <p class="mt-2 text-sm text-ink-600 dark:text-ink-400">Threat models and protocol specs are first-class artifacts, not afterthoughts.</p>
+      </div>
+      <div>
+        <span class="feature-icon">{{ partial "svg-icon.html" (dict "name" "list-check" "class" "h-5 w-5") }}</span>
+        <h3 class="text-lg font-semibold text-ink-900 dark:text-white">Status you can trust</h3>
+        <p class="mt-2 text-sm text-ink-600 dark:text-ink-400">Every project ships with explicit current guarantees and known limits. No vaporware claims.</p>
+      </div>
+      <div>
+        <span class="feature-icon">{{ partial "svg-icon.html" (dict "name" "puzzle" "class" "h-5 w-5") }}</span>
+        <h3 class="text-lg font-semibold text-ink-900 dark:text-white">Composable by default</h3>
+        <p class="mt-2 text-sm text-ink-600 dark:text-ink-400">Provider-friendly module boundaries so you can swap pieces &mdash; analyzers, identity providers, relays.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Open source portfolio strip -->
+<section class="container-page py-20">
+  <div class="mb-10 flex items-end justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold tracking-tight text-ink-900 dark:text-white">Open-source portfolio</h2>
+      <p class="mt-3 max-w-2xl text-ink-600 dark:text-ink-400">Smaller projects we build, ship, and document in the open.</p>
+    </div>
+    <a href="/docs/projects/" class="hidden text-sm font-semibold accent-text sm:inline-flex sm:items-center sm:gap-1">
+      View all
+      {{ partial "svg-icon.html" (dict "name" "arrow-right" "class" "h-4 w-4") }}
+    </a>
+  </div>
+
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <a href="/docs/project-omekarapper/" class="card card-hover">
+      <h3 class="text-lg font-semibold text-ink-900 dark:text-white">OmekaRapper</h3>
+      <p class="mt-2 text-sm text-ink-600 dark:text-ink-400">AI-assisted Omeka S cataloging with provider-backed metadata suggestions from text, PDFs, OCR, and web content.</p>
+    </a>
+    <a href="/docs/project-opensift/" class="card card-hover">
+      <h3 class="text-lg font-semibold text-ink-900 dark:text-white">OpenSift</h3>
+      <p class="mt-2 text-sm text-ink-600 dark:text-ink-400">Local-first study assistant for ingest, retrieval, and grounded generation.</p>
+    </a>
+    <a href="/docs/project-opencontractrx/" class="card card-hover">
+      <h3 class="text-lg font-semibold text-ink-900 dark:text-white">OpenContractRx</h3>
+      <p class="mt-2 text-sm text-ink-600 dark:text-ink-400">Open-source contract intelligence and renewal platform focused on hospital workflows.</p>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="container-page pb-24">
+  <div class="rounded-3xl border border-ink-200 bg-white p-10 text-center dark:border-ink-800 dark:bg-ink-900 lg:p-16">
+    <h2 class="text-balance text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl dark:text-white">Build with us in the open.</h2>
+    <p class="mx-auto mt-3 max-w-2xl text-ink-600 dark:text-ink-400">Every project on this site is on GitHub. Read the architecture, file an issue, ship a patch &mdash; or just follow along.</p>
+    <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <a href="{{ site.Params.githubOrg }}" class="btn btn-primary">
+        {{ partial "svg-icon.html" (dict "name" "brand-github" "class" "h-4 w-4") }}
+        github.com/mlaify
+      </a>
+      <a href="/contribute/" class="btn btn-ghost">How to contribute</a>
+    </div>
+  </div>
+</section>
+{{ end }}

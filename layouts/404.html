@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="container-page py-24 lg:py-32">
+  <div class="mx-auto max-w-2xl text-center">
+    <p class="text-sm font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">404</p>
+    <h1 class="mt-3 text-balance text-4xl font-semibold tracking-tight text-ink-900 sm:text-5xl dark:text-white">This page is not here.</h1>
+    <p class="mt-4 text-ink-600 dark:text-ink-300">
+      Either the URL is wrong, or we moved something during the recent overhaul. The headline products are at <a href="/aegis/" class="font-medium text-brand-600 hover:underline dark:text-brand-400">/aegis/</a> and <a href="/attackmap/" class="font-medium text-brand-600 hover:underline dark:text-brand-400">/attackmap/</a>.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="/" class="btn btn-primary">Back to home</a>
+      <a href="/docs/projects/" class="btn btn-ghost">Browse projects</a>
+    </div>
+    <p class="mt-12 text-xs text-ink-500 dark:text-ink-400">If a link from another site brought you here, <a href="https://github.com/mlaify/mlaify.github.io/issues/new" class="underline hover:text-ink-700 dark:hover:text-ink-200">file an issue</a> with the URL.</p>
+  </div>
+</section>
+{{ end }}

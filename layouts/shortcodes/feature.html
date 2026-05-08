@@ -1,0 +1,7 @@
+{{- $icon := .Get "icon" | default "circle" -}}
+{{- $title := .Get "title" -}}
+<div class="card not-prose">
+  <span class="feature-icon">{{ partial "svg-icon.html" (dict "name" $icon "class" "h-5 w-5") }}</span>
+  <h3 class="text-base font-semibold text-ink-900 dark:text-white">{{ $title }}</h3>
+  <div class="mt-2 text-sm text-ink-600 dark:text-ink-400">{{ .Inner | .Page.RenderString }}</div>
+</div>

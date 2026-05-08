@@ -1,0 +1,70 @@
+{{- $title := .Title -}}
+{{- $isHome := .IsHome -}}
+{{- $siteTitle := site.Title -}}
+{{- $pageTitle := cond $isHome $siteTitle (printf "%s · %s" $title $siteTitle) -}}
+{{- $description := .Description | default .Summary | default site.Params.description -}}
+{{- $ogImage := .Params.ogImage | default site.Params.ogImage -}}
+{{- $ogImageURL := absURL $ogImage -}}
+{{- $canonical := .Permalink -}}
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+
+<title>{{ $pageTitle }}</title>
+<meta name="description" content="{{ $description }}" />
+<link rel="canonical" href="{{ $canonical }}" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="{{ cond $isHome "website" "article" }}" />
+<meta property="og:title" content="{{ $title | default $siteTitle }}" />
+<meta property="og:description" content="{{ $description }}" />
+<meta property="og:url" content="{{ $canonical }}" />
+<meta property="og:site_name" content="{{ $siteTitle }}" />
+<meta property="og:image" content="{{ $ogImageURL }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ $title | default $siteTitle }}" />
+<meta name="twitter:description" content="{{ $description }}" />
+<meta name="twitter:image" content="{{ $ogImageURL }}" />
+{{- with site.Params.twitterHandle }}<meta name="twitter:site" content="{{ . }}" />{{ end }}
+
+<!-- Icons -->
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<!-- humans.txt -->
+<link rel="author" href="/humans.txt" />
+
+<!-- Self-hosted system fonts; native UI fallback if not provided. -->
+<link rel="preconnect" href="https://rsms.me/" crossorigin />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+{{- $css := resources.Get "css/app.css" | postCSS (dict "config" "./postcss.config.js") -}}
+{{- if hugo.IsProduction -}}
+  {{- $css = $css | minify | fingerprint -}}
+{{- end -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" {{ if hugo.IsProduction }}integrity="{{ $css.Data.Integrity }}"{{ end }} />
+
+<!-- Inline early to prevent FOUC of the wrong theme. -->
+<script>
+  (function () {
+    try {
+      var s = localStorage.getItem("mlaify-theme");
+      var dark = s === "dark" || (!s && matchMedia("(prefers-color-scheme: dark)").matches);
+      if (dark) document.documentElement.classList.add("dark");
+    } catch (e) {}
+  })();
+</script>
+
+<!-- RSS -->
+{{ range .AlternativeOutputFormats -}}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ end -}}
+
+{{- partial "json-ld.html" . -}}

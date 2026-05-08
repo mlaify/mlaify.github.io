@@ -1,0 +1,60 @@
+{{- /*
+  app-badges: render App Store / Mac App Store / Play Store buttons.
+
+  Each entry is rendered as a "Coming soon" placeholder unless `available: true`
+  is set. Bundle/package IDs come from site.Params.products.aegis.
+
+  Args (from caller, dict):
+    .platforms []string  e.g. slice "ios" "macos" "android"
+*/ -}}
+{{- $aegis := index site.Params.products "aegis" -}}
+{{- $platforms := .platforms | default (slice "ios" "macos" "android") -}}
+
+<div class="not-prose grid gap-4 sm:grid-cols-3">
+  {{- range $platforms -}}
+    {{- $platform := . -}}
+    {{- $cfg := dict -}}
+    {{- if eq $platform "ios" -}}
+      {{- $cfg = dict
+        "name" "iOS"
+        "label" "App Store"
+        "icon" "brand-apple"
+        "subtitle" (printf "Bundle: %s" $aegis.appBundleIos)
+      -}}
+    {{- end -}}
+    {{- if eq $platform "macos" -}}
+      {{- $cfg = dict
+        "name" "macOS"
+        "label" "Mac App Store"
+        "icon" "brand-apple"
+        "subtitle" (printf "Bundle: %s" $aegis.appBundleMac)
+      -}}
+    {{- end -}}
+    {{- if eq $platform "android" -}}
+      {{- $cfg = dict
+        "name" "Android"
+        "label" "Google Play"
+        "icon" "brand-google-play"
+        "subtitle" (printf "Package: %s" $aegis.appPackageAndroid)
+      -}}
+    {{- end -}}
+
+    <div class="card flex flex-col">
+      <div class="flex items-center gap-3">
+        <span class="feature-icon !mb-0">
+          {{ partial "svg-icon.html" (dict "name" $cfg.icon "class" "h-5 w-5") }}
+        </span>
+        <div>
+          <h3 class="text-base font-semibold text-ink-900 dark:text-white">{{ $cfg.name }}</h3>
+          <p class="text-xs text-ink-500 dark:text-ink-400">{{ $cfg.subtitle }}</p>
+        </div>
+      </div>
+      <div class="mt-4 flex flex-1 items-end">
+        <span class="inline-flex items-center gap-2 rounded-lg border border-dashed border-ink-300 px-3 py-1.5 text-xs font-medium uppercase tracking-wide text-ink-500 dark:border-ink-700 dark:text-ink-400">
+          {{ partial "svg-icon.html" (dict "name" "clock" "class" "h-3.5 w-3.5") }}
+          Coming soon to {{ $cfg.label }}
+        </span>
+      </div>
+    </div>
+  {{- end -}}
+</div>

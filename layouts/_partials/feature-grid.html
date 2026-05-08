@@ -1,0 +1,16 @@
+{{- /*
+  feature-grid: render a grid of feature cards.
+  Args:
+    .features  []dict { icon, title, body }
+    .cols      int (default 4)
+*/ -}}
+{{- $cols := .cols | default 4 -}}
+<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-{{ $cols }}">
+  {{ range .features }}
+    <div class="card">
+      <span class="feature-icon">{{ partial "svg-icon.html" (dict "name" .icon "class" "h-5 w-5") }}</span>
+      <h3 class="text-base font-semibold text-ink-900 dark:text-white">{{ .title }}</h3>
+      <p class="mt-2 text-sm text-ink-600 dark:text-ink-400">{{ .body | safeHTML }}</p>
+    </div>
+  {{ end }}
+</div>

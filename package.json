@@ -1,7 +1,7 @@
 {
   "name": "mlaify.github.io",
-  "version": "0.1.0",
-  "description": "mlaify project hub built with Hugo and Doks.",
+  "version": "0.2.0",
+  "description": "mlaify product hub built with Hugo and a custom theme.",
   "author": "mlaify",
   "license": "MIT",
   "repository": {
@@ -11,27 +11,27 @@
   "scripts": {
     "create": "hugo new",
     "dev": "hugo server --disableFastRender --noHTTPCache",
+    "dev:full": "npm run build && npx serve public -l 4173 --no-port-switching",
     "format": "prettier **/** -w -c",
-    "build": "hugo --minify --gc",
+    "build": "hugo --minify --gc && pagefind --site public",
+    "build:hugo": "hugo --minify --gc",
+    "build:search": "pagefind --site public",
     "preview": "vite preview --outDir public"
   },
   "dependencies": {
-    "@thulite/doks-core": "^1.9.3",
     "@tabler/icons": "^3.36.1",
-    "@thulite/images": "^3.3.4",
-    "@thulite/inline-svg": "^1.2.2",
-    "@thulite/seo": "^2.4.3",
-    "thulite": "^2.6.5"
-  },
-  "overrides": {
-    "minimatch": "^10.2.2",
-    "glob": "^13.0.6"
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.20",
+    "pagefind": "^1.4.0",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^3.4.18"
   },
   "devDependencies": {
     "prettier": "^3.8.1",
     "vite": "^7.3.1"
   },
   "engines": {
-    "node": ">=24.13.0"
+    "node": ">=20.0.0"
   }
 }

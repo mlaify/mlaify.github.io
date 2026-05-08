@@ -1,0 +1,30 @@
+{{ define "main" }}
+{{ $hasSidebar := .Params.sidebar | default true }}
+<article class="container-page py-12 lg:py-16">
+  <div class="grid gap-12 lg:grid-cols-12">
+    {{ if $hasSidebar }}
+      <aside class="hidden lg:col-span-3 lg:block">
+        {{ partial "sidebar.html" . }}
+      </aside>
+    {{ end }}
+
+    <div class="{{ if $hasSidebar }}lg:col-span-9{{ else }}lg:col-span-12{{ end }}">
+      {{ partial "breadcrumbs.html" . }}
+
+      <header class="mb-8 max-w-3xl">
+        <h1 class="text-balance text-4xl font-semibold tracking-tight text-ink-900 sm:text-5xl dark:text-white">{{ .Title }}</h1>
+        {{ with .Params.lead | default .Description }}
+          <p class="mt-4 text-lg text-ink-600 dark:text-ink-300">{{ . }}</p>
+        {{ end }}
+        {{ with .Params.status }}
+          <p class="mt-4"><span class="status-badge status-{{ . }}">{{ . }}</span></p>
+        {{ end }}
+      </header>
+
+      <div class="prose-mlaify max-w-3xl">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,6 @@
+{{- $url := .Get "url" -}}
+{{- $label := .Get "label" | default $url -}}
+<a href="{{ $url }}" class="inline-flex items-center gap-1.5 font-mono text-sm font-medium accent-text hover:underline">
+  {{ partial "svg-icon.html" (dict "name" "brand-github" "class" "h-4 w-4") }}
+  {{ $label }}
+</a>

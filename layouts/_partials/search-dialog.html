@@ -1,0 +1,11 @@
+<div data-search-dialog hidden role="dialog" aria-modal="true" aria-label="Search" class="fixed inset-0 z-50 flex items-start justify-center bg-ink-950/40 p-4 pt-24 backdrop-blur-sm">
+  <div class="w-full max-w-2xl rounded-2xl border border-ink-200 bg-white shadow-2xl dark:border-ink-800 dark:bg-ink-900">
+    <div class="flex items-center justify-between border-b border-ink-200 px-4 py-2 dark:border-ink-800">
+      <span class="text-xs font-medium uppercase tracking-wide text-ink-500">Search</span>
+      <button type="button" data-search-close class="rounded p-1 text-ink-500 hover:bg-ink-100 dark:hover:bg-ink-800" aria-label="Close search">
+        {{ partial "svg-icon.html" (dict "name" "x" "class" "h-4 w-4") }}
+      </button>
+    </div>
+    <div id="pagefind-search" class="p-4 pagefind-ui"></div>
+  </div>
+</div>

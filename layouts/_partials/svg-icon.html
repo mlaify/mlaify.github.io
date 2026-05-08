@@ -1,0 +1,32 @@
+{{- /*
+  svg-icon: render an inlined Tabler icon.
+
+  Usage: {{ partial "svg-icon.html" (dict "name" "shield" "class" "h-5 w-5") }}
+
+  Resolution order:
+    assets/icons/tabler/outline/<name>.svg  (mounted from @tabler/icons)
+    assets/icons/<name>.svg                  (project-local custom icons)
+
+  The mounted Tabler icon set lives in two variants (outline/ and filled/).
+  The npm package layout puts SVGs at icons/outline/<name>.svg.
+*/ -}}
+{{- $name := .name -}}
+{{- $class := .class | default "h-5 w-5" -}}
+{{- $candidates := slice
+  (printf "icons/tabler/outline/%s.svg" $name)
+  (printf "icons/tabler/filled/%s.svg" $name)
+  (printf "icons/%s.svg" $name)
+-}}
+{{- $svg := "" -}}
+{{- range $candidates -}}
+  {{- if and (not $svg) (resources.Get .) -}}
+    {{- $svg = (resources.Get .) -}}
+  {{- end -}}
+{{- end -}}
+{{- if $svg -}}
+  {{- $content := $svg.Content -}}
+  {{- $content = replaceRE `<svg ` (printf `<svg class="%s" aria-hidden="true" focusable="false" ` $class) $content -}}
+  {{- $content | safeHTML -}}
+{{- else -}}
+  <span class="{{ $class }} inline-block" aria-hidden="true"></span>
+{{- end -}}
