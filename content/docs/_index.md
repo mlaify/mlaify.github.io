@@ -1,6 +1,6 @@
 ---
 title: "Project Hub"
-description: "Entry point for ML AI project documentation, including repository overviews, implementation status, architecture summaries, and contributor navigation."
+description: "Entry point for mlaify project documentation, including repository overviews, implementation status, architecture summaries, and contributor navigation."
 summary: ""
 date: 2026-04-21T11:00:00-05:00
 lastmod: 2026-04-21T11:00:00-05:00
@@ -14,4 +14,4 @@ params:
     startUrl: "/docs/projects/"
 ---
 
-This section organizes the ML AI repositories as project documentation rather than marketing pages.
+This section organizes the mlaify repositories as project documentation rather than marketing pages.

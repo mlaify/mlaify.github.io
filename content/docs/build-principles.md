@@ -1,6 +1,6 @@
 ---
 title: "Build Principles"
-description: "Cross-project build principles used across ML AI repositories, including status transparency, composable architecture, and security-first design practices."
+description: "Cross-project build principles used across mlaify repositories, including status transparency, composable architecture, and security-first design practices."
 date: 2026-04-21T11:00:00-05:00
 lastmod: 2026-04-21T11:00:00-05:00
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Contribute / Contact"
-description: "Contribution and contact guide describing where to open issues, discuss implementation details, and collaborate across ML AI repositories."
+description: "Contribution and contact guide describing where to open issues, discuss implementation details, and collaborate across mlaify repositories."
 date: 2026-04-21T11:00:00-05:00
 lastmod: 2026-04-21T11:00:00-05:00
 draft: false

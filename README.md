@@ -1,6 +1,6 @@
 # mlaify.github.io
 
-ML AI project hub website built with **Hugo** and the **Doks** theme (Thulite).
+mlaify project hub website built with **Hugo** and the **Doks** theme (Thulite).
 
 ## Stack
 
