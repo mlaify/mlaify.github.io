@@ -1,6 +1,6 @@
 ---
 title: "Projects"
-description: "Catalog of active ML AI repositories with concise summaries of scope, focus areas, and links to deeper project-specific documentation pages."
+description: "Catalog of active mlaify repositories with concise summaries of scope, focus areas, and links to deeper project-specific documentation pages."
 date: 2026-04-21T11:00:00-05:00
 lastmod: 2026-04-21T11:00:00-05:00
 draft: false

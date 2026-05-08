@@ -442,3 +442,6 @@ public/
 resources/_gen/
 .hugo_build.lock
 hugo_stats.json
+
+# Claude Code worktrees and session state
+.claude/

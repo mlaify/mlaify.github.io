@@ -1,0 +1,30 @@
+/* TEAM */
+Owner / Author: Matthew Davis
+Contact: matthewd@matthewd.xyz
+GitHub: https://github.com/mdavistffhrtporg
+Location: United States
+
+/* SITE */
+Domain: mlaify.io
+Purpose: Product hub for mlaify — Aegis and AttackMap
+Stack: Hugo, Tailwind CSS, Pagefind
+Analytics: Minimal, security-focused only
+
+/* CONTENT */
+Product documentation, getting-started guides, and open-source portfolio.
+
+/* PRINCIPLES */
+Privacy-respecting by design
+No ads
+No tracking
+Static-first
+Security-conscious
+
+/* THANKS */
+Open source maintainers
+Security researchers
+Thoughtful readers
+
+/* META */
+Last updated: 2026-05-08
+Standards: humans.txt (humanstxt.org)

@@ -1,8 +1,8 @@
 {
   "name": "mlaify.github.io",
   "version": "0.1.0",
-  "description": "ML AI project hub built with Hugo and Doks.",
-  "author": "ML AI",
+  "description": "mlaify project hub built with Hugo and Doks.",
+  "author": "mlaify",
   "license": "MIT",
   "repository": {
     "type": "git",

@@ -1,0 +1,17 @@
+# mlaify security contacts and policy
+
+# Our security contact channels
+Contact: mailto:matthewd@matthewd.xyz
+Contact: mailto:mdavisa2021@pm.me
+
+# If practical, use PGP encryption
+Encryption: https://matthewd.xyz/matthewdxyz.asc
+
+# Link to our vulnerability disclosure policy
+Policy: https://github.com/mlaify/mlaify.github.io/blob/main/SECURITY.md
+
+# Languages that our team speaks and understands
+Preferred-Languages: en-US
+
+# Expiration date for this security.txt file
+Expires: 2027-05-08T00:00:00Z

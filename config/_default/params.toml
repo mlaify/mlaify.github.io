@@ -1,6 +1,6 @@
 # Hugo
-title = "ML AI Project Hub"
-description = "Project hub for ML AI repositories, architecture notes, and implementation status."
+title = "mlaify"
+description = "Project hub for mlaify repositories, architecture notes, and implementation status."
 images = ["cover.png"]
 
 # mainSections

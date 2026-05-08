@@ -1,4 +1,4 @@
-title = "ML AI Project Hub"
+title = "mlaify"
 baseurl = "https://mlaify.io/"
 disableAliases = true
 disableHugoGeneratorInject = true
@@ -15,7 +15,7 @@ defaultContentLanguage = "en"
 disableLanguages = ["de", "nl"]
 defaultContentLanguageInSubdir = false
 
-copyRight = "ML AI Project Hub"
+copyRight = "mlaify"
 
 [build.buildStats]
   enable = true

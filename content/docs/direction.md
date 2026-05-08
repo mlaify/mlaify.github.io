@@ -1,6 +1,6 @@
 ---
 title: "Direction"
-description: "Current direction and priorities for evolving the ML AI project hub and related repositories while keeping status and architecture documentation aligned."
+description: "Current direction and priorities for evolving the mlaify project hub and related repositories while keeping status and architecture documentation aligned."
 date: 2026-04-21T11:00:00-05:00
 lastmod: 2026-04-21T11:00:00-05:00
 draft: false

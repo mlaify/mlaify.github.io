@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-05-08",
+  "operator": "mlaify",
+  "site": "https://mlaify.io",
+  "data_collection": {
+    "personal_data_sold": false,
+    "advertising_tracking": false,
+    "behavioral_profiling": false,
+    "cookies_first_party": false,
+    "technical_data_processed": true,
+    "purpose": [
+      "security",
+      "performance",
+      "reliability"
+    ]
+  },
+  "third_parties": [
+    {
+      "name": "Content delivery and infrastructure providers",
+      "purpose": "Content delivery, security, and reliability"
+    },
+    {
+      "name": "GitHub",
+      "purpose": "Hosting, comments, discussions, and repository interaction",
+      "policy": "https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
+    }
+  ],
+  "user_rights": [
+    "GDPR",
+    "CCPA/CPRA",
+    "Texas TDPSA"
+  ],
+  "contact": {
+    "email": "matthewd@matthewd.xyz",
+    "github": "https://github.com/mdavistffhrtporg"
+  }
+}
