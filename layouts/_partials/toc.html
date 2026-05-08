@@ -1,0 +1,8 @@
+{{- if and .TableOfContents (gt (len .TableOfContents) 50) -}}
+<aside class="sticky top-24 hidden lg:block">
+  <h2 class="mb-3 text-xs font-semibold uppercase tracking-wide text-ink-500 dark:text-ink-400">On this page</h2>
+  <div class="text-sm [&_ul]:space-y-1 [&_a]:block [&_a]:py-1 [&_a]:text-ink-600 [&_a]:hover:text-ink-900 dark:[&_a]:text-ink-400 dark:[&_a]:hover:text-white [&_ul]:list-none [&_ul]:pl-0 [&_ul_ul]:pl-3">
+    {{ .TableOfContents }}
+  </div>
+</aside>
+{{- end -}}

@@ -1,0 +1,4 @@
+{{- $url := .Get "url" -}}
+{{- $label := .Get "label" | default "Learn more" -}}
+{{- $variant := .Get "variant" | default "primary" -}}
+<a href="{{ $url }}" class="btn btn-{{ $variant }}">{{ $label }}</a>

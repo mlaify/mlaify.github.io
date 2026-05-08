@@ -1,0 +1,4 @@
+{{- $cols := .Get "cols" | default "4" -}}
+<div class="not-prose my-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-{{ $cols }}">
+  {{ .Inner | .Page.RenderString }}
+</div>

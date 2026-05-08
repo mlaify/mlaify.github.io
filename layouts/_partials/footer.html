@@ -1,0 +1,38 @@
+<footer class="mt-24 border-t border-ink-200 bg-ink-50/60 dark:border-ink-800 dark:bg-ink-950">
+  <div class="container-page py-12">
+    <div class="grid gap-10 md:grid-cols-4">
+      <div class="md:col-span-2">
+        <a href="/" class="flex items-center gap-2 text-lg font-semibold tracking-tight text-ink-900 dark:text-white">
+          {{ partial "svg-icon.html" (dict "name" "shield-half-filled" "class" "h-6 w-6 text-brand-600 dark:text-brand-400") }}
+          <span>mlaify</span>
+        </a>
+        <p class="mt-3 max-w-md text-sm text-ink-600 dark:text-ink-400">
+          {{ site.Params.tagline }}
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xs font-semibold uppercase tracking-wide text-ink-500 dark:text-ink-400">Products</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="/aegis/" class="text-ink-700 hover:text-ink-900 dark:text-ink-300 dark:hover:text-white">Aegis</a></li>
+          <li><a href="/attackmap/" class="text-ink-700 hover:text-ink-900 dark:text-ink-300 dark:hover:text-white">AttackMap</a></li>
+          <li><a href="/docs/projects/" class="text-ink-700 hover:text-ink-900 dark:text-ink-300 dark:hover:text-white">Open source</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xs font-semibold uppercase tracking-wide text-ink-500 dark:text-ink-400">Org</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          {{- range site.Menus.footer }}
+            <li><a href="{{ .URL }}" class="text-ink-700 hover:text-ink-900 dark:text-ink-300 dark:hover:text-white">{{ .Name }}</a></li>
+          {{- end }}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-col items-start justify-between gap-3 border-t border-ink-200 pt-6 text-xs text-ink-500 sm:flex-row sm:items-center dark:border-ink-800 dark:text-ink-400">
+      <p>&copy; {{ now.Year }} {{ site.Params.org.legalName }}. Open-source under MIT unless otherwise noted.</p>
+      <p>Built with <a href="https://gohugo.io" class="underline hover:text-ink-700 dark:hover:text-ink-200">Hugo</a>. Search by <a href="https://pagefind.app" class="underline hover:text-ink-700 dark:hover:text-ink-200">Pagefind</a>.</p>
+    </div>
+  </div>
+</footer>

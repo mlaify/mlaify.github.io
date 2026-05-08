@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* The HTML `hidden` attribute must beat any utility class that sets display. */
+  [hidden] {
+    display: none !important;
+  }
+
+  :root {
+    color-scheme: light dark;
+    --accent-50: theme("colors.brand.50");
+    --accent-100: theme("colors.brand.100");
+    --accent-500: theme("colors.brand.500");
+    --accent-600: theme("colors.brand.600");
+    --accent-700: theme("colors.brand.700");
+  }
+
+  [data-accent="aegis"] {
+    --accent-50: theme("colors.aegis.50");
+    --accent-100: theme("colors.aegis.100");
+    --accent-500: theme("colors.aegis.500");
+    --accent-600: theme("colors.aegis.600");
+    --accent-700: theme("colors.aegis.700");
+  }
+
+  [data-accent="attackmap"] {
+    --accent-50: theme("colors.attackmap.50");
+    --accent-100: theme("colors.attackmap.100");
+    --accent-500: theme("colors.attackmap.500");
+    --accent-600: theme("colors.attackmap.600");
+    --accent-700: theme("colors.attackmap.700");
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    @apply bg-white text-ink-800 dark:bg-ink-950 dark:text-ink-200;
+    @apply font-sans;
+  }
+
+  ::selection {
+    background-color: var(--accent-100);
+    color: var(--accent-700);
+  }
+
+  .dark ::selection {
+    background-color: var(--accent-700);
+    color: var(--accent-50);
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible {
+    @apply outline-none ring-2 ring-offset-2 ring-offset-white dark:ring-offset-ink-950;
+    --tw-ring-color: var(--accent-500);
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition;
+  }
+
+  .btn-primary {
+    color: white;
+    background-color: var(--accent-600);
+  }
+  .btn-primary:hover {
+    background-color: var(--accent-700);
+  }
+
+  .btn-ghost {
+    @apply text-ink-700 ring-1 ring-inset ring-ink-200 hover:bg-ink-50;
+    @apply dark:text-ink-200 dark:ring-ink-700 dark:hover:bg-ink-800;
+  }
+
+  .accent-text {
+    color: var(--accent-600);
+  }
+  .dark .accent-text {
+    color: var(--accent-400);
+  }
+
+  .accent-bg {
+    background-color: var(--accent-600);
+  }
+
+  .card {
+    @apply rounded-2xl border border-ink-200 bg-white p-6 transition;
+    @apply dark:border-ink-800 dark:bg-ink-900;
+  }
+
+  .card-hover:hover {
+    @apply border-ink-300 shadow-md;
+    @apply dark:border-ink-700;
+  }
+
+  .feature-icon {
+    @apply mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg;
+    background-color: var(--accent-50);
+    color: var(--accent-600);
+  }
+  .dark .feature-icon {
+    background-color: rgb(255 255 255 / 0.05);
+    color: var(--accent-400);
+  }
+
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wide;
+  }
+  .status-badge::before {
+    content: "";
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background-color: currentColor;
+  }
+  .status-alpha {
+    @apply bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200;
+  }
+  .status-beta {
+    @apply bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-200;
+  }
+  .status-stable {
+    @apply bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200;
+  }
+
+  .callout {
+    @apply my-6 rounded-xl border-l-4 bg-ink-50 p-4 dark:bg-ink-900;
+  }
+  .callout-note {
+    @apply border-brand-500;
+  }
+  .callout-warn {
+    @apply border-amber-500;
+  }
+  .callout-security {
+    @apply border-aegis-500;
+  }
+
+  .prose-mlaify {
+    @apply prose max-w-none dark:prose-invert;
+    @apply prose-headings:scroll-mt-24;
+    @apply prose-pre:rounded-xl prose-pre:bg-ink-950 prose-pre:text-ink-100;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-ink-700 hover:text-ink-900 dark:text-ink-300 dark:hover:text-white;
+  }
+  .nav-link[aria-current="page"],
+  .nav-link.active {
+    color: var(--accent-600);
+  }
+
+  .bg-grid {
+    background-image: radial-gradient(circle at 1px 1px, rgb(0 0 0 / 0.05) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+  .dark .bg-grid {
+    background-image: radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.06) 1px, transparent 0);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Pagefind UI overrides */
+.pagefind-ui {
+  --pagefind-ui-primary: theme("colors.brand.600");
+  --pagefind-ui-text: theme("colors.ink.800");
+  --pagefind-ui-background: theme("colors.white");
+  --pagefind-ui-border: theme("colors.ink.200");
+  --pagefind-ui-tag: theme("colors.ink.100");
+  --pagefind-ui-border-radius: 0.75rem;
+  --pagefind-ui-font: inherit;
+}
+
+.dark .pagefind-ui {
+  --pagefind-ui-primary: theme("colors.brand.400");
+  --pagefind-ui-text: theme("colors.ink.100");
+  --pagefind-ui-background: theme("colors.ink.900");
+  --pagefind-ui-border: theme("colors.ink.700");
+  --pagefind-ui-tag: theme("colors.ink.800");
+}

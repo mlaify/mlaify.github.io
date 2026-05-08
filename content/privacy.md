@@ -1,15 +1,12 @@
 ---
 title: "Privacy Policy"
 description: "How mlaify.io handles your data — and why we collect as little as possible."
-date: 2026-05-08T00:00:00-05:00
-lastmod: 2026-05-08T00:00:00-05:00
-draft: false
-weight: 91
-toc: true
+layout: single
+sidebar: false
 ---
 
-**Operator:** mlaify
-**Site:** mlaify.io
+**Operator:** mlaify  
+**Site:** mlaify.io  
 **Last updated:** 2026-05-08
 
 ---
@@ -66,8 +63,8 @@ Because we collect no personal data in the traditional sense, there is nothing t
 
 For privacy questions or concerns:
 
-- **Email:** [matthewd@matthewd.xyz](mailto:matthewd@matthewd.xyz)
-- **Email:** [mdavisa2021@pm.me](mailto:mdavisa2021@pm.me)
+- **Email**: [matthewd@matthewd.xyz](mailto:matthewd@matthewd.xyz)
+- **Email**: [mdavisa2021@pm.me](mailto:mdavisa2021@pm.me)
 
 For security vulnerability reports, see our [Security page](/security/).
 

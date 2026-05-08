@@ -1,0 +1,35 @@
+{{ define "main" }}
+{{ $product := index site.Params.products "aegis" }}
+{{ partial "hero.html" (dict
+  "title" "Post-quantum encrypted messaging."
+  "tagline" $product.tagline
+  "lead" "Aegis is a protocol-first messaging stack with end-to-end encryption, hybrid post-quantum cryptography, cryptographic identity continuity, and zero-trust relays — across web, iOS, macOS, Android, and CLI."
+  "status" $product.status
+  "primaryCTA" (dict "label" "Get started" "url" "/aegis/getting-started/")
+  "secondaryCTA" (dict "label" "View on GitHub" "url" $product.repoUrl)
+  "accent" "aegis"
+) }}
+
+<!-- Quick nav strip -->
+<section class="border-b border-ink-200/60 bg-ink-50/60 dark:border-ink-800/60 dark:bg-ink-900/40" data-accent="aegis">
+  <div class="container-page py-4">
+    <nav aria-label="Aegis sections" class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+      <a href="/aegis/getting-started/" class="text-ink-700 hover:accent-text dark:text-ink-300">Getting started</a>
+      <a href="/aegis/apps/" class="text-ink-700 hover:accent-text dark:text-ink-300">Apps</a>
+      <a href="/aegis/security/" class="text-ink-700 hover:accent-text dark:text-ink-300">Security model</a>
+      <a href="/aegis/faq/" class="text-ink-700 hover:accent-text dark:text-ink-300">FAQ</a>
+      <a href="{{ $product.specRepoUrl }}" class="ml-auto inline-flex items-center gap-1 text-ink-500 hover:text-ink-700 dark:text-ink-400 dark:hover:text-ink-200">
+        {{ partial "svg-icon.html" (dict "name" "file-text" "class" "h-4 w-4") }}
+        Protocol RFCs
+      </a>
+    </nav>
+  </div>
+</section>
+
+<!-- Body content (rendered from content/aegis/_index.md) -->
+<section class="container-page py-16 lg:py-20" data-accent="aegis">
+  <div class="prose-mlaify max-w-none">
+    {{ .Content }}
+  </div>
+</section>
+{{ end }}

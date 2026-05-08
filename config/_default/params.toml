@@ -1,109 +1,48 @@
-# Hugo
-title = "mlaify"
-description = "Project hub for mlaify repositories, architecture notes, and implementation status."
-images = ["cover.png"]
+# Site-wide params consumed by the custom theme.
 
-# mainSections
-mainSections = ["docs"]
+description = "mlaify ships open-source security and AI-assisted tooling. Home of Aegis (post-quantum encrypted messaging) and AttackMap (defensive security analysis)."
+tagline = "Open-source security tooling and AI-assisted workflows."
 
-math = false
-mathEngine = "KaTeX"
+# Default OG / Twitter image (relative to /static).
+# Per-section overrides live in front matter (`ogImage:` in section _index.md).
+# Until per-product OG images are designed, fall back to the existing cover.png.
+ogImage = "cover.png"
+twitterHandle = ""
 
-[doks]
-  colorMode = "auto"
-  colorModeToggler = true
+# Repo / org links.
+githubOrg = "https://github.com/mlaify"
+siteRepo = "https://github.com/mlaify/mlaify.github.io"
 
-  navbarSticky = true
-  containerBreakpoint = "fluid"
+# Footer build/version info.
+showBuildInfo = false
 
-  navBarButton = true
-  navBarButtonUrl = "/docs/projects/"
-  navBarButtonText = "Explore Projects"
+# JSON-LD organization schema.
+[org]
+  name = "mlaify"
+  legalName = "mlaify"
+  url = "https://mlaify.io/"
+  logo = "https://mlaify.io/icon.svg"
+  sameAs = ["https://github.com/mlaify"]
 
-  flexSearch = true
-  searchExclKinds = []
-  searchExclTypes = []
-  showSearch = []
-  indexSummary = false
+# Per-product params used by section landing pages.
+[products]
+  [products.aegis]
+    name = "Aegis"
+    tagline = "Post-quantum encrypted messaging, end to end."
+    status = "alpha"
+    repoUrl = "https://github.com/mlaify/aegis"
+    specRepoUrl = "https://github.com/mlaify/aegis-spec"
+    docsRepoUrl = "https://github.com/mlaify/aegis-docs"
+    accent = "aegis"
+    appBundleIos = "io.aegis.ios"
+    appBundleMac = "io.aegis.mac"
+    appPackageAndroid = "io.aegis.android"
 
-  showDate = false
-  showSummary = true
-  searchLimit = 99
-
-  alert = false
-  alertDismissable = true
-
-  bootstrapJavascript = false
-
-  sectionSwitcher = false
-  sectionNav = ["docs"]
-  toTopButton = true
-  breadcrumbTrail = true
-  headlineHash = true
-  scrollSpy = true
-
-  multilingualMode = false
-  showMissingLanguages = true
-
-  docsVersioning = false
-  docsVersion = "1.0"
-
-  headerBar = false
-  backgroundDots = true
-  aiButtons = false
-
-  sectionFooter = false
-
-  relatedPosts = false
-  imageList = true
-  imageSingle = true
-
-  editPage = false
-  lastMod = false
-  repoHost = "GitHub"
-  docsRepo = "https://github.com/mlaify/mlaify.github.io"
-  docsRepoBranch = "main"
-  docsRepoSubPath = ""
-
-  krokiURL = "https://kroki.io"
-
-[render_hooks.image]
-  errorLevel = 'ignore'
-
-[render_hooks.link]
-  errorLevel = 'ignore'
-  highlightBroken = false
-
-[thulite_images]
-  [thulite_images.defaults]
-    decoding = "async"
-    fetchpriority = "auto"
-    loading = "lazy"
-    widths = [480, 576, 768, 1025, 1200, 1440]
-    sizes = "auto"
-    process = ""
-    lqip = "16x webp q20"
-
-[inline_svg]
-  iconSetDir = "tabler-icons"
-  iconSetVariant = "outline"
-
-[seo]
-  [seo.title]
-    separator = ""
-    suffix = ""
-  [seo.description]
-    summaryFallback = ""
-  [seo.favicons]
-    icon = "favicon.png"
-    svgIcon = "favicon.svg"
-  [seo.schemas]
-    type = "Organization"
-    logo = "favicon-512x512.png"
-    name = "MLAI"
-    sameAs = ["https://github.com/mlaify"]
-    images = ["cover.png"]
-    article = []
-    newsArticle = []
-    blogPosting = []
-    product = []
+  [products.attackmap]
+    name = "AttackMap"
+    tagline = "Understand your system. Defend it better."
+    status = "alpha"
+    repoUrl = "https://github.com/mlaify/attackmap"
+    wikiUrl = "https://github.com/mlaify/attackmap/wiki"
+    pypiName = "attackmap"
+    accent = "attackmap"

@@ -1,17 +1,17 @@
 ---
-title: "Project Hub"
-description: "Entry point for mlaify project documentation, including repository overviews, implementation status, architecture summaries, and contributor navigation."
-summary: ""
-date: 2026-04-21T11:00:00-05:00
-lastmod: 2026-04-21T11:00:00-05:00
+title: "Open-source portfolio"
+description: "Smaller mlaify projects we build, ship, and document in the open. AI-assisted workflows, healthcare contract intelligence, and study tooling."
+date: 2026-05-08T00:00:00-05:00
+lastmod: 2026-05-08T00:00:00-05:00
 draft: false
-weight: 10
-toc: true
-params:
-  section:
-    title: "Project Hub"
-    iconName: "folders"
-    startUrl: "/docs/projects/"
+weight: 100
+toc: false
 ---
 
-This section organizes the mlaify repositories as project documentation rather than marketing pages.
+Aegis and AttackMap are the headline projects on this site. The portfolio below is the rest of what we build in the open: AI-assisted workflow tools, contract intelligence, and a study assistant. They are smaller in scope but follow the same conventions — explicit status, threat model where it applies, documentation close to the code.
+
+[Browse all projects](/docs/projects/) or jump straight to a repo:
+
+- [OmekaRapper](/docs/project-omekarapper/) — AI-assisted Omeka S cataloging
+- [OpenSift](/docs/project-opensift/) — local-first study assistant
+- [OpenContractRx](/docs/project-opencontractrx/) — hospital contract intelligence
