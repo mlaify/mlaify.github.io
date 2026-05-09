@@ -63,8 +63,8 @@ Because we collect no personal data in the traditional sense, there is nothing t
 
 For privacy questions or concerns:
 
-- **Email**: [matthewd@matthewd.xyz](mailto:matthewd@matthewd.xyz)
-- **Email**: [mdavisa2021@pm.me](mailto:mdavisa2021@pm.me)
+- **Email**: [privacy@matthewd.xyz](mailto:privacy@matthewd.xyz)
+- **Email**: [privacy@mlaify.io](mailto:privacy@mlaify.io)
 
 For security vulnerability reports, see our [Security page](/security/).
 
