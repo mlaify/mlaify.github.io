@@ -13,8 +13,8 @@ mlaify welcomes feedback from security researchers and the general public to hel
 
 Please report security issues via one of the following channels, providing as much detail as possible. The more information you include, the easier it will be for us to triage and address the issue.
 
-- **Email**: [matthewd@matthewd.xyz](mailto:matthewd@matthewd.xyz)
-- **Email**: [mdavisa2021@pm.me](mailto:mdavisa2021@pm.me)
+- **Email**: [security@matthewd.xyz](mailto:security@matthewd.xyz)
+- **Email**: [security@mlaify.io](mailto:security@mlaify.io)
 - **PGP key**: [matthewd.xyz/matthewdxyz.asc](https://matthewd.xyz/matthewdxyz.asc)
 
 ### Systems in Scope

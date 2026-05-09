@@ -242,5 +242,5 @@ The AMP protocol is specified in six RFCs in [aegis-spec](https://github.com/mla
 
 Security issues should be reported per the [vulnerability disclosure policy](/security/). Do not open a public GitHub issue for a security vulnerability.
 
-Contact: [matthewd@matthewd.xyz](mailto:matthewd@matthewd.xyz) · [mdavisa2021@pm.me](mailto:mdavisa2021@pm.me)
+Contact: [security@matthewd.xyz](mailto:security@matthewd.xyz) · [security@mlaify.io](mailto:security@mlaify.io)
 PGP: [matthewd.xyz/matthewdxyz.asc](https://matthewd.xyz/matthewdxyz.asc)

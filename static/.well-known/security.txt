@@ -1,8 +1,8 @@
 # mlaify security contacts and policy
 
 # Our security contact channels
-Contact: mailto:matthewd@matthewd.xyz
-Contact: mailto:mdavisa2021@pm.me
+Contact: mailto:security@matthewd.xyz
+Contact: mailto:security@mlaify.io
 
 # If practical, use PGP encryption
 Encryption: https://raw.githubusercontent.com/mlaify/mlaify.github.io/refs/heads/main/static/matthewdxyz.asc

@@ -162,4 +162,4 @@ Yes. All repositories in the mlaify/aegis organization are MIT licensed. The pro
 
 See the [Security page](/security/) or the [SECURITY.md](https://github.com/mlaify/aegis-spec/blob/main/SECURITY.md) in the spec repo. Do not open a public GitHub issue for a security vulnerability.
 
-Contact: [matthewd@matthewd.xyz](mailto:matthewd@matthewd.xyz)
+Contact: [security@matthewd.xyz](mailto:security@matthewd.xyz)

@@ -37,7 +37,7 @@ In participating in our vulnerability disclosure program in good faith, we ask t
 
 ## Official Channels
 
-Please report security issues via [matthewd@matthewd.xyz](mailto:matthewd@matthewd.xyz) or [mdavisa2021@pm.me](mailto:mdavisa2021@pm.me), providing all relevant information. The more details you provide, the easier it will be for us to triage and fix the issue.
+Please report security issues via [security@matthewd.xyz](mailto:security@matthewd.xyz) or [security@mlaify.io](mailto:security@mlaify.io), providing all relevant information. The more details you provide, the easier it will be for us to triage and fix the issue.
 
 ## Safe Harbor
 
