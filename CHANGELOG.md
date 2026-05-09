@@ -6,8 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **`CONTENT_LICENSE.md`** — explicit CC BY-NC-SA 4.0 license for site content (separate from the existing MIT license that covers source code).
+- **`CODE_OF_CONDUCT.md`** — Contributor Covenant 3.0.
+- **`.github/PULL_REQUEST_TEMPLATE.md`** — checklist-style PR template aligned with the project's build-hygiene rules (CHANGELOG entry, `npm run build` passes, paired Hugo + Node version updates, etc.).
+- **`.github/FUNDING.yml`** — GitHub Sponsors enabled (`mdavistffhrtporg`); other platforms left commented for future opt-in.
+- **`.github/CODEOWNERS`** — `* @mdavistffhrtporg` as sole code owner.
+
 ### Changed
 
+- **`CONTRIBUTING.md`** — Code of conduct section now links to the new `CODE_OF_CONDUCT.md` instead of being a one-liner; new License section explains the dual MIT (code) + CC BY-NC-SA 4.0 (content) split and notes that contributions are licensed under those same terms.
 - **Replaced personal email addresses with role-based contacts.** Security-disclosure files now use `security@matthewd.xyz` and `security@mlaify.io` (`SECURITY.md`, `content/security.md`, `content/aegis/security.md`, `content/aegis/faq.md`, `static/.well-known/security.txt`). Privacy and general-contact files now use `privacy@matthewd.xyz` and `privacy@mlaify.io` (`content/privacy.md`, `static/privacy.json`, `static/humans.txt`). No instances of the previous personal addresses remain in tracked sources.
 - **OmekaRapper project page** (`/docs/project-omekarapper/`) significantly expanded with full architecture detail sourced from the OmekaRapper docs site: provider matrix and request strategy, curator workflow, PDF + OCR behavior, runtime flow, controller endpoints, response schema, request/apply/failure policies, configuration reference, installation, FAQ, and troubleshooting. Confirms the new repo location at [mlaify/OmekaRapper](https://github.com/mlaify/OmekaRapper) and clarifies what is intentionally out of scope today (no Python worker, no pgvector, no transcription, no review queue).
 - `/docs/projects/` blurb for OmekaRapper updated with provider list, PDF+OCR support, async behavior, and the suggest-and-apply (never silent) framing.

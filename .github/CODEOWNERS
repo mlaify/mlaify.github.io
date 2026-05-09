@@ -1,0 +1,6 @@
+# Code owners for mlaify/mlaify.github.io
+#
+# Order matters — the last matching pattern takes the most precedence.
+# See: https://docs.github.com/en/repositories/managing-your-repositories-settings-and-security/customizing-your-repository/about-code-owners
+
+* @mdavistffhrtporg

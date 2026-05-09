@@ -100,4 +100,13 @@ For security issues affecting the site (XSS, CSP regressions, header issues), se
 
 ## Code of conduct
 
+This project follows the [Contributor Covenant 3.0](./CODE_OF_CONDUCT.md). By participating in this project — opening issues, submitting PRs, commenting on discussions — you agree to abide by it.
+
 Treat people well. Mistakes are expected; bad faith is not.
+
+## License
+
+- The **source code** in this repository is licensed under the [MIT License](./LICENSE).
+- The **content** of the site (everything under `content/`, `static/`, and the rendered pages at `https://mlaify.io/`) is licensed under [CC BY-NC-SA 4.0](./CONTENT_LICENSE.md).
+
+By contributing, you agree that your contributions will be licensed under those same terms.
