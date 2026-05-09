@@ -5,7 +5,7 @@ Contact: mailto:matthewd@matthewd.xyz
 Contact: mailto:mdavisa2021@pm.me
 
 # If practical, use PGP encryption
-Encryption: https://matthewd.xyz/matthewdxyz.asc
+Encryption: https://raw.githubusercontent.com/mlaify/mlaify.github.io/refs/heads/main/static/matthewdxyz.asc
 
 # Link to our vulnerability disclosure policy
 Policy: https://github.com/mlaify/mlaify.github.io/blob/main/SECURITY.md
