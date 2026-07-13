@@ -7,7 +7,7 @@ twitterHandle = ""
 
 # Repo / org links
 githubOrg = "https://github.com/mdavistffhrtporg"
-siteRepo = "https://github.com/mdavistffhrtporg/mdavistffhrtporg.github.io"
+siteRepo = "https://github.com/mlaify/mlaify.github.io"
 
 # Footer toggles
 showBuildInfo = false
