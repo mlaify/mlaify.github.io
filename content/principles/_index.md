@@ -52,7 +52,7 @@ If something on this site disagrees with a project's repo, **the repo is correct
 You can see all five reflected in AttackMap:
 
 - Its defensive review is a reviewable artifact that runs locally against your repo — Principle 1 (real workflows).
-- It carries an explicit `alpha` status and a "what's not yet hardened" section — Principle 2 (explicit status).
+- It carries an explicit `beta` status and a "what's not yet hardened" section — Principle 2 (explicit status).
 - Its pipeline is shaped around threat modeling and exploitability, not pattern-matching — Principle 3 (security as design).
 - Its analyzers are independent packages and its LLM providers are pluggable — Principle 4 (composable).
 - Its `docs/` and analyzer SDK live next to the source — Principle 5.

@@ -159,7 +159,7 @@ The harness compares a review against a fixture (expected findings, chains, tech
 
 ## What version is current?
 
-**v0.4.0** is the current release (beta) — published to PyPI, Homebrew, and GHCR. It extends import-graph taint to **Go and PHP** (four languages total: Python, JS/TS, Go, PHP), sharpens front-end precision (route extraction, auth-middleware awareness, parameterized-SQL), fuses known dependency CVEs into the exploitability score, and adds a **GitHub PR bot + Action**, **`--remediate`** (review-first fixes), and **`--hunt --verify`** (adjudicate each lead against the actual source). The project is in active development. See [GitHub releases](https://github.com/mlaify/AttackMap/releases) and the [CHANGELOG](https://github.com/mlaify/AttackMap/blob/main/CHANGELOG.md).
+**v0.4.10** is the current release (beta) — published to PyPI, Homebrew, and GHCR. The 0.4.x line covers four languages (Python, JS/TS, Go, PHP) with import-graph taint, precise front-end extraction (routes, auth-middleware awareness, parameterized-SQL), dependency-CVE fusion into the exploitability score, a **GitHub PR bot + Action**, **`--remediate`**, and **`--hunt --verify`**. The most recent releases add **finding suppression** (a `.attackmap-suppress.yaml` baseline plus inline `# attackmap:ignore` directives), a **GitHub Actions / CI workflow security scanner**, **taint sanitizer/validator awareness** (chains that pass through an escaper/validator are downgraded, not flagged), and **unauthenticated state-changing route** synthesis. The project is in active development. See [GitHub releases](https://github.com/mlaify/AttackMap/releases) and the [CHANGELOG](https://github.com/mlaify/AttackMap/blob/main/CHANGELOG.md).
 
 ---
 

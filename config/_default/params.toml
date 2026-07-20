@@ -29,7 +29,7 @@ showBuildInfo = false
   [products.attackmap]
     name = "AttackMap"
     tagline = "Local-first defensive security analysis for real codebases."
-    status = "alpha"
+    status = "beta"
     accent = "attackmap"
     url = "/attackmap/"
     repoUrl = "https://github.com/mlaify/attackmap"

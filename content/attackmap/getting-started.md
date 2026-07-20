@@ -242,7 +242,7 @@ inline Code Scanning annotations, and posts a summary comment (`--pr-comment`)
 with the exploitability ranking and the new-vs-resolved diff gate:
 
 ```yaml
-- uses: mlaify/AttackMap@v0.4.0
+- uses: mlaify/AttackMap@v0.4.10
   with:
     path: .
     baseline: reports/attackmap-report.json
