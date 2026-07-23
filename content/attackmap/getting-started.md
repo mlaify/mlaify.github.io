@@ -16,7 +16,7 @@ lead: "Install, run, and read AttackMap's output in under ten minutes."
 - `pip` (or `uv`, `pipx`)
 - A local copy of the repository you want to analyze
 
-AttackMap has no runtime dependencies beyond Python's standard library. The `anthropic` SDK is optional and only needed if you pass `--llm`.
+AttackMap has a small, pure-Python dependency footprint (Typer, Pydantic, networkx, PyYAML) — no native builds or system libraries. The `anthropic` (or `openai`) SDK is optional and only needed for the API backend of `--llm` / `--hunt`; the CLI backends (`claude` / `codex`) need no extra Python packages.
 
 ## Install
 
@@ -232,8 +232,34 @@ attackmap analyze . --remediate
 ```
 
 - `--hunt` → `reports/vulnerability-hypotheses.md`. Honesty guardrails: no CVE assignment, no exploit code, each lead states what to verify.
-- `--hunt --verify` re-reads the cited `file:line` excerpts and appends a verdict to each hypothesis.
+- `--hunt --verify` re-reads the cited `file:line` excerpts and appends a verdict to each hypothesis. Scale the verifier into a jury: `--verify-votes N` (majority of N skeptics), `--hunt-lenses N` (failure-mode-specialist passes), `--hunt-rounds N` (loop-until-dry with a completeness critic), `--hunt-budget T` (token cap).
+- `--triage` → `reports/triage.md` — clusters, dedupes, and ranks the *existing* findings (deterministic fallback when no LLM backend).
 - `--remediate` → `reports/remediation.md`.
+
+### Widen the net: recall mode
+
+`--recall` widens taint discovery (deeper import-hop depth and capability-reach
+enumeration) and marks the extra reach **speculative** — kept out of
+`--fail-on-new-high` and left for the verifier to adjudicate:
+
+```bash
+attackmap analyze . --recall --hunt --verify
+```
+
+## Scanning a fleet (multiple repos)
+
+Pass two or more repositories to analyze a set of services together and surface
+the bugs that live in the **seams** between them — contract links between
+callers and routes, cross-boundary (confused-deputy) flows, trust-assumption
+gaps, and the sibling service that omits a control its peers enforce:
+
+```bash
+attackmap analyze ./service-a ./service-b ./gateway --output reports
+```
+
+Each repo gets its own `reports/<repo>/`; a `reports/fleet-summary.md` (+ `.json`)
+and `reports/fleet-graph.md` index the fleet. Cross-repo findings are speculative
+until verified. Single-repo behavior is unchanged.
 
 ## Running on pull requests
 
@@ -242,7 +268,7 @@ inline Code Scanning annotations, and posts a summary comment (`--pr-comment`)
 with the exploitability ranking and the new-vs-resolved diff gate:
 
 ```yaml
-- uses: mlaify/AttackMap@v0.4.10
+- uses: mlaify/AttackMap@v0.4.25
   with:
     path: .
     baseline: reports/attackmap-report.json

@@ -54,8 +54,8 @@ Flags routes that take a resource id, reach a datastore, and have no ownership c
 Flags weak hashing/ciphers, ECB, static IV/salt, insecure RNG for secrets, and broken TLS verification — plus web-hardening misconfigurations (wildcard CORS with credentials, disabled CSRF, insecure cookies, unsafe-inline CSP, shipped debug mode).
 {{< /feature >}}
 
-{{< feature icon="zoom-exclamation" title="Anomaly / outlier detection" >}}
-Surfaces the odd-one-out among sibling routes — a handler that breaks the auth, validation, or method norm its resource cohort establishes — with confidence scaled by how consistent the cohort is.
+{{< feature icon="zoom-exclamation" title="Anomaly & invariant mining" >}}
+Surfaces the odd-one-out among sibling routes — a handler that breaks the auth, validation, or method norm its resource cohort establishes — plus **signature-free invariant mining**: infer an implicit rule from repeated structure (handlers guard a request before a sink) and flag the site that violates it. Confidence scales with how consistent the cohort is.
 {{< /feature >}}
 
 {{< feature icon="flame" title="Exploitability fusion" >}}
@@ -90,8 +90,16 @@ Beyond findings, AttackMap emits defender-facing runtime signal hints: structure
 `--llm` generates a Claude-powered prose defensive review. Supports API key, OAuth token, and claude CLI backends. Five effort tiers. The LLM sees only your evidence pack, never raw source.
 {{< /feature >}}
 
-{{< feature icon="crosshair" title="Vulnerability-hypothesis hunting" >}}
-`--hunt` has Claude reason over the full evidence pack as a red-team analyst and propose ranked, evidence-cited exploit-chain **hypotheses** — framed as human-verifiable leads, not detections. `--hunt --verify` then adjudicates each lead (CONFIRMED / REFUTED / NEEDS-REVIEW) against the actual cited source. Honesty guardrails: no CVE assignment, no exploit code, and each lead states what to verify.
+{{< feature icon="crosshair" title="Vulnerability-hypothesis hunting + verify jury" >}}
+`--hunt` has an LLM reason over the full evidence pack as a red-team analyst and propose ranked, evidence-cited exploit-chain **hypotheses** — human-verifiable leads, not detections. `--hunt --verify` adjudicates each lead against the cited source, and scales into a jury: `--verify-votes` (N independent skeptics, majority vote), `--hunt-lenses` (failure-mode-specialist generation, deduped), `--hunt-rounds` (loop-until-dry with a completeness critic), `--hunt-budget` (token cap). Honesty guardrails: no CVE assignment, no exploit code, each lead states what to verify.
+{{< /feature >}}
+
+{{< feature icon="arrows-maximize" title="Recall mode (verifier-gated)" >}}
+`--recall` widens taint discovery — deeper import-hop depth and **capability-reach enumeration** (every place data reaches exec/fs/network/deserialize/template/SQL, pattern or not) — then marks the extra reach **speculative**, keeps it out of the `--fail-on-new-high` gate, and leaves it for `--hunt --verify` to adjudicate. Aggressiveness only pays off behind a verifier.
+{{< /feature >}}
+
+{{< feature icon="affiliate" title="Cross-repo / fleet analysis" >}}
+`attackmap analyze repoA repoB …` scans a whole fleet, links one repo's outbound HTTP calls to another's routes into a service graph, and surfaces the bugs that live in the **seams**: cross-boundary (confused-deputy) flows, trust-assumption gaps where neither side enforces authz, and the sibling service that omits a control its peers apply. Each repo also gets its own report; cross-repo findings are speculative until verified.
 {{< /feature >}}
 
 {{< feature icon="wrench" title="Remediation + PR bot" >}}
@@ -160,6 +168,12 @@ attackmap analyze . --cve
 # Enable LLM prose review (uses claude CLI by default)
 attackmap analyze . --llm
 
+# Widen discovery, then adjudicate (verifier-gated recall)
+attackmap analyze . --recall --hunt --verify
+
+# Multi-repo fleet scan — links the seams between services
+attackmap analyze ./service-a ./service-b ./gateway
+
 # PR gating: diff against a prior report, fail on new HIGH findings
 attackmap analyze . --baseline prev/attackmap-report.json --fail-on-new-high
 
@@ -194,15 +208,18 @@ Running `attackmap analyze .` produces a `reports/` directory:
 | `attackmap-exploitability.md` | Markdown | "Most exploitable now" — ranked route→sink scores with factors |
 | `defensive-review-llm.md` | Markdown | LLM-generated prose review (`--llm` only) |
 | `vulnerability-hypotheses.md` | Markdown | LLM exploit-chain hypotheses to confirm, with CONFIRMED/REFUTED verdicts under `--verify` (`--hunt`) |
+| `triage.md` | Markdown | Clustered / deduped / ranked shortlist of existing findings (`--triage`) |
 | `remediation.md` | Markdown | Review-first fix proposals for top findings (`--remediate` only) |
 | `attackmap-pr-comment.md` | Markdown | PR-bot summary comment — new/resolved findings, gate status, top exploitable (`--pr-comment`) |
+| `fleet-summary.md` · `.json` | Markdown · JSON | Multi-repo index: per-repo findings + cross-repo links, cross-boundary flows, trust gaps, anomalies (multi-repo runs) |
+| `fleet-graph.md` | Mermaid | Repo-to-repo service graph from linked calls (multi-repo runs) |
 
 ## What's strong, what's maturing
 
 {{< callout type="note" >}}
-**Strong today:** modular analyzer execution with entry-point discovery (14-plugin ecosystem, published to PyPI/Homebrew/GHCR); framework-aware route extraction (FastAPI/Flask/Express/Spring/axum/chi/gin/echo/Laravel/Symfony); chain-aware threat modeling; asset + control modeling; **multi-language** injection/data-flow detection across Python, JS/TS, Go, and PHP (SSRF, SSTI, NoSQL, deserialization, code/command exec, open redirect), with parameterized-SQL and auth-middleware awareness; novel vuln-class detectors (prototype pollution, mass assignment, JWT, XXE, ReDoS, insecure upload, GraphQL exposure); BOLA/IDOR authorization checks; insecure-crypto and web-hardening detection; anomaly/outlier detection; deterministic exploitability fusion with known-CVE-on-path amplification; `--hunt` LLM hypothesis mode with `--verify` source adjudication; `--remediate` fix proposals; a GitHub Action + PR bot; SBOM + OSV.dev CVE cross-reference; SARIF, Mermaid/Graphviz, and PR-diff output; a live progress bar with ETA; stable machine-readable JSON artifacts; local eval harness. Validated against real-world codebases (Bluesky, Juice Shop, BookStack, PocketBase, Apple oss-distributions).
+**Strong today:** modular analyzer execution with entry-point discovery (14-plugin ecosystem, published to PyPI/Homebrew/GHCR); framework-aware route extraction (FastAPI/Flask/Express/Spring/axum/chi/gin/echo/Laravel/Symfony); chain-aware threat modeling; asset + control modeling; **multi-language** injection/data-flow detection across Python, JS/TS, Go, and PHP (SSRF, SSTI, NoSQL, deserialization, code/command exec, open redirect), with parameterized-SQL, sanitizer, and auth-middleware awareness; novel vuln-class detectors (prototype pollution, mass assignment, JWT, XXE, ReDoS, insecure upload, GraphQL exposure); BOLA/IDOR authorization (path template, query param, RPC method, GraphQL field); insecure-crypto and web-hardening detection; anomaly/outlier plus **signature-free invariant mining**; deterministic exploitability fusion with known-CVE-on-path amplification; a **`--hunt` verify jury** (`--verify-votes`/`--hunt-lenses`/`--hunt-rounds`/`--hunt-budget`) with source adjudication; **`--recall`** verifier-gated aggressive discovery + capability-reach; **`--triage`** clustering/ranking; **cross-repo / fleet analysis** (contract linking, cross-boundary/confused-deputy flows, trust-assumption gaps, cross-repo anomaly); `--remediate` fix proposals; a GitHub Action + PR bot; SBOM + OSV.dev CVE cross-reference (lockfile-resolved when present); finding suppression; SARIF, Mermaid/Graphviz, and PR-diff output; a live progress bar with ETA; stable machine-readable JSON artifacts; local eval harness. Validated against real-world codebases (Bluesky, Juice Shop, BookStack, PocketBase, Apple oss-distributions).
 
-**Still maturing:** taint and BOLA are path-template scoped and cover Python, JS/TS, Go, and PHP (more languages and query-param / RPC-method authorization planned); the import-graph taint walk approximates call-edges with import-edges (precision over recall); CVE lookup resolves a best-effort concrete version, not full lockfile ranges; anomaly and exploitability reasoning is route-cohort and taint-chain scoped. AttackMap is heuristic by design — findings are confidence-tiered evidence, not proof.
+**Still maturing:** the import-graph taint walk approximates call-edges with import-edges — call-graph-aware for Python/JS/TS (edges pruned to used symbols), plain import-graph for Go/PHP (precision over recall, evidence not proof); cross-repo linking today covers HTTP client↔route (richer dimensions — shared schemas, queues, DB tables, token issuer/audience — are planned); all recall and cross-repo findings are **speculative** until the verifier adjudicates them; anomaly and exploitability reasoning is route-cohort and taint-chain scoped. AttackMap is heuristic by design — findings are confidence-tiered evidence, not proof.
 {{< /callout >}}
 
 ## Repositories
