@@ -1,8 +1,0 @@
-{
-"Servers": [
-{
-"Version":"mdm-adde",
-"BaseURL":"https://mlaify.jamfcloud.com.com/servicediscoveryenrollment/v1/deviceenroll"
-}
-]
-}

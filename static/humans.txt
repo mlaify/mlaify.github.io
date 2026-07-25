@@ -1,11 +1,11 @@
 /* TEAM */
 Owner / Author: Matt D.
-Contact: privacy@fhrp.org
+Contact: privacy@matthewd.xyz
 GitHub: https://github.com/mdavistffhrtporg
 Location: United States
 
 /* SITE */
-Domain: fhrp.org
+Domain: matthewd.xyz
 Purpose: Personal website and writing
 Stack: Hugo, Pagefind, InterServer (LiteSpeed), Cloudflare
 Comments: GitHub Discussions (Giscus)
