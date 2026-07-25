@@ -1,14 +1,18 @@
 # Matt D. security contacts and policy
 
 # Our security contact channels
-Contact: mailto:security@matthewd.xyz
+Contact: mailto:security@fhrp.org
 Contact: mailto:security@mlaify.io
 
 # If practical, use PGP encryption
-Encryption: https://raw.githubusercontent.com/mdavistffhrtporg/mdavistffhrtporg.github.io/refs/heads/main/static/matthewdxyz.asc
+Encryption: https://fhrp.org/matthewdxyz.asc
 
 # Link to our vulnerability disclosure policy
-Policy: https://github.com/mdavistffhrtporg/mdavistffhrtporg.github.io/blob/main/SECURITY.md
+Policy: https://fhrp.org/security/
+
+# The canonical location of this file
+Canonical: https://fhrp.org/.well-known/security.txt
+
 # Languages that our team speaks and understands
 Preferred-Languages: en-US
 

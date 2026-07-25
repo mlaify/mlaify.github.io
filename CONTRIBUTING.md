@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for your interest in contributing to `matthewd.xyz`. This site is a personal Hugo-based static site, but improvements, corrections, and suggestions are welcome.
+Thank you for your interest in contributing to `fhrp.org`. This site is a personal Hugo-based static site, but improvements, corrections, and suggestions are welcome.
 
 By participating, you agree to follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 

@@ -47,6 +47,6 @@ You don't have to write code to be useful.
 - **Issues** — open in the relevant repository.
 - **Discussions** — every repo has GitHub Discussions enabled.
 - **Security** — `SECURITY.md` in the relevant repository for disclosure protocol.
-- **Everything else** — reach out to me at [matthewd@matthewd.xyz](mailto:matthewd@matthewd.xyz).
+- **Everything else** — reach out to me at [matthewd@fhrp.org](mailto:matthewd@fhrp.org).
 
 Conversation lives next to the code it's about. I don't run a shared chat, mailing list, or Slack.

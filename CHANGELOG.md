@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- CI now builds on pull requests, not just pushes to `main`. The workflow is split into a `build` job (runs on both, no secrets, no environment) and a `deploy` job (`main` only, gated on `environment: production`). `environment:` cannot be applied conditionally, so a single job would have made pull requests wait on the production approval gate.
+- `deploy` consumes the artifact `build` produced instead of rebuilding, so the bytes that ship are the bytes that passed the checks. `include-hidden-files: true` is required on the upload — it defaults to `false`, which would silently drop `public/.well-known/` and therefore `security.txt`.
+- Build assertions for `public/404.html` and `public/.well-known/security.txt`, plus a post-download check that the artifact round trip preserved them.
+- rsync now excludes `.DS_Store`, which was previously being published.
+- `docs/superpowers/ops/fhrp-org-migration-runbook.md` — cutover runbook for the domain and host move.
+- `docs/superpowers/ops/cloudflare-redirects-matthewd-xyz.csv` — Bulk Redirects list for `matthewd.xyz` → `fhrp.org`. A single catch-all row suffices because the path structure is unchanged.
+- `Canonical` field in `.well-known/security.txt`.
 - New theme foundation: Tailwind CSS 3, Pagefind 1.4 search, JetBrains Mono + Inter fonts.
 - Personal copper accent palette (`#b45309` family) site-wide; Aegis (cyan) and AttackMap (amber) accents preserved for Phase 2.
 - Editorial hero-stack homepage with avatar, tagline, latest-writing list.
@@ -24,6 +31,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `[products]` table in `params.toml` configuring all 5 projects (name, tagline, status, accent, URL, repo URL).
 
 ### Changed
+- **Canonical domain is now `fhrp.org`** (was `matthewd.xyz`). `baseurl`, JSON-LD, `privacy.json`, `humans.txt`, `security.txt`, and all content/email references updated. Bluesky profile URLs were deliberately left on `matthewd.xyz` — that handle is verified by the `_atproto.matthewd.xyz` TXT record and would break if rewritten.
+- **Hosting moved from GitHub Pages to an InterServer VPS (LiteSpeed).** The reason is MIME control: GitHub Pages has no way to override `Content-Type`, and Apple/Jamf DDM requires strict `application/json`. `.github/workflows/hugo.yml` now builds and rsyncs `public/` over SSH with host-key pinning instead of publishing a Pages artifact. MIME types are configured on the host, not in this repo.
+- `cloudflare-redirects-mlaify-io.csv` retargeted from `matthewd.xyz` to `fhrp.org` so `mlaify.io` resolves in one 301 rather than chaining through two.
+- README hosting/theme/analytics facts corrected — it still claimed PaperMod, GitHub Pages, and GA4/Plausible, none of which were current.
+- `privacy-policy.md`, `privacy.json`, `humans.txt`, and the footer no longer state that the site is hosted on GitHub infrastructure; they now name InterServer for hosting and GitHub for source and builds.
 - Replaced PaperMod theme with a port of mlaify's custom Hugo theme.
 - Moved Giscus partial from `layouts/partials/` to `layouts/_partials/`.
 - CI: added Node, `npm ci`, and Pagefind index steps to GitHub Pages workflow.
@@ -40,6 +52,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `mlaify/mlaify.github.io` repo archived as defense-in-depth (origin still serves a "moved" notice if a Cloudflare rule ever misses).
 
 ### Removed
+- `CNAME` and `static/CNAME` — GitHub Pages custom-domain artifacts, meaningless on InterServer. Disable Pages on the repo so it stops serving and releases the `matthewd.xyz` claim.
+- `.nojekyll` and `static/.nojekyll` — GitHub Pages artifacts.
 - PaperMod theme submodule.
 - `hugo.yaml` and `hugo_bak.yaml` (replaced by `config/_default/`).
 - `content/search.md` (PaperMod Fuse-based search page; replaced by Pagefind).

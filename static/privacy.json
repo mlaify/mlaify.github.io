@@ -2,7 +2,7 @@
   "version": "1.0",
   "last_updated": "2025-01-01",
   "operator": "Matt D.",
-  "site": "https://matthewd.xyz",
+  "site": "https://fhrp.org",
   "data_collection": {
     "personal_data_sold": false,
     "advertising_tracking": false,
@@ -22,8 +22,13 @@
     },
     {
       "name": "GitHub",
-      "purpose": "Hosting, comments, discussions, and repository interaction",
+      "purpose": "Source hosting, builds, comments, discussions, and repository interaction",
       "policy": "https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
+    },
+    {
+      "name": "InterServer",
+      "purpose": "Web hosting for this site",
+      "policy": "https://www.interserver.net/privacy.html"
     }
   ],
   "user_rights": [
@@ -32,7 +37,7 @@
     "Texas TDPSA"
   ],
   "contact": {
-    "email": "privacy@matthewd.xyz",
+    "email": "privacy@fhrp.org",
     "github": "https://github.com/mdavistffhrtporg"
   }
 }

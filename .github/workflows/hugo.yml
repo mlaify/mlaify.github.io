@@ -1,19 +1,33 @@
 name: Build and deploy
+
+# Pull requests run `build` only — full Hugo + Pagefind build with output checks,
+# no server access. Pushes to main additionally run `deploy`, which rsyncs the
+# artifact produced by `build` to the InterServer docroot for fhrp.org.
+#
+# The split into two jobs is deliberate: `environment: production` cannot be
+# applied conditionally, so a single job would make pull requests wait on the
+# production approval gate.
+
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
+
 permissions:
   contents: read
-  pages: write
-  id-token: write
+
+# Grouped by ref so pushes to main queue rather than cancel each other, while
+# repeated pushes to a PR supersede their own in-flight runs.
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: fhrp-org-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 defaults:
   run:
     shell: bash
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -40,10 +54,6 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
-
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
 
       - name: Create local bin
         run: mkdir -p "${HOME}/.local"
@@ -85,35 +95,106 @@ jobs:
           key: hugo-${{ github.run_id }}
           restore-keys: hugo-
 
+      # baseURL comes from config/_default/hugo.toml (https://fhrp.org/).
+      # Do not override it here — the old GitHub Pages workflow injected
+      # actions/configure-pages output, which no longer applies.
       - name: Build site
         run: |
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
 
       - name: Build Pagefind index
         run: npx pagefind --site public
 
       - name: Cache save
+        if: github.event_name != 'pull_request'
         uses: actions/cache/save@v4
         with:
           path: ${{ runner.temp }}/hugo_cache
           key: ${{ steps.cache-restore.outputs.cache-primary-key }}
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      # MIME types for the Apple/Jamf DDM payload are configured on the
+      # InterServer host itself, not in this repo. Nothing here asserts them.
+      - name: Sanity-check build output
+        run: |
+          test -f public/index.html || { echo "::error::public/index.html missing"; exit 1; }
+          test -f public/404.html   || { echo "::error::public/404.html missing"; exit 1; }
+          test -d public/pagefind   || { echo "::error::public/pagefind missing"; exit 1; }
+          test -f public/.well-known/security.txt || { echo "::error::security.txt missing"; exit 1; }
+          echo "Build output looks sane ($(find public -type f | wc -l) files)."
+
+      # include-hidden-files is REQUIRED. It defaults to false, which would
+      # silently drop public/.well-known/ — and therefore security.txt — from
+      # the artifact and so from the deploy.
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
         with:
-          path: ./public
+          name: site-public
+          path: public/
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
 
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment: production
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site-public
+          path: public
+
+      - name: Confirm artifact survived the round trip
+        run: |
+          test -f public/index.html || { echo "::error::index.html missing from artifact"; exit 1; }
+          test -f public/.well-known/security.txt || { echo "::error::security.txt missing from artifact — check include-hidden-files"; exit 1; }
+          echo "Artifact intact ($(find public -type f | wc -l) files)."
+
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      # rsync flags: -rlptD is -a minus owner/group, which shared hosting will
+      # not let us set. --delete prunes files removed from the repo;
+      # acme-challenge is excluded so an in-flight cert renewal survives.
+      # .DS_Store is excluded so macOS metadata never reaches the live site.
+      - name: Deploy to InterServer
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+        run: |
+          rsync -rlptDvz --human-readable \
+            --delete \
+            --exclude '.well-known/acme-challenge/' \
+            --exclude '.DS_Store' \
+            -e "ssh -i ~/.ssh/deploy_key -p ${DEPLOY_PORT} -o StrictHostKeyChecking=yes -o UserKnownHostsFile=~/.ssh/known_hosts" \
+            public/ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/"
+
+      - name: Clean up SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
+
+      - name: Verify live site
+        run: |
+          sleep 5
+          echo "— homepage —"
+          curl -sSfI https://fhrp.org/ | head -1
+          echo "— privacy.json content-type —"
+          curl -sSfI https://fhrp.org/privacy.json | grep -i '^content-type'
+          echo "— security.txt —"
+          curl -sSf https://fhrp.org/.well-known/security.txt | head -1
