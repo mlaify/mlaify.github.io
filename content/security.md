@@ -14,15 +14,15 @@ This website welcomes feedback from security researchers and the general public 
 
 Please report security issues via one of the following channels, providing as much detail as possible. The more information you include, the easier it will be for us to triage and address the issue.
 
-- **Email**: [security@matthewd.xyz](mailto:security@matthewd.xyz)
+- **Email**: [security@fhrp.org](mailto:security@fhrp.org)
 - **Email**: [security@mlaify.io](mailto:security@mlaify.io)
-- **PGP key**: [matthewd.xyz/matthewdxyz.asc](https://matthewd.xyz/matthewdxyz.asc)
+- **PGP key**: [fhrp.org/matthewdxyz.asc](https://fhrp.org/matthewdxyz.asc)
 
 ### Systems in Scope
 
-This policy covers any digital assets owned, operated, or maintained by matthewd.xyz, including:
+This policy covers any digital assets owned, operated, or maintained by fhrp.org, including:
 
-- **matthewd.xyz** — this site
+- **fhrp.org** — this site
 - **mlaify.io**
 - **AttackMap** — defensive security analysis engine ([github.com/mlaify](https://github.com/mlaify))
 

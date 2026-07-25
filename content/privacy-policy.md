@@ -28,7 +28,7 @@ cascade:
 
 ## Overview
 
-This website (`matthewd.xyz`) is a personal website operated by Matt D..
+This website (`fhrp.org`) is a personal website operated by Matt D..
 
 The site is designed to be simple, secure, and respectful of visitor privacy. It does not sell personal data, does not run advertising networks, and does not engage in behavioral profiling or targeted advertising.
 
@@ -92,7 +92,7 @@ https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
 
 ### GitHub and Repository Interaction
 
-This website is built, hosted, and maintained using GitHub infrastructure.
+This website's source is maintained on GitHub and built by GitHub Actions. The built site is served from a VPS hosted by InterServer, behind Cloudflare.
 
 If you visit linked repositories, open issues, submit pull requests, or participate in discussions, those interactions are governed by GitHub’s Terms of Service and Privacy Statement.
 
@@ -158,7 +158,7 @@ This website processes only limited technical data necessary for secure operatio
 
 You may contact the site operator regarding privacy-related requests:
 
-- **Email:** privacy@matthewd.xyz  
+- **Email:** privacy@fhrp.org  
 - **GitHub:** By opening an issue in a related GitHub repository
 
 Because this site does not maintain user accounts or personal profiles, the ability to identify or act on specific data may be limited.
@@ -263,7 +263,7 @@ Violations may result in moderation actions, including content removal or partic
 ## Reporting
 
 Concerns may be reported via:
-- **Email:** security@matthewd.xyz  
+- **Email:** security@fhrp.org  
 - **GitHub:** By filing an issue or contacting repository maintainers
 
 All reports will be reviewed and handled with discretion.

@@ -1,8 +1,8 @@
-# matthewd.xyz
+# fhrp.org
 
-Personal website and blog for Matt D., built with Hugo and deployed via GitHub Pages.
+Personal website and blog for Matt D., built with Hugo and deployed to InterServer.
 
-This site contains long-form writing, technical notes, and personal pages, and replaces the previous WordPress site hosted at `matthewd.xyz`.
+This site contains long-form writing, technical notes, and personal pages. It was previously served at `matthewd.xyz`, which now 301-redirects here.
 
 ## License
 
@@ -14,11 +14,12 @@ This site contains long-form writing, technical notes, and personal pages, and r
 ## ✨ Overview
 
 - **Framework:** Hugo (static site generator)
-- **Theme:** PaperMod (customized)
-- **Hosting:** GitHub Pages
+- **Theme:** Custom Tailwind theme (in-repo, no submodule)
+- **Search:** Pagefind
+- **Hosting:** InterServer VPS (LiteSpeed), deployed by rsync from GitHub Actions
 - **DNS / CDN:** Cloudflare
 - **Comments:** Giscus (GitHub Discussions)
-- **Analytics:** Privacy-respecting analytics (e.g. Plausible or GA4)
+- **Analytics:** None
 - **License:** MIT (code), CC BY-NC-SA 4.0 (content)
 
 The site is intentionally static for performance, security, and longevity.
@@ -30,12 +31,11 @@ The site is intentionally static for performance, security, and longevity.
 ```text
 .
 ├── content/            # Blog posts, pages, and written content
-│   ├── posts/
-│   └── pages/
-├── static/             # Images, uploads, favicon, etc.
-├── themes/             # Hugo theme(s)
-├── layouts/            # Custom layout overrides
+│   ├── writing/        # Blog posts
+│   └── ...             # Project and standalone pages
+├── static/             # Images, favicon, humans.txt, etc.
+├── layouts/            # Templates (the theme lives here)
 ├── assets/             # CSS, JS, processed assets
+├── config/_default/    # Site configuration
 ├── .github/            # GitHub Actions, CODEOWNERS
-├── hugo.toml           # Site configuration
 └── README.md

@@ -1,0 +1,4 @@
+source_url,target_url,status,preserve_query_string,subpath_matching,preserve_path_suffix,include_subdomains
+matthewd.xyz/,https://fhrp.org/,301,true,true,true,false
+www.matthewd.xyz/,https://fhrp.org/,301,true,true,true,false
+docs.matthewd.xyz/,https://docs.fhrp.org/,301,true,true,true,false
