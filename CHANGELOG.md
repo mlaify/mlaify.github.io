@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI now builds on pull requests, not just pushes to `main`. The workflow is split into a `build` job (runs on both, no secrets, no environment) and a `deploy` job (`main` only, gated on `environment: production`). `environment:` cannot be applied conditionally, so a single job would have made pull requests wait on the production approval gate.
 - `deploy` consumes the artifact `build` produced instead of rebuilding, so the bytes that ship are the bytes that passed the checks. `include-hidden-files: true` is required on the upload — it defaults to `false`, which would silently drop `public/.well-known/` and therefore `security.txt`.
 - Build assertions for `public/404.html` and `public/.well-known/security.txt`, plus a post-download check that the artifact round trip preserved them.
-- rsync now excludes `.DS_Store`, which was previously being published.
+- rsync excludes `.DS_Store` as a second line of defense, in addition to the tracked copies now being deleted.
 - `docs/superpowers/ops/fhrp-org-migration-runbook.md` — cutover runbook for the domain and host move.
 - `docs/superpowers/ops/cloudflare-redirects-matthewd-xyz.csv` — Bulk Redirects list for `matthewd.xyz` → `fhrp.org`. A single catch-all row suffices because the path structure is unchanged.
 - `Canonical` field in `.well-known/security.txt`.
@@ -52,6 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `mlaify/mlaify.github.io` repo archived as defense-in-depth (origin still serves a "moved" notice if a Cloudflare rule ever misses).
 
 ### Removed
+- `.DS_Store` and `static/.DS_Store`. Both were tracked, so the existing `.DS_Store` entry in `.gitignore` never applied to them — gitignore only affects untracked files. `static/.DS_Store` was copied into `public/` by Hugo and published, leaking directory metadata.
 - `CNAME` and `static/CNAME` — GitHub Pages custom-domain artifacts, meaningless on InterServer. Disable Pages on the repo so it stops serving and releases the `matthewd.xyz` claim.
 - `.nojekyll` and `static/.nojekyll` — GitHub Pages artifacts.
 - PaperMod theme submodule.
