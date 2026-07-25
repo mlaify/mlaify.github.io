@@ -16,8 +16,8 @@ showBuildInfo = false
 [org]
   name = "Matt D."
   legalName = "Matt D."
-  url = "https://fhrp.org/"
-  logo = "https://fhrp.org/apple-touch-icon.png"
+  url = "https://matthewd.xyz/"
+  logo = "https://matthewd.xyz/apple-touch-icon.png"
   sameAs = [
     "https://github.com/mdavistffhrtporg",
     "https://gitlab.com/matthewdxyz",

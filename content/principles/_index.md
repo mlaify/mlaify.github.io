@@ -43,7 +43,7 @@ This costs more design effort upfront. The payoff is avoiding the corner where o
 
 Documentation lives in the repository it documents. Architecture docs, threat models, API references, contributor guides — all alongside the source they describe. When the code changes, the docs change in the same PR.
 
-This site (fhrp.org) is not the canonical home of any project's documentation. It is a getting-started layer that links out to the canonical sources. The canonical home for AttackMap analyzer contracts is the `src/attackmap/sdk/` directory in the AttackMap repo.
+This site (matthewd.xyz) is not the canonical home of any project's documentation. It is a getting-started layer that links out to the canonical sources. The canonical home for AttackMap analyzer contracts is the `src/attackmap/sdk/` directory in the AttackMap repo.
 
 If something on this site disagrees with a project's repo, **the repo is correct**.
 
