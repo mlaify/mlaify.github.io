@@ -11,8 +11,11 @@ name: Build and deploy
 on:
   push:
     branches: [main]
+  # Deliberately unfiltered. A `branches:` filter here matches the PR's BASE
+  # branch, so `[main]` would silently skip CI on any stacked PR (one targeting
+  # a feature branch rather than main) — which is exactly how the actions-bump
+  # PR ended up with no build at all.
   pull_request:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
