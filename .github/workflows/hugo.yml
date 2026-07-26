@@ -158,6 +158,51 @@ jobs:
           test -f public/.well-known/security.txt || { echo "::error::security.txt missing from artifact — check include-hidden-files"; exit 1; }
           echo "Artifact intact ($(find public -type f | wc -l) files)."
 
+      # ---------------------------------------------------------------------
+      # Guard 1: validate DEPLOY_PATH before any network access.
+      #
+      # On 2026-07-26 this secret was empty, so "${DEPLOY_PATH}/" expanded to
+      # "/" and rsync --delete ran against the CageFS account root, removing
+      # 6679 paths including all server-side mail. Nothing in the old workflow
+      # noticed. These checks exist so that failure mode is impossible.
+      # ---------------------------------------------------------------------
+      - name: Validate deploy target
+        env:
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          if [ -z "${DEPLOY_PATH:-}" ]; then
+            echo "::error::DEPLOY_PATH is empty. Refusing to deploy — an empty value expands to / and rsync --delete would target the whole account."
+            exit 1
+          fi
+          case "$DEPLOY_PATH" in
+            /*) ;;
+            *) echo "::error::DEPLOY_PATH must be an absolute path, got '$DEPLOY_PATH'"; exit 1 ;;
+          esac
+          case "$DEPLOY_PATH" in
+            *..*) echo "::error::DEPLOY_PATH must not contain '..'"; exit 1 ;;
+          esac
+
+          CLEAN="$DEPLOY_PATH"
+          while [ "$CLEAN" != "${CLEAN%/}" ]; do CLEAN="${CLEAN%/}"; done
+          if [ -z "$CLEAN" ]; then
+            echo "::error::DEPLOY_PATH resolves to /. Refusing."
+            exit 1
+          fi
+          case "$CLEAN" in
+            /bin|/boot|/dev|/etc|/home|/lib|/opt|/proc|/root|/run|/sbin|/srv|/sys|/tmp|/usr|/var)
+              echo "::error::DEPLOY_PATH '$CLEAN' is a system directory. Refusing."
+              exit 1 ;;
+          esac
+
+          DEPTH=$(printf '%s' "${CLEAN#/}" | awk -F/ '{print NF}')
+          if [ "$DEPTH" -lt 3 ]; then
+            echo "::error::DEPLOY_PATH '$CLEAN' is only $DEPTH level(s) deep. A docroot should be at least 3 (e.g. /home/<user>/public_html). Refusing."
+            exit 1
+          fi
+
+          echo "DEPLOY_PATH_CLEAN=$CLEAN" >> "$GITHUB_ENV"
+          echo "Deploy target validated: $CLEAN (depth $DEPTH)"
+
       - name: Configure SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
@@ -170,23 +215,82 @@ jobs:
           printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
+      # ---------------------------------------------------------------------
+      # Guard 2: the target must be a directory explicitly marked as a deploy
+      # destination. Create it once per docroot:
+      #     touch <docroot>/.deploy-ok
+      # Server-side only, and excluded from --delete below, so it is never
+      # shipped or removed. A wrong-but-plausible path fails here.
+      # ---------------------------------------------------------------------
+      - name: Confirm target is a marked docroot
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+        run: |
+          SSH="ssh -i ~/.ssh/deploy_key -p ${DEPLOY_PORT} -o StrictHostKeyChecking=yes -o UserKnownHostsFile=~/.ssh/known_hosts"
+          if ! $SSH "${DEPLOY_USER}@${DEPLOY_HOST}" "test -f '${DEPLOY_PATH_CLEAN}/.deploy-ok'"; then
+            echo "::error::No .deploy-ok sentinel in ${DEPLOY_PATH_CLEAN} on ${DEPLOY_HOST}. Refusing to deploy. If this path is correct, run: touch ${DEPLOY_PATH_CLEAN}/.deploy-ok"
+            exit 1
+          fi
+          echo "Sentinel found in ${DEPLOY_PATH_CLEAN}."
+
+      # ---------------------------------------------------------------------
+      # Guard 3: dry-run first and refuse if the deletion count is implausible.
+      # This is what makes a runaway delete impossible rather than merely
+      # bounded: --max-delete alone still deletes up to its cap before
+      # aborting, so the count must be checked BEFORE any real run.
+      # ---------------------------------------------------------------------
+      - name: Dry-run and gate on deletion count
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+          MAX_DELETIONS: ${{ vars.MAX_DELETIONS || '100' }}
+        run: |
+          SSH="ssh -i ~/.ssh/deploy_key -p ${DEPLOY_PORT} -o StrictHostKeyChecking=yes -o UserKnownHostsFile=~/.ssh/known_hosts"
+          rsync -rlptDv --dry-run --delete \
+            --exclude '.well-known/acme-challenge/' \
+            --exclude '.DS_Store' \
+            --exclude '.deploy-ok' \
+            -e "$SSH" \
+            public/ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH_CLEAN}/" > /tmp/dryrun.log
+
+          DEL=$(grep -c '^deleting ' /tmp/dryrun.log || true)
+          echo "Dry run: would delete ${DEL} path(s); limit is ${MAX_DELETIONS}."
+          if [ "$DEL" -gt 0 ]; then
+            echo "--- deletions ---"
+            grep '^deleting ' /tmp/dryrun.log | head -50
+            [ "$DEL" -gt 50 ] && echo "... and $((DEL - 50)) more"
+          fi
+
+          if [ "$DEL" -gt "$MAX_DELETIONS" ]; then
+            echo "::error::Dry run would delete ${DEL} paths, over the ${MAX_DELETIONS} limit. Refusing — nothing has been deleted. Check DEPLOY_PATH, or raise the MAX_DELETIONS repository variable if this is intentional."
+            exit 1
+          fi
+
       # rsync flags: -rlptD is -a minus owner/group, which shared hosting will
-      # not let us set. --delete prunes files removed from the repo;
-      # acme-challenge is excluded so an in-flight cert renewal survives.
-      # .DS_Store is excluded so macOS metadata never reaches the live site.
+      # not let us set. --max-delete is a backstop in case the tree changed
+      # between the dry run and now. acme-challenge is excluded so an in-flight
+      # cert renewal survives; .DS_Store so macOS metadata is never published;
+      # .deploy-ok so the sentinel is preserved.
       - name: Deploy to InterServer
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+          MAX_DELETIONS: ${{ vars.MAX_DELETIONS || '100' }}
         run: |
+          SSH="ssh -i ~/.ssh/deploy_key -p ${DEPLOY_PORT} -o StrictHostKeyChecking=yes -o UserKnownHostsFile=~/.ssh/known_hosts"
           rsync -rlptDvz --human-readable \
             --delete \
+            --max-delete="${MAX_DELETIONS}" \
             --exclude '.well-known/acme-challenge/' \
             --exclude '.DS_Store' \
-            -e "ssh -i ~/.ssh/deploy_key -p ${DEPLOY_PORT} -o StrictHostKeyChecking=yes -o UserKnownHostsFile=~/.ssh/known_hosts" \
-            public/ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/"
+            --exclude '.deploy-ok' \
+            -e "$SSH" \
+            public/ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH_CLEAN}/"
 
       - name: Clean up SSH key
         if: always()

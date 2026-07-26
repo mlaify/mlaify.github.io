@@ -50,8 +50,40 @@ Settings → Secrets and variables → Actions:
 A `production` environment must exist, or remove `environment: production` from
 the deploy job.
 
-> The deploy uses `rsync --delete`, so a wrong `DEPLOY_PATH` deletes whatever
-> lives there. Dry-run first: `rsync -rlptDvzn --delete public/ <user>@<host>:<docroot>/`
+### Required: mark the docroot
+
+The deploy refuses to run unless the destination contains a sentinel file. Run
+once, on the server:
+
+```bash
+touch <docroot>/.deploy-ok
+```
+
+Server-side only — never committed, never shipped, and excluded from `--delete`
+so it survives deploys.
+
+### Deletion limit
+
+`rsync --delete` is capped. If a deploy would delete more than 100 paths it
+aborts **before deleting anything** and prints the list. For a legitimate large
+restructure, raise the `MAX_DELETIONS` repository variable (Settings → Secrets
+and variables → Actions → Variables).
+
+### Why these guards exist
+
+On 2026-07-26 `DEPLOY_PATH` was empty. `"${DEPLOY_PATH}/"` expanded to `/`, and
+`rsync --delete` ran against the account root, deleting 6679 paths including all
+server-side mail. The deploy job now has four independent layers:
+
+1. `DEPLOY_PATH` must be non-empty, absolute, free of `..`, not a system
+   directory, and at least three levels deep.
+2. The destination must contain `.deploy-ok`.
+3. A dry run must report no more than `MAX_DELETIONS` deletions — checked before
+   any real transfer, so an over-limit run deletes nothing.
+4. The real `rsync` carries `--max-delete` as a backstop.
+
+Layer 3 is the one that matters most: `--max-delete` alone still deletes up to
+its cap before aborting.
 
 Cutover steps, including the DNS change and the behaviours GitHub Pages used to
 provide implicitly, are in

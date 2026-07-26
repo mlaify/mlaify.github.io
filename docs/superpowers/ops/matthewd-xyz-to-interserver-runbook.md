@@ -96,13 +96,41 @@ docroots.
 `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS`, `DEPLOY_HOST`, `DEPLOY_USER`, and
 `DEPLOY_PORT` carry over unchanged.
 
-> **`--delete` is live.** A stale `DEPLOY_PATH` pointing at the fhrp.org docroot
-> would overwrite it and delete the Apple enrollment file and redirect config.
-> Dry-run each repo before the first real deploy:
->
-> ```bash
-> rsync -rlptDvzn --delete public/ <user>@<host>:<docroot>/
-> ```
+### Mark each docroot — required, or the deploy refuses to run
+
+```bash
+touch /path/to/matthewd.xyz-docroot/.deploy-ok
+touch /path/to/docs.matthewd.xyz-docroot/.deploy-ok
+```
+
+Do **not** put `.deploy-ok` in the fhrp.org docroot. Its absence there is what
+stops a stale `DEPLOY_PATH` from overwriting the Apple enrollment file and
+redirect config.
+
+### What went wrong on 2026-07-26, and what now prevents it
+
+`DEPLOY_PATH` was empty when #17 merged. `"${DEPLOY_PATH}/"` expanded to `/`, so
+`rsync --delete` targeted the CageFS account root and deleted **6679 paths** —
+all server-side mail for 16 domains, `~/sieve/`, `~/.ssh/authorized_keys`,
+`~/.ssl_keys/`, 18 docroots, and the local Softaculous backups. The write phase
+then failed with EACCES on `/`, which is why the run showed as failed; rsync
+deletes before it writes, so the damage was already done. Recovered from
+InterServer's backups.
+
+The deploy job now has four independent layers:
+
+| Layer | Blocks |
+|---|---|
+| 1. Path validation | Empty, relative, `..`, system directories, anything shallower than 3 levels |
+| 2. `.deploy-ok` sentinel | Any path not explicitly marked as a deploy destination |
+| 3. Dry-run deletion gate | Over-limit runs, **before anything is deleted** |
+| 4. `--max-delete` | Residual runaway if the tree changes mid-run |
+
+Layer 3 does the real work. `--max-delete` alone still deletes up to its cap
+before aborting, so the count has to be checked before any real transfer.
+
+The default limit is 100 deletions; raise the `MAX_DELETIONS` repository
+variable for a legitimate large restructure.
 
 ---
 
