@@ -7,12 +7,16 @@
 
 Apple requires `/.well-known/com.apple.remotemanagement` to be served as
 `application/json`. The file is **extensionless**, and GitHub Pages has no MIME
-mapping for it, so Pages serves it as `application/octet-stream` and Apple
-rejects it. Pages offers no way to override `Content-Type`.
+mapping for it, so Pages served it as `application/octet-stream` and Apple
+rejected it. Pages offers no way to override `Content-Type`.
 
-This site is served by GitHub Pages, so shipping the file from `static/` would
-only publish a copy with the wrong `Content-Type`. It lives on the InterServer
-host instead.
+> **This constraint no longer applies to matthewd.xyz.** As of 2026-07-26 this
+> site is served from the InterServer VPS, which has full MIME control — see
+> `matthewd-xyz-to-interserver-runbook.md`. The file can be committed to
+> `static/.well-known/` and shipped by the deploy **if** the Managed Apple IDs
+> are `@matthewd.xyz`. It is still kept out of the repo because the setup below
+> targets `fhrp.org`. See "Which domain" next — that question has not been
+> answered yet.
 
 ## Why it cannot move to a subdomain
 
@@ -27,10 +31,17 @@ So the file must sit at the apex of whichever domain the Managed Apple IDs use.
 It cannot be relocated to `mdm.example.com`, and a 301 from the apex is not a
 safe assumption — serve it directly at the well-known path.
 
-**Confirm which domain your Managed Apple IDs use.** The file is currently set
-up for `fhrp.org`. If the Managed Apple IDs are `@matthewd.xyz` instead, the
-file has to be served from `matthewd.xyz` — which means Pages cannot host it,
-and the Cloudflare Snippet approach below becomes necessary.
+### Which domain
+
+**Unanswered, and it decides where this file lives.** The setup below targets
+`fhrp.org`.
+
+| Managed Apple IDs | Where the file goes |
+|---|---|
+| `@fhrp.org` | `https://fhrp.org/.well-known/com.apple.remotemanagement` — the fhrp.org docroot, as configured below. Nothing changes. |
+| `@matthewd.xyz` | `https://matthewd.xyz/.well-known/com.apple.remotemanagement` — commit it to `static/.well-known/` and let the deploy ship it. Now possible because matthewd.xyz moved to InterServer. |
+
+Either way, the Cloudflare WAF Skip rule is required — see below.
 
 ## File contents
 
