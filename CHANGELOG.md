@@ -28,25 +28,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `[products]` table in `params.toml` configuring all 5 projects (name, tagline, status, accent, URL, repo URL).
 
 ### Changed
+- **Hosting moved from GitHub Pages to the InterServer VPS (LiteSpeed). The domain is unchanged — `matthewd.xyz`.** `.github/workflows/hugo.yml` builds and rsyncs `public/` over SSH with host-key pinning instead of publishing a Pages artifact. Nothing in `content/` or `config/` changes: `baseurl`, canonical URLs, JSON-LD, `security.txt`, and `privacy.json` were already correct. MIME types and error/index behaviour are configured on the host, not here.
+- Removed `CNAME`, `static/CNAME`, `.nojekyll`, `static/.nojekyll` — GitHub Pages artifacts. Set Pages to None on the repo so it stops serving and releases the custom-domain claim.
+- The deploy no longer curls the live site after rsyncing. matthewd.xyz sits behind Cloudflare, which issues a JS challenge to non-browser clients and returns 403 to Actions runners (`cf-mitigated: challenge`) — that put a red X on an earlier InterServer deploy that had actually succeeded. rsync's exit status is the real signal.
 - README theme/analytics facts corrected — it claimed PaperMod and GA4/Plausible, neither of which was current.
-- Canonical domain and hosting are unchanged: `matthewd.xyz` on GitHub Pages. A migration to `fhrp.org` on an InterServer VPS was merged and then reverted; see the note below.
 
-#### Reverted: the fhrp.org / InterServer migration
+#### History: the fhrp.org detour
 
-The site briefly moved to `fhrp.org` served from an InterServer VPS, to gain
-`Content-Type` control for an Apple account-driven-enrollment file that GitHub
-Pages serves as `application/octet-stream`. That migration was reverted by
-choice — the site is back on `matthewd.xyz` / GitHub Pages.
+The site briefly moved to `fhrp.org` on InterServer, to gain `Content-Type`
+control for an Apple account-driven-enrollment file that GitHub Pages serves as
+`application/octet-stream`. That was reverted to `matthewd.xyz` / GitHub Pages,
+and then the hosting move was redone on `matthewd.xyz` itself — the current
+state. The deploy machinery is the same one that fhrp.org proved works.
 
-The enrollment file's requirement is real and is handled separately: it must be
-served from the apex of the domain matching the Managed Apple IDs, as
-`application/json`, so it lives on the InterServer host rather than in this
-repo. Apple derives the discovery URL from the Managed Apple ID's email domain,
-so it cannot simply be moved to a subdomain of this site.
+Note: the revert restored the domain but missed the hosting *statements* in
+`README.md`, `humans.txt`, `privacy.json`, `content/privacy-policy.md`, and the
+footer, which continued to name InterServer while the site was on Pages. They
+are accurate again now.
 
-Kept from that work because it was unrelated to hosting: the `security.txt` URL
-fix, the README corrections, the `.DS_Store` removal, PR builds, and the CI
-output assertions.
+The enrollment file is still hosted outside this repo. It must be served from
+the apex of the domain matching the Managed Apple IDs — Apple derives the
+discovery URL from the Managed Apple ID's email domain — so it cannot move to a
+subdomain. Now that matthewd.xyz has MIME control, it could be committed here
+**if** the Managed Apple IDs are `@matthewd.xyz`; that is still unconfirmed. See
+`docs/superpowers/ops/apple-enrollment-file.md`.
 - Replaced PaperMod theme with a port of mlaify's custom Hugo theme.
 - Moved Giscus partial from `layouts/partials/` to `layouts/_partials/`.
 - CI: added Node, `npm ci`, and Pagefind index steps to GitHub Pages workflow.

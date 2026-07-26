@@ -26,6 +26,39 @@ The site is intentionally static for performance, security, and longevity.
 
 ---
 
+## 🚀 Deploy
+
+Pushing to `main` runs [`.github/workflows/hugo.yml`](.github/workflows/hugo.yml),
+which builds with Hugo + Pagefind and rsyncs `public/` to the InterServer docroot
+for `matthewd.xyz` over SSH.
+
+Pull requests run the build only — no secrets, no server access.
+
+### Required secrets
+
+Settings → Secrets and variables → Actions:
+
+| Secret | Value |
+|---|---|
+| `DEPLOY_SSH_KEY` | Private half of an SSH keypair authorized on the InterServer account |
+| `DEPLOY_KNOWN_HOSTS` | Output of `ssh-keyscan -H <host>` — pins the host key |
+| `DEPLOY_HOST` | InterServer hostname or IP |
+| `DEPLOY_USER` | SSH user |
+| `DEPLOY_PATH` | Absolute docroot path for `matthewd.xyz` |
+| `DEPLOY_PORT` | SSH port (optional, defaults to `22`) |
+
+A `production` environment must exist, or remove `environment: production` from
+the deploy job.
+
+> The deploy uses `rsync --delete`, so a wrong `DEPLOY_PATH` deletes whatever
+> lives there. Dry-run first: `rsync -rlptDvzn --delete public/ <user>@<host>:<docroot>/`
+
+Cutover steps, including the DNS change and the behaviours GitHub Pages used to
+provide implicitly, are in
+[`docs/superpowers/ops/matthewd-xyz-to-interserver-runbook.md`](docs/superpowers/ops/matthewd-xyz-to-interserver-runbook.md).
+
+---
+
 ## 📁 Repository Structure
 
 ```text
