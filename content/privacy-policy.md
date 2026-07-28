@@ -10,7 +10,7 @@ cascade:
 
 # Privacy Policy, Terms of Use, and Code of Conduct
 
-**Last updated:** 2025-12-27
+**Last updated:** 2026-07-28
 
 ---
 
@@ -92,7 +92,7 @@ https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
 
 ### GitHub and Repository Interaction
 
-This website's source is maintained on GitHub and built by GitHub Actions. The built site is served from a VPS hosted by InterServer, behind Cloudflare.
+This website's source is maintained on GitHub. Cloudflare builds it from that source and serves it as a static site on Cloudflare Workers.
 
 If you visit linked repositories, open issues, submit pull requests, or participate in discussions, those interactions are governed by GitHub’s Terms of Service and Privacy Statement.
 

@@ -12,8 +12,11 @@
     "create": "hugo new",
     "dev": "hugo server --disableFastRender --noHTTPCache",
     "build": "hugo --minify --gc && pagefind --site public",
+    "build:cf": "npm ci && hugo --gc --minify && npx pagefind --site public && bash scripts/check-build.sh",
     "build:hugo": "hugo --minify --gc",
     "build:search": "pagefind --site public",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev",
     "format": "prettier **/** -w -c"
   },
   "dependencies": {
@@ -26,7 +29,8 @@
     "tailwindcss": "^3.4.18"
   },
   "devDependencies": {
-    "prettier": "^3.8.1"
+    "prettier": "^3.8.1",
+    "wrangler": "4.114.0"
   },
   "engines": {
     "node": ">=20.0.0"

@@ -1,6 +1,6 @@
 # matthewd.xyz
 
-Personal website and blog for Matt D., built with Hugo and deployed to InterServer.
+Personal website and blog for Matt D., built with Hugo and served on Cloudflare Workers.
 
 This site contains long-form writing, technical notes, and personal pages. It was previously served at `matthewd.xyz`, which now 301-redirects here.
 
@@ -16,7 +16,7 @@ This site contains long-form writing, technical notes, and personal pages. It wa
 - **Framework:** Hugo (static site generator)
 - **Theme:** Custom Tailwind theme (in-repo, no submodule)
 - **Search:** Pagefind
-- **Hosting:** InterServer VPS (LiteSpeed), deployed by rsync from GitHub Actions
+- **Hosting:** Cloudflare Workers static assets, built and deployed by Workers Builds
 - **DNS / CDN:** Cloudflare
 - **Comments:** Giscus (GitHub Discussions)
 - **Analytics:** None
@@ -28,66 +28,75 @@ The site is intentionally static for performance, security, and longevity.
 
 ## 🚀 Deploy
 
-Pushing to `main` runs [`.github/workflows/hugo.yml`](.github/workflows/hugo.yml),
-which builds with Hugo + Pagefind and rsyncs `public/` to the InterServer docroot
-for `matthewd.xyz` over SSH.
+Cloudflare **Workers Builds** clones this repo on push, runs the build itself,
+and deploys the result as Workers static assets. There is no GitHub Actions
+workflow, no SSH key, no rsync, and no origin server.
 
-Pull requests run the build only — no secrets, no server access.
-
-### Required secrets
-
-Settings → Secrets and variables → Actions:
-
-| Secret | Value |
+| | |
 |---|---|
-| `DEPLOY_SSH_KEY` | Private half of an SSH keypair authorized on the InterServer account |
-| `DEPLOY_KNOWN_HOSTS` | Output of `ssh-keyscan -H <host>` — pins the host key |
-| `DEPLOY_HOST` | InterServer hostname or IP |
-| `DEPLOY_USER` | SSH user |
-| `DEPLOY_PATH` | Absolute docroot path for `matthewd.xyz` |
-| `DEPLOY_PORT` | SSH port (optional, defaults to `22`) |
+| Worker | `matthewd-xyz` |
+| Config | [`wrangler.jsonc`](wrangler.jsonc) |
+| Production branch | `main` → `https://matthewd.xyz` |
+| Any other branch | preview URL, not promoted to production |
 
-A `production` environment must exist, or remove `environment: production` from
-the deploy job.
+### Build settings (Cloudflare dashboard)
 
-### Required: mark the docroot
+Workers & Pages → `matthewd-xyz` → Settings → Build:
 
-The deploy refuses to run unless the destination contains a sentinel file. Run
-once, on the server:
+| Setting | Value |
+|---|---|
+| Build command | `npm run build:cf` |
+| Deploy command | `npx wrangler deploy` |
+| Non-production deploy command | `npx wrangler versions upload` |
+| Root directory | *(blank)* |
+
+`build:cf` lives in [`package.json`](package.json) so the actual steps stay in
+version control and the dashboard holds only the entry point. It runs `npm ci`,
+Hugo, Pagefind, then [`scripts/check-build.sh`](scripts/check-build.sh), which
+fails the build if `index.html`, `404.html`, `pagefind/`, `security.txt`, or
+`_headers` are missing. A build that fails never becomes a deployment.
+
+### Toolchain pinning
+
+The build image's defaults are not the versions this site is built with, so both
+are pinned:
+
+| Tool | Pinned to | Where |
+|---|---|---|
+| Node.js | 24.12.0 | [`.nvmrc`](.nvmrc) |
+| Hugo | 0.162.1 | `HUGO_VERSION` build variable |
+| wrangler | 4.114.0 | `devDependencies` in `package.json` |
+
+`HUGO_VERSION` is the one that cannot live in the repo — set it under Settings →
+Build → **Variables and Secrets**. Without it the build silently uses the image
+default (extended 0.147.7).
+
+Go and Dart Sass are **not** needed. The old Actions workflow installed both;
+nothing in this repo uses Sass (the CSS pipeline is Tailwind via PostCSS) and
+there are no Hugo module imports, only local mounts.
+
+### Headers
+
+[`static/_headers`](static/_headers) is the single source of truth for security
+and cache headers. Hugo copies it to `public/_headers`, Cloudflare consumes it at
+deploy time, and it is not itself served.
+
+This used to come from the origin (LiteSpeed/cPanel). There is no origin now, so
+if a Cloudflare Transform Rule also sets these headers, remove one side —
+duplicated security headers are worse than none.
+
+### Local
 
 ```bash
-touch <docroot>/.deploy-ok
+npm run build:cf && npm run preview
 ```
 
-Server-side only — never committed, never shipped, and excluded from `--delete`
-so it survives deploys.
+`preview` runs `wrangler dev`, which serves `public/` through the same asset
+router as production — trailing-slash behaviour, the 404 page, and `_headers`
+all apply, which `hugo server` does not reproduce.
 
-### Deletion limit
-
-`rsync --delete` is capped. If a deploy would delete more than 100 paths it
-aborts **before deleting anything** and prints the list. For a legitimate large
-restructure, raise the `MAX_DELETIONS` repository variable (Settings → Secrets
-and variables → Actions → Variables).
-
-### Why these guards exist
-
-On 2026-07-26 `DEPLOY_PATH` was empty. `"${DEPLOY_PATH}/"` expanded to `/`, and
-`rsync --delete` ran against the account root, deleting 6679 paths including all
-server-side mail. The deploy job now has four independent layers:
-
-1. `DEPLOY_PATH` must be non-empty, absolute, free of `..`, not a system
-   directory, and at least three levels deep.
-2. The destination must contain `.deploy-ok`.
-3. A dry run must report no more than `MAX_DELETIONS` deletions — checked before
-   any real transfer, so an over-limit run deletes nothing.
-4. The real `rsync` carries `--max-delete` as a backstop.
-
-Layer 3 is the one that matters most: `--max-delete` alone still deletes up to
-its cap before aborting.
-
-Cutover steps, including the DNS change and the behaviours GitHub Pages used to
-provide implicitly, are in
-[`docs/superpowers/ops/matthewd-xyz-to-interserver-runbook.md`](docs/superpowers/ops/matthewd-xyz-to-interserver-runbook.md).
+Cutover steps and the Cloudflare-side configuration are in
+[`docs/superpowers/ops/cloudflare-workers-runbook.md`](docs/superpowers/ops/cloudflare-workers-runbook.md).
 
 ---
 
@@ -98,9 +107,11 @@ provide implicitly, are in
 ├── content/            # Blog posts, pages, and written content
 │   ├── writing/        # Blog posts
 │   └── ...             # Project and standalone pages
-├── static/             # Images, favicon, humans.txt, etc.
+├── static/             # Images, favicon, humans.txt, _headers, etc.
 ├── layouts/            # Templates (the theme lives here)
 ├── assets/             # CSS, JS, processed assets
 ├── config/_default/    # Site configuration
-├── .github/            # GitHub Actions, CODEOWNERS
+├── scripts/            # check-build.sh — build output assertions
+├── wrangler.jsonc      # Cloudflare Workers config (assets, routes)
+├── .github/            # Issue/PR templates, CODEOWNERS
 └── README.md

@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `wrangler.jsonc`, `static/_headers`, `.nvmrc`, and `scripts/check-build.sh` — the Cloudflare Workers deployment. See "Hosting moved to Cloudflare Workers" below.
+- `docs/superpowers/ops/cloudflare-workers-runbook.md` — cutover steps, the DNS swap ordering constraint, and rollback.
 - CI now builds on pull requests, not just pushes to `main`. The workflow is split into a `build` job (runs on both, no secrets, no environment) and a `deploy` job (`main` only, gated on `environment: production`). `environment:` cannot be applied conditionally, so a single job would have made pull requests wait on the production approval gate.
 - `deploy` consumes the artifact `build` produced instead of rebuilding, so the bytes that ship are the bytes that passed the checks. `include-hidden-files: true` is required on the upload — it defaults to `false`, which would silently drop `public/.well-known/` and therefore `security.txt`.
 - Build assertions for `public/404.html` and `public/.well-known/security.txt`, plus a post-download check that the artifact round trip preserved them.
@@ -28,6 +30,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `[products]` table in `params.toml` configuring all 5 projects (name, tagline, status, accent, URL, repo URL).
 
 ### Changed
+- **Hosting moved from the InterServer VPS to Cloudflare Workers static assets. The domain is unchanged — `matthewd.xyz`.** Cloudflare Workers Builds clones the repo, runs `npm run build:cf`, and deploys with `wrangler deploy`. `.github/workflows/hugo.yml` is deleted: no GitHub Actions, no SSH key, no `rsync`, no origin server. Nothing in `content/` or `config/` changes.
+  - The `rsync --delete` guards — path validation, the `.deploy-ok` sentinel, the dry-run deletion gate, `--max-delete` — are deleted with the transport they constrained. A deployment is now an immutable upload of a file set; there is no docroot path to get wrong and no shell on a shared account.
+  - Response headers moved from the origin (LiteSpeed/cPanel) into `static/_headers`, which is now the only place they are set. `check-build.sh` fails the build if it is missing, because Cloudflare consumes the file at deploy time and its absence would silently drop every header. `Expect-CT` and `X-XSS-Protection` were not carried over — the first is ignored by browsers, the second is deprecated.
+  - Fingerprinted assets (`/css/*`, `/js/*`) are now `immutable`; Pagefind output is explicitly held at `must-revalidate` because its filenames are stable while its contents are not.
+  - Go and Dart Sass are no longer installed. Nothing here uses Sass — the CSS pipeline is Tailwind via PostCSS — and there are no Hugo module imports, only local mounts. The old workflow installed both.
+  - `/mothers_day_2026.html` now 307-redirects to `/mothers_day_2026` rather than serving directly. This is inherent to the trailing-slash handling that makes `/writing` → `/writing/` work for every other page; the old URL still resolves.
+  - Hosting statements in `README.md`, `static/humans.txt`, `static/privacy.json`, `content/privacy-policy.md`, and the footer updated. `privacy.json` now names Cloudflare as the host rather than InterServer.
 - **Hosting moved from GitHub Pages to the InterServer VPS (LiteSpeed). The domain is unchanged — `matthewd.xyz`.** `.github/workflows/hugo.yml` builds and rsyncs `public/` over SSH with host-key pinning instead of publishing a Pages artifact. Nothing in `content/` or `config/` changes: `baseurl`, canonical URLs, JSON-LD, `security.txt`, and `privacy.json` were already correct. MIME types and error/index behaviour are configured on the host, not here.
 - Removed `CNAME`, `static/CNAME`, `.nojekyll`, `static/.nojekyll` — GitHub Pages artifacts. Set Pages to None on the repo so it stops serving and releases the custom-domain claim.
 - The deploy no longer curls the live site after rsyncing. matthewd.xyz sits behind Cloudflare, which issues a JS challenge to non-browser clients and returns 403 to Actions runners (`cf-mitigated: challenge`) — that put a red X on an earlier InterServer deploy that had actually succeeded. rsync's exit status is the real signal.
