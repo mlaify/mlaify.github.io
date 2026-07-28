@@ -1,0 +1,50 @@
+{
+    // matthewd.xyz — Hugo + Pagefind, served as Workers static assets.
+    //
+    // There is deliberately no `main` and no Worker script. With `assets` and no
+    // `main`, requests are served entirely by Cloudflare's asset worker: no
+    // Worker invocation, no per-request cost, nothing to keep warm. Add `main`
+    // only if this site ever needs server-side logic.
+    //
+    // Build and deploy are driven by Workers Builds (Cloudflare clones the repo
+    // and runs the build itself) — see README.md. There is no GitHub Actions
+    // deploy any more, and no rsync.
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "matthewd-xyz",
+    "compatibility_date": "2026-07-28",
+
+    "assets": {
+        "directory": "./public",
+
+        // Hugo emits public/<path>/index.html, so /writing must redirect to
+        // /writing/. This reproduces what GitHub Pages did implicitly and what
+        // LiteSpeed's DirectorySlash did on InterServer. Verified: /sub returns
+        // 307 -> /sub/.
+        "html_handling": "auto-trailing-slash",
+
+        // Hugo builds public/404.html. This serves it with a real 404 status.
+        // Must NOT be "single-page-application" — that would return 200 for
+        // every missing path and let soft-404s into the index.
+        "not_found_handling": "404-page"
+    },
+
+    // The apex only. `www` is intentionally absent: it must keep 301-ing to the
+    // apex, which is a Cloudflare Redirect Rule, not a second custom domain.
+    // Adding www here would serve duplicate content at both hostnames.
+    "routes": [
+        {
+            "pattern": "matthewd.xyz",
+            "custom_domain": true
+        }
+    ],
+
+    // No <name>.workers.dev hostname for production — the site is only reachable
+    // at its custom domain, so there is no unbranded duplicate for crawlers to
+    // find. Preview URLs stay on so branch builds are reviewable.
+    "workers_dev": false,
+    "preview_urls": true,
+
+    "observability": {
+        "enabled": true
+    }
+}

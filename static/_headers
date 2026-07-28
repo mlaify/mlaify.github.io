@@ -1,0 +1,33 @@
+# Response headers for Workers static assets.
+#
+# Hugo copies static/ verbatim into public/, so this lands at public/_headers,
+# which is where Cloudflare looks for it. The file is consumed at deploy time
+# and is NOT itself served — /_headers returns 404. Verified locally.
+#
+# This is now the ONLY place these headers are set. On InterServer they came
+# from the origin (LiteSpeed/cPanel), and moving to Workers drops that origin
+# entirely. If a Cloudflare Transform Rule also sets any of them, remove one
+# side — duplicated security headers are worse than none.
+#
+# Limits: 100 rules, 2,000 characters per line.
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: same-origin
+
+# Hugo fingerprints these (app.min.<sha256>.css, <name>.<sha256>.js), so the
+# filename changes whenever the content does and they can be cached forever.
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Pagefind output is NOT fingerprinted — pagefind.js and the index fragments
+# keep the same names as content changes. Long-caching these would serve a
+# stale search index. Cloudflare's default for assets is
+# `public, max-age=0, must-revalidate`, which is what we want; this rule is
+# explicit so a future blanket cache rule does not silently capture them.
+/pagefind/*
+  Cache-Control: public, max-age=0, must-revalidate
