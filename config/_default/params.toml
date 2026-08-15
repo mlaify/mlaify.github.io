@@ -1,12 +1,12 @@
-description = "Matt D. — open source contributor and writer."
-tagline = "Open source contributor and writer."
+description = "Grayson Fire — privacy advocate and software developer."
+tagline = "Privacy advocate and software developer."
 
 # Default OG / Twitter image
-ogImage = "images/pic-mdavis-home.svg"
+ogImage = "images/avatar.png"
 twitterHandle = ""
 
 # Repo / org links
-githubOrg = "https://github.com/mdavistffhrtporg"
+githubOrg = "https://github.com/mlaify"
 siteRepo = "https://github.com/mlaify/mlaify.github.io"
 
 # Footer toggles
@@ -14,14 +14,14 @@ showBuildInfo = false
 
 # JSON-LD organization schema
 [org]
-  name = "Matt D."
-  legalName = "Matt D."
-  url = "https://matthewd.xyz/"
-  logo = "https://matthewd.xyz/apple-touch-icon.png"
+  name = "Grayson Fire"
+  legalName = "Grayson Fire"
+  url = "https://mlaify.io/"
+  logo = "https://mlaify.io/apple-touch-icon.png"
   sameAs = [
-    "https://github.com/mdavistffhrtporg",
-    "https://gitlab.com/matthewdxyz",
-    "https://bsky.app/profile/matthewd.xyz",
+    "https://github.com/mlaify",
+    "https://gitlab.com/mlaify",
+    "https://bsky.app/profile/mlaify.io",
   ]
 
 # Per-project params used by the /projects/ hub and homepage projects section.

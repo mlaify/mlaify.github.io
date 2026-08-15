@@ -1,8 +1,8 @@
-# matthewd.xyz
+# mlaify.io
 
-Personal website and blog for Matt D., built with Hugo and served on Cloudflare Workers.
+Personal website and blog, built with Hugo and served on Cloudflare Workers.
 
-This site contains long-form writing, technical notes, and personal pages. It was previously served at `matthewd.xyz`, which now 301-redirects here.
+This site contains long-form writing, technical notes, and project pages.
 
 ## License
 
@@ -34,14 +34,14 @@ workflow, no SSH key, no rsync, and no origin server.
 
 | | |
 |---|---|
-| Worker | `matthewd-xyz` |
+| Worker | `mlaify-io` |
 | Config | [`wrangler.jsonc`](wrangler.jsonc) |
-| Production branch | `main` → `https://matthewd.xyz` |
+| Production branch | `main` → `https://mlaify.io` |
 | Any other branch | preview URL, not promoted to production |
 
 ### Build settings (Cloudflare dashboard)
 
-Workers & Pages → `matthewd-xyz` → Settings → Build:
+Workers & Pages → `mlaify-io` → Settings → Build:
 
 | Setting | Value |
 |---|---|
@@ -71,19 +71,16 @@ are pinned:
 Build → **Variables and Secrets**. Without it the build silently uses the image
 default (extended 0.147.7).
 
-Go and Dart Sass are **not** needed. The old Actions workflow installed both;
-nothing in this repo uses Sass (the CSS pipeline is Tailwind via PostCSS) and
+Go and Dart Sass are **not** needed; the CSS pipeline is Tailwind via PostCSS and
 there are no Hugo module imports, only local mounts.
 
 ### Headers
 
 [`static/_headers`](static/_headers) is the single source of truth for security
 and cache headers. Hugo copies it to `public/_headers`, Cloudflare consumes it at
-deploy time, and it is not itself served.
-
-This used to come from the origin (LiteSpeed/cPanel). There is no origin now, so
-if a Cloudflare Transform Rule also sets these headers, remove one side —
-duplicated security headers are worse than none.
+deploy time, and it is not itself served. If a Cloudflare Transform Rule also
+sets these headers, remove one side — duplicated security headers are worse than
+none.
 
 ### Local
 
@@ -94,9 +91,6 @@ npm run build:cf && npm run preview
 `preview` runs `wrangler dev`, which serves `public/` through the same asset
 router as production — trailing-slash behaviour, the 404 page, and `_headers`
 all apply, which `hugo server` does not reproduce.
-
-Cutover steps and the Cloudflare-side configuration are in
-[`docs/superpowers/ops/cloudflare-workers-runbook.md`](docs/superpowers/ops/cloudflare-workers-runbook.md).
 
 ---
 
@@ -115,3 +109,4 @@ Cutover steps and the Cloudflare-side configuration are in
 ├── wrangler.jsonc      # Cloudflare Workers config (assets, routes)
 ├── .github/            # Issue/PR templates, CODEOWNERS
 └── README.md
+```

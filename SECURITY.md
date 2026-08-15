@@ -1,4 +1,4 @@
-# matthewd.xyz Vulnerability Disclosure Policy
+# mlaify.io Vulnerability Disclosure Policy
 
 ## Introduction
 
@@ -6,7 +6,7 @@ This website welcomes feedback from security researchers and the general public 
 
 ## Systems in Scope
 
-This policy applies to any digital assets owned, operated, or maintained by matthewd.xyz.
+This policy applies to any digital assets owned, operated, or maintained by mlaify.io.
 
 ## Out of Scope
 
@@ -37,7 +37,7 @@ In participating in our vulnerability disclosure program in good faith, we ask t
 
 ## Official Channels
 
-Please report security issues via [security@matthewd.xyz](mailto:security@matthewd.xyz) or [security@mlaify.io](mailto:security@mlaify.io), providing all relevant information. The more details you provide, the easier it will be for us to triage and fix the issue.
+Please report security issues via [security@mlaify.io](mailto:security@mlaify.io), providing all relevant information. The more details you provide, the easier it will be for us to triage and fix the issue.
 
 ## Safe Harbor
 

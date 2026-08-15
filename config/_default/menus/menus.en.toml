@@ -50,20 +50,20 @@
 
 [[footer]]
   name = "GitHub"
-  url = "https://github.com/mdavistffhrtporg"
+  url = "https://github.com/mlaify"
   weight = 50
 
 [[social]]
   name = "Bluesky"
-  url = "https://bsky.app/profile/matthewd.xyz"
+  url = "https://bsky.app/profile/mlaify.io"
   weight = 10
 
 [[social]]
   name = "GitHub"
-  url = "https://github.com/mdavistffhrtporg"
+  url = "https://github.com/mlaify"
   weight = 20
 
 [[social]]
   name = "GitLab"
-  url = "https://gitlab.com/matthewdxyz"
+  url = "https://gitlab.com/mlaify"
   weight = 30

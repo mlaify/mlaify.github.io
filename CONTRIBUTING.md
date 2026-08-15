@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for your interest in contributing to `matthewd.xyz`. This site is a personal Hugo-based static site, but improvements, corrections, and suggestions are welcome.
+Thank you for your interest in contributing to `mlaify.io`. This site is a personal Hugo-based static site, but improvements, corrections, and suggestions are welcome.
 
 By participating, you agree to follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
@@ -31,8 +31,8 @@ By participating, you agree to follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ```sh
 # Clone with submodules (PaperMod theme)
-git clone --recurse-submodules https://github.com/mdavistffhrtporg/mdavistffhrtporg.github.io.git
-cd mdavistffhrtporg.github.io
+git clone --recurse-submodules https://github.com/mlaify/mlaify.github.io.git
+cd mlaify.github.io
 
 # Run a local dev server
 hugo server -D
