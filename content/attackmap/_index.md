@@ -9,7 +9,7 @@ accent: "attackmap"
 
 {{< status "beta" >}}
 
-**Full documentation:** [docs.matthewd.xyz](https://docs.matthewd.xyz) — install, quickstart, CLI reference, AI review, the macOS app, and the analyzer SDK.
+**Full documentation:** [docs.mlaify.io](https://docs.mlaify.io) — install, quickstart, CLI reference, AI review, the macOS app, and the analyzer SDK.
 
 ## What AttackMap is
 

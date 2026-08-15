@@ -1,17 +1,16 @@
-# Matt D. security contacts and policy
+# Grayson Fire security contacts and policy
 
 # Our security contact channels
-Contact: mailto:security@matthewd.xyz
 Contact: mailto:security@mlaify.io
 
 # If practical, use PGP encryption
-Encryption: https://matthewd.xyz/matthewdxyz.asc
+Encryption: https://mlaify.io/publickey.security@mlaify.io-38642d275f820a026f3bfc5e7e44d7d05bafd4df.asc
 
 # Link to our vulnerability disclosure policy
-Policy: https://matthewd.xyz/security/
+Policy: https://mlaify.io/security/
 
 # The canonical location of this file
-Canonical: https://matthewd.xyz/.well-known/security.txt
+Canonical: https://mlaify.io/.well-known/security.txt
 
 # Languages that our team speaks and understands
 Preferred-Languages: en-US

@@ -1,5 +1,5 @@
 {
-    // matthewd.xyz — Hugo + Pagefind, served as Workers static assets.
+    // mlaify.io — Hugo + Pagefind, served as Workers static assets.
     //
     // There is deliberately no `main` and no Worker script. With `assets` and no
     // `main`, requests are served entirely by Cloudflare's asset worker: no
@@ -10,7 +10,7 @@
     // and runs the build itself) — see README.md. There is no GitHub Actions
     // deploy any more, and no rsync.
     "$schema": "node_modules/wrangler/config-schema.json",
-    "name": "matthewd-xyz",
+    "name": "mlaify-io",
     "compatibility_date": "2026-07-28",
 
     "assets": {
@@ -33,7 +33,7 @@
     // Adding www here would serve duplicate content at both hostnames.
     "routes": [
         {
-            "pattern": "matthewd.xyz",
+            "pattern": "mlaify.io",
             "custom_domain": true
         }
     ],

@@ -1,12 +1,12 @@
 {
-  "name": "mdavistffhrtporg.github.io",
+  "name": "mlaify.github.io",
   "version": "0.3.0",
-  "description": "matthewd.xyz — personal site, writing, and projects (Aegis, AttackMap, et al).",
-  "author": "Matt D. <matthewd@matthewd.xyz>",
+  "description": "mlaify.io — personal site, writing, and projects (Aegis, AttackMap, et al).",
+  "author": "Grayson Fire <mlaify@mlaify.io>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mdavistffhrtporg/mdavistffhrtporg.github.io.git"
+    "url": "https://github.com/mlaify/mlaify.github.io.git"
   },
   "scripts": {
     "create": "hugo new",

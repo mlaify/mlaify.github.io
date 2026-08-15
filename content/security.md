@@ -14,16 +14,14 @@ This website welcomes feedback from security researchers and the general public 
 
 Please report security issues via one of the following channels, providing as much detail as possible. The more information you include, the easier it will be for us to triage and address the issue.
 
-- **Email**: [security@matthewd.xyz](mailto:security@matthewd.xyz)
 - **Email**: [security@mlaify.io](mailto:security@mlaify.io)
-- **PGP key**: [matthewd.xyz/matthewdxyz.asc](https://matthewd.xyz/matthewdxyz.asc)
+- **PGP key**: [security@mlaify.io PGP key](https://mlaify.io/publickey.security@mlaify.io-38642d275f820a026f3bfc5e7e44d7d05bafd4df.asc) (fingerprint `3864 2D27 5F82 0A02 6F3B FC5E 7E44 D7D0 5BAF D4DF`)
 
 ### Systems in Scope
 
-This policy covers any digital assets owned, operated, or maintained by matthewd.xyz, including:
+This policy covers any digital assets owned, operated, or maintained by mlaify.io, including:
 
-- **matthewd.xyz** — this site
-- **mlaify.io**
+- **mlaify.io** — this site
 - **AttackMap** — defensive security analysis engine ([github.com/mlaify](https://github.com/mlaify))
 
 ### What We Ask of You
@@ -32,7 +30,7 @@ Please give us at least **90 days** from your initial report to resolve the issu
 
 When participating in our vulnerability disclosure program in good faith, we ask that you:
 
-- Follow our [Vulnerability Disclosure Policy](https://github.com/mdavistffhrtporg/mdavistffhrtporg.github.io/blob/main/SECURITY.md) and any other applicable agreements;
+- Follow our [Vulnerability Disclosure Policy](https://github.com/mlaify/mlaify.github.io/blob/main/SECURITY.md) and any other applicable agreements;
 - Report vulnerabilities promptly and avoid violating the privacy of others or disrupting our systems;
 - Limit data access to the minimum required for a Proof of Concept;
 - Cease testing and report immediately if you encounter any user data (PII, PHI, financial data); and
@@ -53,7 +51,7 @@ We consider security research conducted under this policy to be authorized under
 
 ---
 
-For the complete policy text, see [SECURITY.md](https://github.com/mdavistffhrtporg/mdavistffhrtporg.github.io/blob/main/SECURITY.md) in our repository.
+For the complete policy text, see [SECURITY.md](https://github.com/mlaify/mlaify.github.io/blob/main/SECURITY.md) in our repository.
 
 > This policy follows the [disclose.io](https://disclose.io) vulnerability disclosure framework.
 

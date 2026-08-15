@@ -1,5 +1,5 @@
-title = "matthewd.xyz"
-baseurl = "https://matthewd.xyz/"
+title = "mlaify.io"
+baseurl = "https://mlaify.io/"
 disableAliases = false
 disableHugoGeneratorInject = true
 disableKinds = []
@@ -13,7 +13,7 @@ summarylength = 40
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 
-copyRight = "© 2026 Matt D."
+copyRight = "© 2026 Grayson Fire"
 
 [outputs]
   home = ["html", "rss", "sitemap"]

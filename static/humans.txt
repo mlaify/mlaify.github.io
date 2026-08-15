@@ -1,11 +1,11 @@
 /* TEAM */
-Owner / Author: Matt D.
-Contact: privacy@matthewd.xyz
-GitHub: https://github.com/mdavistffhrtporg
+Owner / Author: Grayson Fire
+Contact: privacy@mlaify.io
+GitHub: https://github.com/mlaify
 Location: United States
 
 /* SITE */
-Domain: matthewd.xyz
+Domain: mlaify.io
 Purpose: Personal website and writing
 Stack: Hugo, Pagefind, Cloudflare Workers
 Comments: GitHub Discussions (Giscus)
