@@ -24,7 +24,7 @@ searchHidden: false
 cover:
   image: "images/D850642_2560w_shorter.jpeg"
   alt: "black and white image of an adult and child walking on an old, out of service, train track"
-  caption: "_Photo by: [Grayson Fire](https://mlaify.io/)_"
+  caption: "_Photo by: [M D](https://mlaify.io/)_"
   relative: false
   hidden: false
 ---

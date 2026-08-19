@@ -28,7 +28,7 @@ cascade:
 
 ## Overview
 
-This website (`mlaify.io`) is a personal website operated by Grayson Fire.
+This website (`mlaify.io`) is a personal website operated by M D.
 
 The site is designed to be simple, secure, and respectful of visitor privacy. It does not sell personal data, does not run advertising networks, and does not engage in behavioral profiling or targeted advertising.
 
