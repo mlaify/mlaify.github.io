@@ -1,4 +1,4 @@
-# Grayson Fire security contacts and policy
+# M D security contacts and policy
 
 # Our security contact channels
 Contact: mailto:security@mlaify.io

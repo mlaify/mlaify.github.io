@@ -1,4 +1,4 @@
-description = "Grayson Fire — privacy advocate and software developer."
+description = "M D — privacy advocate and software developer."
 tagline = "Privacy advocate and software developer."
 
 # Default OG / Twitter image
@@ -14,8 +14,8 @@ showBuildInfo = false
 
 # JSON-LD organization schema
 [org]
-  name = "Grayson Fire"
-  legalName = "Grayson Fire"
+  name = "M D"
+  legalName = "M D"
   url = "https://mlaify.io/"
   logo = "https://mlaify.io/apple-touch-icon.png"
   sameAs = [

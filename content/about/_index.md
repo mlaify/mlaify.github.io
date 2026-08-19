@@ -1,16 +1,16 @@
 ---
 title: "About"
 
-description: "About Grayson Fire — privacy advocate and software developer."
+description: "About M D — privacy advocate and software developer."
 aliases:
   - /me/
 cascade:
   comments: false
 ---
 
-![Grayson Fire](/images/avatar.png)
+![M D](/images/avatar.png)
 
-I'm Grayson Fire — a privacy advocate and software developer. I build small, security-first open source tools, most recently [AttackMap](/attackmap/), a local-first defensive security analyzer for real codebases.
+I'm M D — a privacy advocate and software developer. I build small, security-first open source tools, most recently [AttackMap](/attackmap/), a local-first defensive security analyzer for real codebases.
 
 My work centers on a simple idea: software should respect the people who use it. That means privacy by default, no surveillance, no dark patterns, and code you can read, audit, and run yourself. I care about giving people practical control over their data and their tools.
 

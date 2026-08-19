@@ -1,5 +1,5 @@
 /* TEAM */
-Owner / Author: Grayson Fire
+Owner / Author: M D
 Contact: privacy@mlaify.io
 GitHub: https://github.com/mlaify
 Location: United States

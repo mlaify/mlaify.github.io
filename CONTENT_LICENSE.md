@@ -26,4 +26,4 @@ https://creativecommons.org/licenses/by-nc-sa/4.0/
 - **ShareAlike** — If you remix, transform, or build upon the material, you
   must distribute your contributions under the same license.
 
-© 2025 Grayson Fire. All rights reserved except where licensed above.
+© 2025 M D. All rights reserved except where licensed above.

@@ -13,7 +13,7 @@ summarylength = 40
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 
-copyRight = "© 2026 Grayson Fire"
+copyRight = "© 2026 M D"
 
 [outputs]
   home = ["html", "rss", "sitemap"]
