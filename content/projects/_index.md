@@ -7,8 +7,9 @@ comments: false
 aliases:
   - /docs/projects/
   - /docs/
+  - /attackmap/
 ---
 
-[AttackMap](/attackmap/) is my current focus — a local-first defensive security analyzer for real codebases. It carries an honest status — beta means beta. See [build principles](/principles/) for the longer story on how I work.
+[GrapheneOS Tamper Tripwire](/tripwire/) is my current focus — a small, auditable Android app that forwards physical-security events to a private TLS syslog collector. It carries an honest status — alpha means alpha. See [build principles](/principles/) for the longer story on how I work.
 
 _A few earlier projects — Aegis, OmekaRapper, OpenSift, and OpenContractRx — are archived and no longer maintained._

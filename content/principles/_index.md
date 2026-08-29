@@ -18,7 +18,7 @@ These are not aspirational. They are the conventions every project of mine actua
 
 I build for the people who actually do the work — curators, security reviewers, hospital contract administrators, students, protocol engineers. Every product decision is judged against "does this make the operator's day better."
 
-This shows up in concrete ways: AttackMap's defensive review is the artifact you hand to a reviewer, not a pile of raw findings, and it runs locally against the repo you already have instead of asking you to change how you work.
+This shows up in concrete ways: Tamper Tripwire forwards events to whatever RFC 5424 syslog collector you already run — a private LAN or VPN box you control — instead of shipping its own dashboard, cloud account, or app store dependency.
 
 ## 2. Keep current status and known limits explicit
 
@@ -28,14 +28,14 @@ Two reasons. First: trust. A project that admits its limits is one you can plan 
 
 ## 3. Treat security architecture and threat modeling as core design work
 
-AttackMap's pipeline is shaped around the question "what could an attacker do" rather than "what patterns does the analyzer match." Its threat model and exploitability scoring are the design the code follows, not a report generated after the fact.
+Tamper Tripwire's README leads with its threat model — what it detects, and just as prominently, what it does not: movement while powered off, an attacker who compromises the OS, motion below the sensor's threshold. That document is the design the code follows, not a report generated after the fact.
 
 When a project lacks an explicit threat model, that's a known gap, not a feature. I track it and say so on the project's page.
 
 ## 4. Favor composable, provider-friendly module boundaries
 
-- AttackMap analyzers are independent packages, discovered via Python entry points. Swap one, write your own, run a subset.
-- AttackMap treats LLM providers as pluggable — Claude or OpenAI/Codex, API key or subscription CLI, all behind the same interface.
+- Tamper Tripwire speaks standard RFC 5424 syslog with RFC 6587 framing over TLS 1.3 — any compliant collector works, and there is no bespoke server component to run or trust.
+- The collector side is yours: alerting, retention, and integrity witnessing are deliberately left to tools you already operate, not reinvented in the app.
 
 This costs more design effort upfront. The payoff is avoiding the corner where one provider's outage or one analyzer's bug blocks the rest of the system.
 
@@ -43,18 +43,18 @@ This costs more design effort upfront. The payoff is avoiding the corner where o
 
 Documentation lives in the repository it documents. Architecture docs, threat models, API references, contributor guides — all alongside the source they describe. When the code changes, the docs change in the same PR.
 
-This site (mlaify.io) is not the canonical home of any project's documentation. It is a getting-started layer that links out to the canonical sources. The canonical home for AttackMap analyzer contracts is the `src/attackmap/sdk/` directory in the AttackMap repo.
+This site (mlaify.io) is not the canonical home of any project's documentation. It is a getting-started layer that links out to the canonical sources. The canonical home for Tamper Tripwire's threat model, build instructions, and security design is the [grapheneos-tripwire](https://github.com/mlaify/grapheneos-tripwire) repo.
 
 If something on this site disagrees with a project's repo, **the repo is correct**.
 
 ## In practice
 
-You can see all five reflected in AttackMap:
+You can see all five reflected in Tamper Tripwire:
 
-- Its defensive review is a reviewable artifact that runs locally against your repo — Principle 1 (real workflows).
-- It carries an explicit `beta` status and a "what's not yet hardened" section — Principle 2 (explicit status).
-- Its pipeline is shaped around threat modeling and exploitability, not pattern-matching — Principle 3 (security as design).
-- Its analyzers are independent packages and its LLM providers are pluggable — Principle 4 (composable).
-- Its `docs/` and analyzer SDK live next to the source — Principle 5.
+- It sends events to the private syslog collector you already run, over a LAN or VPN path you control — Principle 1 (real workflows).
+- It carries an explicit `alpha` status and its README says exactly which event paths still need validation — Principle 2 (explicit status).
+- Its threat model and limitations lead the README, and the permission surface is deliberately minimal — Principle 3 (security as design).
+- It speaks standard RFC 5424/6587 syslog over TLS, so any compliant collector works — Principle 4 (composable).
+- Its threat model, build docs, and security policy live in the repo next to the source — Principle 5.
 
 That's how I know I'm still building the same kind of system.

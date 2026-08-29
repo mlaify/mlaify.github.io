@@ -22,18 +22,18 @@ Every [project page](/projects/) on this site links to its repo. That repo is th
 You don't have to write code to be useful.
 
 - **File an issue when something is wrong on this site.** Broken link, wrong status, missing info, typo, accessibility problem — file against [mlaify/mlaify.github.io](https://github.com/mlaify/mlaify.github.io).
-- **Run a project against your own repo and tell me what happened.** Especially [AttackMap](/attackmap/getting-started/) — analyzer coverage and route-extraction accuracy improve fastest with real-world targets.
-- **Watch the repo.** [AttackMap](https://github.com/mlaify/AttackMap) signals upcoming releases through GitHub releases.
+- **Run a project on your own hardware and tell me what happened.** Especially [Tamper Tripwire](/tripwire/) — failed-credential and motion event behavior varies by device and Android build, and real-device reports are how validation coverage grows.
+- **Watch the repo.** [grapheneos-tripwire](https://github.com/mlaify/grapheneos-tripwire) signals upcoming releases through GitHub releases.
 
 ## Hour-long contributions
 
-- **Improve a project page on this site.** Spotted a thin section in `content/attackmap/`? PR welcome. Content is markdown.
-- **Write a small analyzer for AttackMap.** If the language or framework you use isn't [in the catalog](/attackmap/analyzers/), the analyzer SDK is small. Start from the [getting-started guide](/attackmap/getting-started/).
+- **Improve a project page on this site.** Spotted a thin section in `content/tripwire/`? PR welcome. Content is markdown.
+- **Validate an event path on your device.** Build [Tamper Tripwire](https://github.com/mlaify/grapheneos-tripwire) against your own collector and deliberately test a failed unlock, a reboot, or locked motion — then report which events reached the collector on your exact device and OS build.
 
 ## Day-long contributions
 
 - **Send a substantive patch** to whichever repo you've been using. Bug fix, new feature, doc improvement — every repo has issues tagged for help.
-- **Add ecosystem coverage to AttackMap.** A new analyzer plugin, better route extraction, or a new detector — real-world targets are where coverage improves fastest.
+- **Harden Tamper Tripwire.** Collector-side alerting examples, reboot-persistence testing, long-duration reliability runs, or documentation for an additional validated device — the repo's issues list what still needs proving.
 
 ## Conventions
 

@@ -7,7 +7,7 @@
     .status      string  (alpha|beta|stable)
     .primaryCTA  dict    { label, url }
     .secondaryCTA dict   { label, url }
-    .accent      string  (aegis|attackmap|brand)
+    .accent      string  (aegis|tripwire|brand)
 */ -}}
 <section class="relative overflow-hidden border-b border-ink-200/60 dark:border-ink-800/60" {{ with .accent }}data-accent="{{ . }}"{{ end }}>
   <div class="bg-grid absolute inset-0 -z-10 opacity-60"></div>

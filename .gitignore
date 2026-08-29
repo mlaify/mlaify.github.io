@@ -55,3 +55,6 @@ yarn-error.log*
 *.swo
 .superpowers/
 public/pagefind/
+
+# Claude Code local config
+.claude/
