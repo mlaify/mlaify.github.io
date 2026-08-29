@@ -22,7 +22,7 @@ Please report security issues via one of the following channels, providing as mu
 This policy covers any digital assets owned, operated, or maintained by mlaify.io, including:
 
 - **mlaify.io** — this site
-- **AttackMap** — defensive security analysis engine ([github.com/mlaify](https://github.com/mlaify))
+- **GrapheneOS Tamper Tripwire** — Android tamper-evidence app ([github.com/mlaify/grapheneos-tripwire](https://github.com/mlaify/grapheneos-tripwire))
 
 ### What We Ask of You
 

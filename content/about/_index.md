@@ -10,7 +10,7 @@ cascade:
 
 ![M D](/images/avatar.png)
 
-I'm M D — a privacy advocate and software developer. I build small, security-first open source tools, most recently [AttackMap](/attackmap/), a local-first defensive security analyzer for real codebases.
+I'm M D — a privacy advocate and software developer. I build small, security-first open source tools, most recently [GrapheneOS Tamper Tripwire](/tripwire/), an auditable Android app that gives you a visible signal when your phone is handled while you're away.
 
 My work centers on a simple idea: software should respect the people who use it. That means privacy by default, no surveillance, no dark patterns, and code you can read, audit, and run yourself. I care about giving people practical control over their data and their tools.
 
@@ -24,7 +24,7 @@ The way the projects on this site look — small, protocol-first, status-honest,
 
 **Status you can trust beats marketing.** Every project here carries an explicit status. "Alpha" means alpha. "Hardening pending" means I haven't yet hardened it. I'd rather lose a lead than oversell a `v0.1`.
 
-**Composability over monoliths.** I favor module boundaries that let other people swap pieces — AttackMap's analyzers are independent packages you can add to, swap, or run a subset of, and its LLM providers are pluggable. Costs more upfront and pays off everywhere downstream.
+**Composability over monoliths.** I favor open protocols and module boundaries that let other people swap pieces — Tamper Tripwire speaks standard RFC 5424 syslog over TLS, so it works with any compliant collector rather than a bespoke server. Costs more upfront and pays off everywhere downstream.
 
 See [build principles](/principles/) for the longer version.
 

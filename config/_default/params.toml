@@ -26,11 +26,11 @@ showBuildInfo = false
 
 # Per-project params used by the /projects/ hub and homepage projects section.
 [products]
-  [products.attackmap]
-    name = "AttackMap"
-    tagline = "Local-first defensive security analysis for real codebases."
-    status = "beta"
-    accent = "attackmap"
-    url = "/attackmap/"
-    repoUrl = "https://github.com/mlaify/attackmap"
+  [products.tripwire]
+    name = "GrapheneOS Tamper Tripwire"
+    tagline = "A small, auditable Android app that forwards physical-security events to a private TLS syslog collector."
+    status = "alpha"
+    accent = "tripwire"
+    url = "/tripwire/"
+    repoUrl = "https://github.com/mlaify/grapheneos-tripwire"
     weight = 20

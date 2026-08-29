@@ -94,7 +94,7 @@ module.exports = {
           800: "#155e75",
           900: "#164e63",
         },
-        attackmap: {
+        tripwire: {
           50:  "#fffbeb",
           100: "#fef3c7",
           200: "#fde68a",
