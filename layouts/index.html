@@ -22,52 +22,6 @@
   </div>
 </section>
 
-<!-- Projects -->
-<section class="border-b border-ink-200/60 dark:border-ink-800/60">
-  <div class="container-page py-16">
-    <div class="mb-10 flex items-end justify-between">
-      <h2 class="text-3xl font-semibold tracking-tight text-ink-900 dark:text-white">Projects</h2>
-      <a href="/projects/" class="text-sm font-medium text-copper-700 hover:text-copper-800 dark:text-copper-400 dark:hover:text-copper-300">
-        All projects →
-      </a>
-    </div>
-
-    {{- $products := site.Params.products }}
-    {{- $entries := slice }}
-    {{- range $k, $p := $products }}
-      {{- $entries = $entries | append (dict "key" $k "name" $p.name "tagline" $p.tagline "status" $p.status "accent" $p.accent "url" $p.url "weight" $p.weight) }}
-    {{- end }}
-    {{- $featured := first 2 (sort $entries "weight" "asc") }}
-    <div class="grid gap-6 lg:grid-cols-2">
-      {{- range $featured }}
-        <a href="{{ .url }}" data-accent="{{ .accent }}" class="group card card-hover flex flex-col">
-          <div class="flex items-start justify-between gap-4">
-            <h3 class="text-2xl font-semibold tracking-tight text-ink-900 group-hover:accent-text dark:text-white">
-              {{ .name }}
-            </h3>
-            <span class="status-badge status-{{ .status }}">{{ .status }}</span>
-          </div>
-          <p class="mt-3 text-ink-600 dark:text-ink-300">{{ .tagline }}</p>
-        </a>
-      {{- end }}
-    </div>
-
-    {{- $small := after 2 (sort $entries "weight" "asc") }}
-    {{- with $small }}
-      <ul class="mt-6 flex flex-wrap gap-3 text-sm">
-        {{- range . }}
-          <li>
-            <a href="{{ .url }}" class="inline-flex items-center gap-2 rounded-full border border-ink-200 px-4 py-2 hover:border-copper-300 hover:text-copper-700 dark:border-ink-800 dark:hover:border-copper-600 dark:hover:text-copper-400">
-              {{ .name }}
-              <span class="text-xs text-ink-500 dark:text-ink-400">{{ .status }}</span>
-            </a>
-          </li>
-        {{- end }}
-      </ul>
-    {{- end }}
-  </div>
-</section>
-
 <!-- Latest writing -->
 <section class="container-page py-16">
   <div class="mb-10 flex items-end justify-between">

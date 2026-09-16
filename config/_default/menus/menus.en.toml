@@ -4,11 +4,6 @@
   weight = 10
 
 [[main]]
-  name = "Projects"
-  url = "/projects/"
-  weight = 20
-
-[[main]]
   name = "About"
   url = "/about/"
   weight = 30
@@ -17,11 +12,6 @@
   name = "About"
   url = "/about/"
   weight = 10
-
-[[footer]]
-  name = "Projects"
-  url = "/projects/"
-  weight = 15
 
 [[footer]]
   name = "Archives"

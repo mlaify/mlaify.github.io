@@ -1,5 +1,5 @@
-description = "M D — privacy advocate and software developer."
-tagline = "Privacy advocate and software developer."
+description = "M D — privacy advocate and open source software developer working on AI-driven software and defensive cybersecurity."
+tagline = "Open source software development for AI-driven software and defensive cybersecurity."
 
 # Default OG / Twitter image
 ogImage = "images/avatar.png"
@@ -23,14 +23,3 @@ showBuildInfo = false
     "https://gitlab.com/mlaify",
     "https://bsky.app/profile/mlaify.io",
   ]
-
-# Per-project params used by the /projects/ hub and homepage projects section.
-[products]
-  [products.tripwire]
-    name = "GrapheneOS Tamper Tripwire"
-    tagline = "A small, auditable Android app that forwards physical-security events to a private TLS syslog collector."
-    status = "alpha"
-    accent = "tripwire"
-    url = "/tripwire/"
-    repoUrl = "https://github.com/mlaify/grapheneos-tripwire"
-    weight = 20

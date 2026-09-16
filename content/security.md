@@ -15,14 +15,14 @@ This website welcomes feedback from security researchers and the general public 
 Please report security issues via one of the following channels, providing as much detail as possible. The more information you include, the easier it will be for us to triage and address the issue.
 
 - **Email**: [security@mlaify.io](mailto:security@mlaify.io)
-- **PGP key**: [security@mlaify.io PGP key](https://mlaify.io/publickey.security@mlaify.io-38642d275f820a026f3bfc5e7e44d7d05bafd4df.asc) (fingerprint `3864 2D27 5F82 0A02 6F3B FC5E 7E44 D7D0 5BAF D4DF`)
+- **PGP key**: [security@mlaify.io PGP key](https://mlaify.io/publickey.mlaify.io-b6a18ef05aeae74e30c81cae299c0fb355ce8e12.asc) (fingerprint `B6A1 8EF0 5AEA E74E 30C8 1CAE 299C 0FB3 55CE 8E12`)
 
 ### Systems in Scope
 
 This policy covers any digital assets owned, operated, or maintained by mlaify.io, including:
 
 - **mlaify.io** — this site
-- **GrapheneOS Tamper Tripwire** — Android tamper-evidence app ([github.com/mlaify/grapheneos-tripwire](https://github.com/mlaify/grapheneos-tripwire))
+- **Public repositories** under [github.com/mlaify](https://github.com/mlaify)
 
 ### What We Ask of You
 

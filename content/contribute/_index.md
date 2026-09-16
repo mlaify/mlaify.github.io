@@ -1,13 +1,13 @@
 ---
 title: "Contribute"
-description: "How to file issues, send patches, run analyzers, and otherwise contribute to my open-source projects."
+description: "How to file issues, send patches, and otherwise contribute to my open-source work."
 date: 2026-05-08T00:00:00-05:00
-lastmod: 2026-05-08T00:00:00-05:00
+lastmod: 2026-09-16T00:00:00-05:00
 draft: false
 weight: 30
 toc: true
 sidebar: false
-lead: "Every project I maintain lives on GitHub. Pick the one you care about and pick the contribution that fits your time."
+lead: "My open source work lives on GitHub. Pick the repository you care about and pick the contribution that fits your time."
 ---
 
 ## Where everything lives
@@ -15,25 +15,25 @@ lead: "Every project I maintain lives on GitHub. Pick the one you care about and
 - **GitHub**: [github.com/mlaify](https://github.com/mlaify)
 - **This site's source**: [mlaify/mlaify.github.io](https://github.com/mlaify/mlaify.github.io)
 
-Every [project page](/projects/) on this site links to its repo. That repo is the canonical source of truth for code, docs, issues, and discussion.
+Each repository is the canonical source of truth for its code, docs, issues, and discussion.
 
 ## Five-minute contributions
 
 You don't have to write code to be useful.
 
 - **File an issue when something is wrong on this site.** Broken link, wrong status, missing info, typo, accessibility problem — file against [mlaify/mlaify.github.io](https://github.com/mlaify/mlaify.github.io).
-- **Run a project on your own hardware and tell me what happened.** Especially [Tamper Tripwire](/tripwire/) — failed-credential and motion event behavior varies by device and Android build, and real-device reports are how validation coverage grows.
-- **Watch the repo.** [grapheneos-tripwire](https://github.com/mlaify/grapheneos-tripwire) signals upcoming releases through GitHub releases.
+- **Run something on your own hardware and tell me what happened.** Real-world reports on real devices and real deployments are how validation coverage grows.
+- **Watch a repo.** Releases are announced through GitHub releases.
 
 ## Hour-long contributions
 
-- **Improve a project page on this site.** Spotted a thin section in `content/tripwire/`? PR welcome. Content is markdown.
-- **Validate an event path on your device.** Build [Tamper Tripwire](https://github.com/mlaify/grapheneos-tripwire) against your own collector and deliberately test a failed unlock, a reboot, or locked motion — then report which events reached the collector on your exact device and OS build.
+- **Improve a page on this site.** Spotted a thin section? PR welcome. Content is markdown.
+- **Reproduce and narrow a bug.** A clear reproduction against a known version is worth more than a report.
 
 ## Day-long contributions
 
 - **Send a substantive patch** to whichever repo you've been using. Bug fix, new feature, doc improvement — every repo has issues tagged for help.
-- **Harden Tamper Tripwire.** Collector-side alerting examples, reboot-persistence testing, long-duration reliability runs, or documentation for an additional validated device — the repo's issues list what still needs proving.
+- **Harden something.** Test coverage, reliability runs, threat-model review, or documentation for an additional validated environment — the issues list what still needs proving.
 
 ## Conventions
 
