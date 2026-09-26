@@ -2,7 +2,7 @@
   "name": "mlaify.github.io",
   "version": "0.3.0",
   "description": "mlaify.io — personal site, writing, and projects.",
-  "author": "M D <mlaify@mlaify.io>",
+  "author": "M&L AI <mlaify@mlaify.io>",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "prettier": "^3.8.1",
-    "wrangler": "4.114.0"
+    "wrangler": "4.141.0"
   },
   "engines": {
     "node": ">=20.0.0"
