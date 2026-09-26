@@ -112,6 +112,9 @@
   .status-alpha {
     @apply bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200;
   }
+  .status-help {
+    @apply bg-copper-100 text-copper-800 dark:bg-copper-900/40 dark:text-copper-200;
+  }
   .status-beta {
     @apply bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-200;
   }

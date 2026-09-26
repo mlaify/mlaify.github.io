@@ -1,25 +1,24 @@
-description = "M D — privacy advocate and open source software developer working on AI-driven software and defensive cybersecurity."
-tagline = "Open source software development for AI-driven software and defensive cybersecurity."
+description = "M&L AI — AI-driven software focused on defensive cybersecurity, built open source by a privacy advocate."
+tagline = "AI-driven software focused on defensive cybersecurity."
 
 # Default OG / Twitter image
-ogImage = "images/avatar.png"
+ogImage = "images/og.png"
 twitterHandle = ""
 
 # Repo / org links
 githubOrg = "https://github.com/mlaify"
 siteRepo = "https://github.com/mlaify/mlaify.github.io"
+attackmapDocs = "https://docs.mlaify.io"
 
 # Footer toggles
 showBuildInfo = false
 
 # JSON-LD organization schema
 [org]
-  name = "M D"
-  legalName = "M D"
+  name = "M&L AI"
+  legalName = "M&L AI"
   url = "https://mlaify.io/"
   logo = "https://mlaify.io/apple-touch-icon.png"
   sameAs = [
     "https://github.com/mlaify",
-    "https://gitlab.com/mlaify",
-    "https://bsky.app/profile/mlaify.io",
   ]

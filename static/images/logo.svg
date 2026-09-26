@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="M&amp;L AI">
+  <circle cx="60" cy="60" r="52" fill="#292524" stroke="#fed7aa" stroke-width="3"/>
+  <circle cx="60" cy="60" r="36" fill="none" stroke="#57534e" stroke-width="2"/>
+  <circle cx="60" cy="60" r="20" fill="none" stroke="#57534e" stroke-width="2"/>
+  <path d="M60 60 L60 8 A52 52 0 0 1 105 34 Z" fill="#fb923c" fill-opacity="0.28"/>
+  <line x1="60" y1="60" x2="105" y2="34" stroke="#fb923c" stroke-width="3" stroke-linecap="round"/>
+  <polyline points="34,76 44,46 60,64 76,46 86,76" fill="none" stroke="#fb923c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#fff7ed">
+    <circle cx="44" cy="46" r="4"/>
+    <circle cx="60" cy="64" r="4"/>
+    <circle cx="76" cy="46" r="4"/>
+  </g>
+</svg>

@@ -1,16 +1,16 @@
 ---
 title: "About"
 
-description: "About M D — privacy advocate and open source software developer."
+description: "About M&L AI — AI-driven software focused on defensive cybersecurity."
 aliases:
   - /me/
 cascade:
   comments: false
 ---
 
-![M D](/images/avatar.png)
+<img src="/images/logo.svg" alt="M&amp;L AI logo" width="160" height="160" />
 
-I'm M D — a privacy advocate and software developer. I do open source software development for AI-driven software and defensive cybersecurity.
+M&L AI is where I make AI-driven software with a focus on defensive cybersecurity. I'm a privacy advocate and software developer, and everything I build here is open source.
 
 My work centers on a simple idea: software should respect the people who use it. That means privacy by default, no surveillance, no dark patterns, and code you can read, audit, and run yourself. I care about giving people practical control over their data and their tools.
 
@@ -28,8 +28,15 @@ The way I build — small, protocol-first, status-honest, documentation-close-to
 
 See [build principles](/principles/) for the longer version.
 
+## What I build
+
+**[AttackMap](https://docs.mlaify.io)** is a local-first, open-source defensive security analysis engine. It reads a repository's source code, reconstructs the attack surface — routes, data stores, trust crossings, secrets in the wrong places — and produces prioritized, evidence-anchored findings mapped to MITRE ATT&CK. Code never leaves the machine, and the output is oriented entirely toward remediation: no exploit code, no offensive payloads. Full documentation lives at [docs.mlaify.io](https://docs.mlaify.io).
+
+{{< status "help" "Looking for help" >}} AttackMap is looking for contributors and co-maintainers. Development is paused until more hands join — if you'd like to help with the core engine, an analyzer, the macOS app, or the docs, [open an issue](https://github.com/mlaify/AttackMap/issues) to say hello.
+
+**[grrclone](https://github.com/mlaify/grrclone)** is a free, open-source macOS menu bar app that connects [rclone](https://rclone.org) remotes as Finder volumes. It auto-discovers remotes, reconnects at login, and repairs mounts after sleep or a network change. No licence key, no phone-home, no kernel extension, no root. Install it with `brew install --cask mlaify/tap/grrclone`.
+
 ## Elsewhere
 
 - [GitHub](https://github.com/mlaify) — code
-- [Bluesky](https://bsky.app/profile/mlaify.io) — short-form
-- [GitLab](https://gitlab.com/mlaify) — mirrors
+- [AttackMap docs](https://docs.mlaify.io) — documentation

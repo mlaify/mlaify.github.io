@@ -3,19 +3,61 @@
 <section class="border-b border-ink-200/60 dark:border-ink-800/60">
   <div class="container-page py-16 lg:py-24">
     <div class="flex flex-col items-start gap-8 sm:flex-row sm:items-center">
-      <img src="{{ "/images/avatar.png" | relURL }}"
-           alt="M D"
-           class="h-24 w-24 flex-shrink-0 rounded-full object-cover ring-2 ring-copper-200 dark:ring-copper-800" />
+      <img src="{{ "/images/logo.svg" | relURL }}"
+           alt="M&amp;L AI logo"
+           width="96" height="96"
+           class="h-24 w-24 flex-shrink-0" />
       <div class="flex-1">
         <h1 class="text-balance text-4xl font-semibold tracking-tight text-ink-900 sm:text-5xl dark:text-white">
-          M D
+          M&amp;L AI
         </h1>
         <p class="mt-3 text-lg text-ink-600 dark:text-ink-300">
           {{ site.Params.tagline }}
         </p>
+        <p class="mt-2 max-w-2xl text-ink-600 dark:text-ink-400">
+          I make AI-driven software with a focus on defensive cybersecurity — local-first, open source, and built to respect the people who use it.
+        </p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="/writing/" class="btn btn-primary">Read writing</a>
           <a href="/me/" class="btn btn-ghost">About</a>
+          <a href="{{ site.Params.githubOrg }}" class="btn btn-ghost">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What I build -->
+<section class="border-b border-ink-200/60 dark:border-ink-800/60">
+  <div class="container-page py-16">
+    <h2 class="mb-10 text-3xl font-semibold tracking-tight text-ink-900 dark:text-white">What I build</h2>
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="card flex flex-col">
+        <div class="flex items-center justify-between gap-3">
+          <span class="feature-icon">{{ partial "svg-icon.html" (dict "name" "shield-search" "class" "h-5 w-5") }}</span>
+          <span class="status-badge status-help">Looking for help</span>
+        </div>
+        <h3 class="text-xl font-semibold text-ink-900 dark:text-white">AttackMap</h3>
+        <p class="mt-2 flex-1 text-sm text-ink-600 dark:text-ink-400">
+          A local-first, open-source defensive security analysis engine. Point it at a repository and it maps the attack surface, traces request-to-sink data flow, and produces prioritized, evidence-anchored findings mapped to MITRE ATT&amp;CK — without sending code off-device. Optional AI review helps triage and explain what to fix first. Output is oriented entirely toward remediation.
+        </p>
+        <p class="mt-3 text-sm text-ink-600 dark:text-ink-400">
+          AttackMap is looking for contributors and co-maintainers. If you'd like to help with the engine, an analyzer, the macOS app, or the docs, <a class="underline" href="https://github.com/mlaify/AttackMap/issues">open an issue</a> to say hello.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a href="{{ site.Params.attackmapDocs }}" class="btn btn-primary">Read the docs</a>
+          <a href="https://github.com/mlaify/AttackMap" class="btn btn-ghost">Source</a>
+        </div>
+      </div>
+      <div class="card flex flex-col">
+        <span class="feature-icon">{{ partial "svg-icon.html" (dict "name" "cloud-network" "class" "h-5 w-5") }}</span>
+        <h3 class="text-xl font-semibold text-ink-900 dark:text-white">grrclone</h3>
+        <p class="mt-2 flex-1 text-sm text-ink-600 dark:text-ink-400">
+          A free, open-source macOS menu bar app that connects <a class="underline" href="https://rclone.org">rclone</a> remotes as Finder volumes. It discovers your remotes, reconnects at login, and repairs mounts after sleep or a network change. No licence key, no phone-home, no kernel extension, no root.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a href="https://github.com/mlaify/grrclone" class="btn btn-primary">Get grrclone</a>
+          <a href="https://github.com/mlaify/grrclone/releases" class="btn btn-ghost">Releases</a>
         </div>
       </div>
     </div>

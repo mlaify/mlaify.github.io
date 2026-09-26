@@ -2,11 +2,11 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
+  "@type": "Organization",
   "name": {{ $org.name | jsonify }},
   "url": {{ $org.url | jsonify }},
-  "image": {{ $org.logo | jsonify }},
+  "logo": {{ $org.logo | jsonify }},
   "sameAs": {{ $org.sameAs | jsonify }},
-  "jobTitle": "Open source software contributor, writer, security tooling builder"
+  "description": {{ site.Params.description | jsonify }}
 }
 </script>

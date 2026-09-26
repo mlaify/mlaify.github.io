@@ -1,4 +1,4 @@
-title = "mlaify.io"
+title = "M&L AI"
 baseurl = "https://mlaify.io/"
 disableAliases = false
 disableHugoGeneratorInject = true
@@ -13,7 +13,7 @@ summarylength = 40
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 
-copyRight = "© 2026 M D"
+copyRight = "© 2026 M&L AI"
 
 [outputs]
   home = ["html", "rss", "sitemap"]
