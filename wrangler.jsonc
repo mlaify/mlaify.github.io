@@ -28,12 +28,23 @@
         "not_found_handling": "404-page"
     },
 
-    // The apex only. `www` is intentionally absent: it must keep 301-ing to the
-    // apex, which is a Cloudflare Redirect Rule, not a second custom domain.
-    // Adding www here would serve duplicate content at both hostnames.
+    // Apex custom domains only. fhrp.org and matthewd.xyz serve the same site
+    // directly (not redirects) because some services refuse to follow them;
+    // canonical URLs still point at mlaify.io. They must be listed here —
+    // `wrangler deploy` replaces any domains attached in the dashboard.
+    // `www` is intentionally absent: it must keep 301-ing to the apex, which is
+    // a Cloudflare Redirect Rule, not a second custom domain.
     "routes": [
         {
             "pattern": "mlaify.io",
+            "custom_domain": true
+        },
+        {
+            "pattern": "fhrp.org",
+            "custom_domain": true
+        },
+        {
+            "pattern": "matthewd.xyz",
             "custom_domain": true
         }
     ],
