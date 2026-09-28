@@ -1,10 +1,10 @@
-# M D security contacts and policy
+# M&L AI security contacts and policy
 
 # Our security contact channels
 Contact: mailto:security@mlaify.io
 
 # If practical, use PGP encryption
-Encryption: https://mlaify.io/publickey.mlaify.io-b6a18ef05aeae74e30c81cae299c0fb355ce8e12.asc
+Encryption: https://mlaify.io/publickey.security@mlaify.io-38642d275f820a026f3bfc5e7e44d7d05bafd4df.asc
 
 # Link to our vulnerability disclosure policy
 Policy: https://mlaify.io/security/

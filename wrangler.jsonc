@@ -28,9 +28,10 @@
         "not_found_handling": "404-page"
     },
 
-    // Apex custom domains only. fhrp.org and matthewd.xyz serve the same site
-    // directly (not redirects) because some services refuse to follow them;
-    // canonical URLs still point at mlaify.io. They must be listed here —
+    // Apex custom domains only. fhrp.org, matthewd.xyz, and mldavis.me serve
+    // the same site directly (not redirects) because some services refuse to
+    // follow them; canonical URLs still point at mlaify.io. They must be listed
+    // here —
     // `wrangler deploy` replaces any domains attached in the dashboard.
     // `www` is intentionally absent: it must keep 301-ing to the apex, which is
     // a Cloudflare Redirect Rule, not a second custom domain.
@@ -45,6 +46,10 @@
         },
         {
             "pattern": "matthewd.xyz",
+            "custom_domain": true
+        },
+        {
+            "pattern": "mldavis.me",
             "custom_domain": true
         }
     ],
