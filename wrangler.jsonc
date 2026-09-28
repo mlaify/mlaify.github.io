@@ -42,7 +42,7 @@
     // at its custom domain, so there is no unbranded duplicate for crawlers to
     // find. Preview URLs stay on so branch builds are reviewable.
     "workers_dev": false,
-    "preview_urls": true,
+    "preview_urls": false,
 
     "observability": {
         "enabled": true
