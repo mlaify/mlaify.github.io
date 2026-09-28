@@ -40,7 +40,8 @@
 
     // No <name>.workers.dev hostname for production — the site is only reachable
     // at its custom domain, so there is no unbranded duplicate for crawlers to
-    // find. Preview URLs stay on so branch builds are reviewable.
+    // find. Preview URLs are off too: non-production branches still build and
+    // upload a version, but it gets no public workers.dev URL.
     "workers_dev": false,
     "preview_urls": false,
 
