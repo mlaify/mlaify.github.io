@@ -4,6 +4,16 @@
   weight = 10
 
 [[main]]
+  name = "AttackMap"
+  url = "/attackmap/"
+  weight = 20
+
+[[main]]
+  name = "grrclone"
+  url = "/grrclone/"
+  weight = 25
+
+[[main]]
   name = "About"
   url = "/about/"
   weight = 30
