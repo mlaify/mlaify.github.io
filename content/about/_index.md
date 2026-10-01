@@ -32,7 +32,7 @@ See [build principles](/principles/) for the longer version.
 
 **[AttackMap](/attackmap/)** is a local-first, open-source defensive security analysis engine. It reads a repository's source code, reconstructs the attack surface — routes, data stores, trust crossings, secrets in the wrong places — and produces prioritized, evidence-anchored findings mapped to MITRE ATT&CK. Code never leaves the machine, and the output is oriented entirely toward remediation: no exploit code, no offensive payloads. Full documentation lives at [docs.mlaify.io](https://docs.mlaify.io).
 
-{{< status "help" "Looking for help" >}} AttackMap is looking for contributors and co-maintainers. Development is paused until more hands join — if you'd like to help with the core engine, an analyzer, the macOS app, or the docs, [open an issue](https://github.com/mlaify/AttackMap/issues) to say hello.
+{{< status "help" "Looking for help" >}} AttackMap is looking for contributors and co-maintainers. It's under active development, but progress may be slow until more help or co-maintainers join — if you'd like to help with the core engine, an analyzer, the macOS app, or the docs, [open an issue](https://github.com/mlaify/AttackMap/issues) to say hello.
 
 **[grrclone](/grrclone/)** is a free, open-source macOS menu bar app that connects [rclone](https://rclone.org) remotes as Finder volumes. It auto-discovers remotes, reconnects at login, and repairs mounts after sleep or a network change. No licence key, no phone-home, no kernel extension, no root. Install it with `brew install --cask mlaify/tap/grrclone`.
 

@@ -24,7 +24,8 @@ no offensive payloads.
 ![The AttackMap macOS app after scanning OWASP Juice Shop: 29 findings, 22 exploitable sinks, and the most exploitable route-to-sink path ranked first](/images/attackmap/overview.png)
 
 {{< callout type="note" title="Looking for contributors and co-maintainers" >}}
-Development is paused until more hands join. If you'd like to help with the core
+AttackMap is under active development, but progress may be slow until more help
+or co-maintainers join. If you'd like to help with the core
 engine, an analyzer, the macOS app, or the docs,
 [open an issue](https://github.com/mlaify/AttackMap/issues) to say hello. Security
 reports are welcome at [security@mlaify.io](mailto:security@mlaify.io).
