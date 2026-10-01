@@ -4,7 +4,7 @@
 Contact: mailto:security@mlaify.io
 
 # If practical, use PGP encryption
-Encryption: https://mlaify.io/publickey.security@mlaify.io-38642d275f820a026f3bfc5e7e44d7d05bafd4df.asc
+Encryption: https://mlaify.io/publickey.security@mlaify.io-092c3731c4f7015d9fa12ceef773a39417604afb.asc
 
 # Link to our vulnerability disclosure policy
 Policy: https://mlaify.io/security/

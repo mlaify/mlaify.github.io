@@ -15,7 +15,7 @@ This website welcomes feedback from security researchers and the general public 
 Please report security issues via one of the following channels, providing as much detail as possible. The more information you include, the easier it will be for us to triage and address the issue.
 
 - **Email**: [security@mlaify.io](mailto:security@mlaify.io)
-- **PGP key**: [security@mlaify.io PGP key](https://mlaify.io/publickey.security@mlaify.io-38642d275f820a026f3bfc5e7e44d7d05bafd4df.asc) (fingerprint `3864 2D27 5F82 0A02 6F3B FC5E 7E44 D7D0 5BAF D4DF`)
+- **PGP key**: [security@mlaify.io PGP key](https://mlaify.io/publickey.security@mlaify.io-092c3731c4f7015d9fa12ceef773a39417604afb.asc) (fingerprint `092C 3731 C4F7 015D 9FA1 2CEE F773 A394 1760 4AFB`)
 
 ### Systems in Scope
 
