@@ -36,7 +36,7 @@ workflow, no SSH key, no rsync, and no origin server.
 |---|---|
 | Worker | `mlaify-io` |
 | Config | [`wrangler.jsonc`](wrangler.jsonc) |
-| Production branch | `main` → `https://mlaify.io` (also served, not redirected, at `fhrp.org`, `matthewd.xyz`, and `mldavis.me`) |
+| Production branch | `main` → `https://mlaify.io` (also served, not redirected, at `fhrp.org`, `matthewd.xyz`, `mldavis.me`, and `cannotfindme.com`) |
 | Any other branch | built and uploaded as a version; no public preview URL, not promoted to production |
 
 ### Build settings (Cloudflare dashboard)

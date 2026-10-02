@@ -1,0 +1,7 @@
+# M&L AI — static site. Search indexing is welcome; AI training is not.
+# Zones with Cloudflare's managed robots.txt prepend their own crawler list.
+User-agent: *
+Content-Signal: search=yes,ai-train=no
+Allow: /
+
+Sitemap: https://mlaify.io/sitemap.xml
