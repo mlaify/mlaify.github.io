@@ -1,0 +1,16 @@
+# {{ site.Title }} — full text
+
+> {{ site.Params.description }}
+
+This file contains the text of every page on {{ site.BaseURL }}. A shorter index is at {{ "llms.txt" | absURL }}.
+{{ range where site.Pages "Kind" "in" (slice "page" "section") }}{{ if or .Content (eq .Kind "page") }}
+---
+
+# {{ .Title }}
+
+URL: {{ .Permalink }}
+{{ with .Description }}
+> {{ . }}
+{{ end }}
+{{ .Plain | htmlUnescape | strings.TrimSpace }}
+{{ end }}{{ end }}

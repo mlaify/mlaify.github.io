@@ -20,6 +20,7 @@ All projects are open source under github.com/mlaify. Security reports go to sec
 
 ## Optional
 
+- [Full text](https://mlaify.io/llms-full.txt): Every page on this site in one plain-text file.
 - [Writing](https://mlaify.io/writing/): Personal posts on Linux, photography, and open source.
 - [Source code](https://github.com/mlaify): All repositories.
 - [Sitemap](https://mlaify.io/sitemap.xml)

@@ -1,0 +1,3 @@
+# M&L AI does not sell advertising and has no authorized ad sellers.
+# This is the IAB ads.txt placeholder record for sites without ads.
+placeholder.example.com, placeholder, DIRECT, placeholder

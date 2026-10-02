@@ -16,9 +16,16 @@ defaultContentLanguageInSubdir = false
 copyRight = "© 2026 M&L AI"
 
 [outputs]
-  home = ["html", "rss", "sitemap"]
+  home = ["html", "rss", "sitemap", "llmsfull"]
   page = ["html"]
   section = ["html", "rss"]
+
+# /llms-full.txt: every page's text in one file, for LLM agents.
+[outputFormats.llmsfull]
+  mediaType = "text/plain"
+  baseName = "llms-full"
+  isPlainText = true
+  notAlternative = true
 
 [outputFormats.sitemap]
   mediaType = "application/xml"
