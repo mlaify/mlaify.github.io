@@ -1,0 +1,25 @@
+# M&L AI
+
+> M&L AI makes AI-driven software focused on defensive cybersecurity — local-first, open source, and built to respect the people who use it. This is a static site: there is no API, no login, and no on-site AI agent.
+
+All projects are open source under github.com/mlaify. Security reports go to security@mlaify.io (PGP key linked from /.well-known/security.txt).
+
+## Projects
+
+- [AttackMap](https://mlaify.io/attackmap/): Local-first, AI-assisted defensive security analysis for codebases. Maps the attack surface, traces request-to-sink data flow, scores exploitability, and writes a prioritized, evidence-grounded review. Beta; under active development, but progress may be slow until more contributors join.
+- [AttackMap documentation](https://docs.mlaify.io/): Install, quickstart, CLI reference, AI review, CI, the macOS app, and the analyzer SDK.
+- [grrclone](https://mlaify.io/grrclone/): A free, open-source macOS menu bar app that connects rclone remotes as Finder volumes. No licence key, no phone-home, no kernel extension, no root.
+
+## About
+
+- [About](https://mlaify.io/about/): Who's behind M&L AI and how the work is approached.
+- [Build principles](https://mlaify.io/principles/): Privacy by default, defensive only, and status you can trust.
+- [Contribute](https://mlaify.io/contribute/): How to help with the projects.
+- [Security policy](https://mlaify.io/security/): Vulnerability disclosure policy and contact.
+- [Privacy policy](https://mlaify.io/privacy-policy/): What the site does and doesn't collect.
+
+## Optional
+
+- [Writing](https://mlaify.io/writing/): Personal posts on Linux, photography, and open source.
+- [Source code](https://github.com/mlaify): All repositories.
+- [Sitemap](https://mlaify.io/sitemap.xml)
