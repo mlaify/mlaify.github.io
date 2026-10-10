@@ -1,3 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Happy Mother's Day</title>
+<style>
+  :root {
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-serif: Georgia, "Times New Roman", serif;
+  }
+  body { margin: 0; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+  .ti { width: 1em; height: 1em; vertical-align: -0.125em; }
+</style>
+</head>
+<body>
 <h2 class="sr-only">Tap to open and read the message inside.</h2>
 
 <style>
@@ -333,7 +354,7 @@
             <path d="M135 152 L142 148 L138 158 Z" fill="#E879D6"/>
           </svg>
           <p class="mdc-front-title">Mommy<br><span style="font-size:16px;color:#A084CF;">in the whole world</span></p>
-          <p class="mdc-tap"><i class="ti ti-hand-finger" aria-hidden="true"></i> tap to open</p>
+          <p class="mdc-tap"><svg class="ti" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5" /><path d="M11 11.5v-2a1.5 1.5 0 1 1 3 0v2.5" /><path d="M14 10.5a1.5 1.5 0 0 1 3 0v1.5" /><path d="M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7a69.74 69.74 0 0 1 -.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47" /></svg> tap to open</p>
         </div>
 
       </div>
@@ -341,11 +362,11 @@
 
     <div class="mdc-controls">
       <button class="mdc-btn" id="mdcOpenBtn">
-        <i class="ti ti-mail-opened" aria-hidden="true"></i>
+        <svg class="ti" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9 6l9 -6l-9 -6l-9 6" /><path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" /><path d="M3 19l6 -6" /><path d="M15 13l6 6" /></svg>
         <span id="mdcOpenLabel">Open the card</span>
       </button>
       <button class="mdc-btn secondary" id="mdcHeartBtn">
-        <i class="ti ti-heart" aria-hidden="true"></i>
+        <svg class="ti" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
         Send love
       </button>
     </div>
@@ -389,3 +410,5 @@
   setTimeout(() => spawnHearts(6), 400);
 })();
 </script>
+</body>
+</html>
