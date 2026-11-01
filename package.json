@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "prettier": "^3.8.1",
-    "wrangler": "4.151.2"
+    "wrangler": "4.156.0"
   },
   "engines": {
     "node": ">=20.0.0"
