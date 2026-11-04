@@ -28,15 +28,19 @@ The site is intentionally static for performance, security, and longevity.
 
 ## 🚀 Deploy
 
-Cloudflare **Workers Builds** clones this repo on push, runs the build itself,
-and deploys the result as Workers static assets. There is no GitHub Actions
-workflow, no SSH key, no rsync, and no origin server.
+**The operator approves every production deploy (2026-11-04).** A push to `main`
+starts [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) in the
+`production` environment, which waits for its required reviewer; once approved it
+runs the same build (`npm run build:cf`) and `npx wrangler deploy`. Cloudflare
+**Workers Builds** still clones and builds every push, but only uploads a version
+(`npx wrangler versions upload`), so nothing goes live without the approval. There
+is no SSH key, no rsync, and no origin server.
 
 | | |
 |---|---|
 | Worker | `mlaify-io` |
 | Config | [`wrangler.jsonc`](wrangler.jsonc) |
-| Production branch | `main` → `https://mlaify.io` (also served, not redirected, at `fhrp.org`, `matthewd.xyz`, `mldavis.me`, `cannotfindme.com`, and `tffhrtp.org`) |
+| Production branch | `main` → `https://mlaify.io` after approval (also served, not redirected, at `fhrp.org`, `matthewd.xyz`, `mldavis.me`, `cannotfindme.com`, and `tffhrtp.org`) |
 | Any other branch | built and uploaded as a version; no public preview URL, not promoted to production |
 
 ### Build settings (Cloudflare dashboard)
@@ -46,7 +50,7 @@ Workers & Pages → `mlaify-io` → Settings → Build:
 | Setting | Value |
 |---|---|
 | Build command | `npm run build:cf` |
-| Deploy command | `npx wrangler deploy` |
+| Deploy command | `npx wrangler versions upload` (the approved GitHub job deploys) |
 | Non-production deploy command | `npx wrangler versions upload` |
 | Root directory | *(blank)* |
 
