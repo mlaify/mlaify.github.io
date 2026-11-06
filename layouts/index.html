@@ -21,6 +21,9 @@
           <a href="/writing/" class="btn btn-primary">Read writing</a>
           <a href="/me/" class="btn btn-ghost">About</a>
           <a href="{{ site.Params.githubOrg }}" class="btn btn-ghost">GitHub</a>
+          {{- with site.GetPage "/writing/anpviz-camera-security" }}
+            <a href="{{ .RelPermalink }}" class="btn btn-ghost">Camera security research</a>
+          {{- end }}
         </div>
       </div>
     </div>

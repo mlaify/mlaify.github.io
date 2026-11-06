@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Sanitized excerpts from Anpviz camera evidence</title>
+  <desc id="desc">Typeset excerpts from preserved 2026 research records, not screenshots of a live camera: UID zero after the enabled debug service test, a completed unsigned package transfer with no persistent application, authentication-off defaults, and an unbounded copy found by static analysis.</desc>
+  <rect width="1200" height="700" fill="#f7f5f1"/>
+  <text x="48" y="68" fill="#202b36" font-family="Arial, sans-serif" font-size="32" font-weight="700">Evidence excerpts</text>
+  <text x="48" y="102" fill="#44525e" font-family="Arial, sans-serif" font-size="17">Typeset from preserved analysis notes. This is not a screen capture or a new live test.</text>
+
+  <rect x="48" y="135" width="533" height="205" rx="16" fill="#202b36"/>
+  <text x="72" y="172" fill="#b6d9bd" font-family="Arial, sans-serif" font-size="20" font-weight="700">F22 → F23 · observed on owned unit</text>
+  <text x="72" y="215" fill="#fff" font-family="Menlo, Consolas, monospace" font-size="18">debug service: enabled by admin</text>
+  <text x="72" y="248" fill="#fff" font-family="Menlo, Consolas, monospace" font-size="18">shell status: Uid 0 0 0 0</text>
+  <text x="72" y="296" fill="#d6dce0" font-family="Arial, sans-serif" font-size="16">Conditional chain; service disabled after test.</text>
+
+  <rect x="619" y="135" width="533" height="205" rx="16" fill="#202b36"/>
+  <text x="643" y="172" fill="#b6d9bd" font-family="Arial, sans-serif" font-size="20" font-weight="700">F6 · observed on owned unit</text>
+  <text x="643" y="215" fill="#fff" font-family="Menlo, Consolas, monospace" font-size="18">unsigned package: downloaded</text>
+  <text x="643" y="248" fill="#fff" font-family="Menlo, Consolas, monospace" font-size="18">transfer: final ACK recorded</text>
+  <text x="643" y="296" fill="#d6dce0" font-family="Arial, sans-serif" font-size="16">Persistent application was not demonstrated.</text>
+
+  <rect x="48" y="370" width="533" height="205" rx="16" fill="#fff" stroke="#b47b42" stroke-width="3"/>
+  <text x="72" y="410" fill="#69471f" font-family="Arial, sans-serif" font-size="20" font-weight="700">F12 · shipped configuration</text>
+  <text x="72" y="455" fill="#202b36" font-family="Menlo, Consolas, monospace" font-size="19">OnvifAuth="0"</text>
+  <text x="72" y="488" fill="#202b36" font-family="Menlo, Consolas, monospace" font-size="19">hik_auth="0"  dh_auth="0"</text>
+  <text x="72" y="538" fill="#5a4638" font-family="Arial, sans-serif" font-size="16">Selected attributes; running state can change.</text>
+
+  <rect x="619" y="370" width="533" height="205" rx="16" fill="#fff" stroke="#b47b42" stroke-width="3"/>
+  <text x="643" y="410" fill="#69471f" font-family="Arial, sans-serif" font-size="20" font-weight="700">F20/F21/F24 · static analysis</text>
+  <text x="643" y="455" fill="#202b36" font-family="Menlo, Consolas, monospace" font-size="19">fixed-size stack destination</text>
+  <text x="643" y="488" fill="#202b36" font-family="Menlo, Consolas, monospace" font-size="19">+ unbounded copy from input</text>
+  <text x="643" y="538" fill="#5a4638" font-family="Arial, sans-serif" font-size="16">No overflow-based code execution shown.</text>
+
+  <text x="48" y="624" fill="#44525e" font-family="Arial, sans-serif" font-size="16">Source: private evidence records from the owner's isolated stock camera and firmware images.</text>
+  <text x="48" y="652" fill="#44525e" font-family="Arial, sans-serif" font-size="16">Prepared 5 November 2026 UTC. No identifiers, credentials, requests, or executable payloads included.</text>
+</svg>

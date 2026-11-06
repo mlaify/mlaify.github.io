@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" role="img" aria-labelledby="title desc">
+  <title id="title">Anpviz camera research evidence map</title>
+  <desc id="desc">The owner's isolated stock camera confirmed an authenticated debug enable action followed by a root shell, and an unsigned package download followed by a temporary service interruption. Memory-copy defects and cross-brand scope require further validation.</desc>
+  <rect width="1200" height="660" fill="#f7f5f1"/>
+  <text x="56" y="72" fill="#202b36" font-family="Arial, sans-serif" font-size="34" font-weight="700">What the camera research establishes</text>
+  <text x="56" y="105" fill="#44525e" font-family="Arial, sans-serif" font-size="18">Tests were on the owner's isolated stock-firmware camera before replacement firmware was installed.</text>
+
+  <rect x="56" y="142" width="528" height="194" rx="18" fill="#fff" stroke="#4b755e" stroke-width="3"/>
+  <rect x="56" y="142" width="528" height="48" rx="18" fill="#4b755e"/>
+  <rect x="56" y="177" width="528" height="13" fill="#4b755e"/>
+  <text x="78" y="173" fill="#fff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Confirmed live: debug to root</text>
+  <text x="78" y="222" fill="#202b36" font-family="Arial, sans-serif" font-size="17">Valid admin login enabled the debug service.</text>
+  <text x="78" y="253" fill="#202b36" font-family="Arial, sans-serif" font-size="17">An unauthenticated debug command then yielded UID 0.</text>
+  <text x="78" y="284" fill="#5a4638" font-family="Arial, sans-serif" font-size="16">Precondition: the debug service was enabled first.</text>
+  <text x="78" y="310" fill="#5a4638" font-family="Arial, sans-serif" font-size="16">The temporary services were disabled afterward.</text>
+
+  <rect x="616" y="142" width="528" height="194" rx="18" fill="#fff" stroke="#4b755e" stroke-width="3"/>
+  <rect x="616" y="142" width="528" height="48" rx="18" fill="#4b755e"/>
+  <rect x="616" y="177" width="528" height="13" fill="#4b755e"/>
+  <text x="638" y="173" fill="#fff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Confirmed live: unsigned download</text>
+  <text x="638" y="222" fill="#202b36" font-family="Arial, sans-serif" font-size="17">Boot service downloaded a modified package.</text>
+  <text x="638" y="253" fill="#202b36" font-family="Arial, sans-serif" font-size="17">A later test caused a temporary interruption.</text>
+  <text x="638" y="284" fill="#5a4638" font-family="Arial, sans-serif" font-size="16">Not shown: persistent installation or takeover.</text>
+  <text x="638" y="310" fill="#5a4638" font-family="Arial, sans-serif" font-size="16">Service returned after a power cycle.</text>
+
+  <rect x="56" y="366" width="528" height="194" rx="18" fill="#fff" stroke="#b47b42" stroke-width="3"/>
+  <rect x="56" y="366" width="528" height="48" rx="18" fill="#b47b42"/>
+  <rect x="56" y="401" width="528" height="13" fill="#b47b42"/>
+  <text x="78" y="397" fill="#fff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Confirmed in code or defaults</text>
+  <text x="78" y="446" fill="#202b36" font-family="Arial, sans-serif" font-size="17">Authentication-off defaults and fixed-key storage.</text>
+  <text x="78" y="477" fill="#202b36" font-family="Arial, sans-serif" font-size="17">Unbounded copies into fixed-size buffers.</text>
+  <text x="78" y="508" fill="#5a4638" font-family="Arial, sans-serif" font-size="16">Runtime reachability varies by path and configuration.</text>
+  <text x="78" y="534" fill="#5a4638" font-family="Arial, sans-serif" font-size="16">No overflow-based code execution was demonstrated.</text>
+
+  <rect x="616" y="366" width="528" height="194" rx="18" fill="#fff" stroke="#687586" stroke-width="3"/>
+  <rect x="616" y="366" width="528" height="48" rx="18" fill="#687586"/>
+  <rect x="616" y="401" width="528" height="13" fill="#687586"/>
+  <text x="638" y="397" fill="#fff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Still to establish</text>
+  <text x="638" y="446" fill="#202b36" font-family="Arial, sans-serif" font-size="17">Which other products ship the affected code.</text>
+  <text x="638" y="477" fill="#202b36" font-family="Arial, sans-serif" font-size="17">Whether a crafted package installs persistently.</text>
+  <text x="638" y="508" fill="#202b36" font-family="Arial, sans-serif" font-size="17">Whether every parser is reachable on the wire.</text>
+  <text x="638" y="539" fill="#5a4638" font-family="Arial, sans-serif" font-size="16">No fleet size or active misuse has been established.</text>
+
+  <text x="56" y="616" fill="#44525e" font-family="Arial, sans-serif" font-size="16">Research status: 5 November 2026 UTC • CISA #116607 • CERT/CC VRF #26-10-FZTVG</text>
+</svg>
