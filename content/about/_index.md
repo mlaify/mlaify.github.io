@@ -38,5 +38,6 @@ See [build principles](/principles/) for the longer version.
 
 ## Elsewhere
 
+- [matthewd.org](https://matthewd.org/) — my personal site and writing
 - [GitHub](https://github.com/mlaify) — code
 - [AttackMap docs](https://docs.mlaify.io) — documentation
