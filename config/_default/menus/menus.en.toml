@@ -1,9 +1,4 @@
 [[main]]
-  name = "Writing"
-  url = "/writing/"
-  weight = 10
-
-[[main]]
   name = "AttackMap"
   url = "/attackmap/"
   weight = 20
@@ -18,14 +13,20 @@
   url = "/about/"
   weight = 30
 
+# Writing moved to the personal site; mlaify.io/writing/* 301s there (static/_redirects).
+[[main]]
+  name = "Writing"
+  url = "https://matthewd.xyz/writing/"
+  weight = 40
+
 [[footer]]
   name = "About"
   url = "/about/"
   weight = 10
 
 [[footer]]
-  name = "Archives"
-  url = "/writing/"
+  name = "Writing"
+  url = "https://matthewd.xyz/writing/"
   weight = 20
 
 [[footer]]

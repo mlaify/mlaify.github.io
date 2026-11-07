@@ -1,8 +1,10 @@
 # mlaify.io
 
-Personal website and blog, built with Hugo and served on Cloudflare Workers.
+Project website for M&L AI, built with Hugo and served on Cloudflare Workers.
 
-This site contains long-form writing, technical notes, and project pages.
+This site contains the project pages. Writing moved to the personal site,
+[matthewd.xyz](https://matthewd.xyz/writing/) (repo `mlaifyxyz/mlaifyxyz.github.io`), on
+2026-11-07; `/writing/*` here 301-redirects there (see "Redirects").
 
 ## License
 
@@ -40,7 +42,7 @@ is no SSH key, no rsync, and no origin server.
 |---|---|
 | Worker | `mlaify-io` |
 | Config | [`wrangler.jsonc`](wrangler.jsonc) |
-| Production branch | `main` → `https://mlaify.io` after approval (also served, not redirected, at `fhrp.org`, `matthewd.xyz`, `mldavis.me`, `cannotfindme.com`, and `tffhrtp.org`) |
+| Production branch | `main` → `https://mlaify.io` after approval (also served, not redirected, at `fhrp.org`, `mldavis.me`, `cannotfindme.com`, and `tffhrtp.org`; `matthewd.xyz` moved to the personal site's Worker on 2026-11-07) |
 | Any other branch | built and uploaded as a version; no public preview URL, not promoted to production |
 
 ### Build settings (Cloudflare dashboard)
@@ -57,8 +59,8 @@ Workers & Pages → `mlaify-io` → Settings → Build:
 `build:cf` lives in [`package.json`](package.json) so the actual steps stay in
 version control and the dashboard holds only the entry point. It runs `npm ci`,
 Hugo, Pagefind, then [`scripts/check-build.sh`](scripts/check-build.sh), which
-fails the build if `index.html`, `404.html`, `pagefind/`, `security.txt`, or
-`_headers` are missing. A build that fails never becomes a deployment.
+fails the build if `index.html`, `404.html`, `pagefind/`, `security.txt`,
+`_headers`, or `_redirects` are missing. A build that fails never becomes a deployment.
 
 ### Toolchain pinning
 
@@ -86,6 +88,16 @@ deploy time, and it is not itself served. If a Cloudflare Transform Rule also
 sets these headers, remove one side — duplicated security headers are worse than
 none.
 
+### Redirects
+
+[`static/_redirects`](static/_redirects) holds 301s for content that moved off
+this site. Cloudflare reads `public/_redirects` at deploy time, before `_headers`
+and asset lookup, on every hostname the Worker serves. All writing moved to the
+personal site on 2026-11-07, so `/writing/*`, the old `/posts/*` and `/archives/*`
+aliases, `/tags/*`, `/categories/*` and the two Anpviz evidence images redirect to
+the same paths on `https://matthewd.xyz/`. Keep them: CERT/CC and the vendor have
+the Anpviz research URL (`/writing/anpviz-camera-security/`).
+
 ### Local
 
 ```bash
@@ -102,9 +114,7 @@ all apply, which `hugo server` does not reproduce.
 
 ```text
 .
-├── content/            # Blog posts, pages, and written content
-│   ├── writing/        # Blog posts
-│   └── ...             # Project and standalone pages
+├── content/            # Project and standalone pages (writing lives on matthewd.xyz)
 ├── static/             # Images, favicon, humans.txt, _headers, etc.
 ├── layouts/            # Templates (the theme lives here)
 ├── assets/             # CSS, JS, processed assets

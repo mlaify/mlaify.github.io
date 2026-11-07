@@ -18,12 +18,11 @@
           I make AI-driven software with a focus on defensive cybersecurity — local-first, open source, and built to respect the people who use it.
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="/writing/" class="btn btn-primary">Read writing</a>
+          {{- /* Writing moved to the personal site (matthewd.xyz); static/_redirects covers the old URLs. */}}
+          <a href="https://matthewd.xyz/writing/" class="btn btn-primary">Read writing ↗</a>
           <a href="/me/" class="btn btn-ghost">About</a>
           <a href="{{ site.Params.githubOrg }}" class="btn btn-ghost">GitHub</a>
-          {{- with site.GetPage "/writing/anpviz-camera-security" }}
-            <a href="{{ .RelPermalink }}" class="btn btn-ghost">Camera security research</a>
-          {{- end }}
+          <a href="https://matthewd.xyz/writing/anpviz-camera-security/" class="btn btn-ghost">Camera security research ↗</a>
         </div>
       </div>
     </div>
@@ -69,34 +68,12 @@
   </div>
 </section>
 
-<!-- Latest writing -->
+<!-- Writing lives on the personal site -->
 <section class="container-page py-16">
-  <div class="mb-10 flex items-end justify-between">
-    <h2 class="text-3xl font-semibold tracking-tight text-ink-900 dark:text-white">Latest writing</h2>
-    <a href="/writing/" class="text-sm font-medium text-copper-700 hover:text-copper-800 dark:text-copper-400 dark:hover:text-copper-300">
-      All posts →
-    </a>
-  </div>
-
-  {{- $posts := first 5 (where site.RegularPages "Section" "writing") }}
-  <ul class="divide-y divide-ink-200 dark:divide-ink-800">
-    {{- range $posts }}
-      <li class="py-5">
-        <a href="{{ .RelPermalink }}" class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-          <div class="flex-1">
-            <h3 class="text-lg font-medium text-ink-900 group-hover:text-copper-700 dark:text-white dark:group-hover:text-copper-400">
-              {{ .Title }}
-            </h3>
-            {{- with .Params.description }}
-              <p class="mt-1 text-sm text-ink-600 dark:text-ink-400">{{ . }}</p>
-            {{- end }}
-          </div>
-          <time class="text-sm text-ink-500 dark:text-ink-400" datetime="{{ .Date.Format "2006-01-02" }}">
-            {{ .Date.Format "Jan 2, 2006" }}
-          </time>
-        </a>
-      </li>
-    {{- end }}
-  </ul>
+  <h2 class="text-3xl font-semibold tracking-tight text-ink-900 dark:text-white">Writing</h2>
+  <p class="mt-3 max-w-2xl text-ink-600 dark:text-ink-400">
+    Posts, including the camera security research, are on my personal site,
+    <a class="underline hover:text-copper-700 dark:hover:text-copper-400" href="https://matthewd.xyz/writing/">matthewd.xyz</a>.
+  </p>
 </section>
 {{ end }}

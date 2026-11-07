@@ -1,0 +1,28 @@
+# Redirects for Workers static assets.
+#
+# Hugo copies static/ verbatim into public/, so this lands at public/_redirects,
+# which Cloudflare reads at deploy time; it is not served. Redirects run before
+# _headers and before asset lookup. They apply on every hostname this Worker
+# serves (mlaify.io, fhrp.org, mldavis.me, cannotfindme.com, tffhrtp.org).
+# Format: [source] [destination] [code]. Limits: 2,000 static and 100 dynamic
+# rules, 1,000 characters per rule; static rules must come before dynamic ones.
+# scripts/check-build.sh fails the build if this file is missing.
+
+# All writing moved to the personal site, matthewd.xyz (2026-11-07). The slugs
+# are identical there. CERT/CC, CISA and the vendor have the Anpviz research URL
+# (/writing/anpviz-camera-security/), so keep these rules.
+
+# Static rules
+/writing https://matthewd.xyz/writing/ 301
+/posts https://matthewd.xyz/writing/ 301
+/archives https://matthewd.xyz/writing/ 301
+/images/anpviz-evidence-map.svg https://matthewd.xyz/images/anpviz-evidence-map.svg 301
+/images/anpviz-evidence-excerpts.svg https://matthewd.xyz/images/anpviz-evidence-excerpts.svg 301
+
+# Dynamic rules: every post, the section RSS feed, the old /posts/ and /archives/
+# aliases, and the taxonomy pages (only posts used tags and categories).
+/writing/* https://matthewd.xyz/writing/:splat 301
+/posts/* https://matthewd.xyz/writing/:splat 301
+/archives/* https://matthewd.xyz/writing/:splat 301
+/tags/* https://matthewd.xyz/tags/:splat 301
+/categories/* https://matthewd.xyz/categories/:splat 301
