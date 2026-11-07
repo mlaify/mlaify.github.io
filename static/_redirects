@@ -1,0 +1,17 @@
+# Redirects for Workers static assets.
+#
+# Hugo copies static/ verbatim into public/, so this lands at public/_redirects,
+# which Cloudflare reads at deploy time; it is not served. Redirects run before
+# _headers and before asset lookup. They apply on every hostname this Worker
+# serves (mlaify.io, fhrp.org, matthewd.xyz, mldavis.me, cannotfindme.com,
+# tffhrtp.org). Format: [source] [destination] [code]. Limits: 2,000 static and
+# 100 dynamic rules, 1,000 characters per rule. scripts/check-build.sh fails the
+# build if this file is missing.
+
+# Anpviz camera security research moved to the personal site (2026-11-07).
+# CERT/CC, the vendor and readers have the original URL, so keep these.
+/writing/anpviz-camera-security/ https://matthewd.org/writing/anpviz-camera-security/ 301
+/writing/anpviz-camera-security https://matthewd.org/writing/anpviz-camera-security/ 301
+/writing/anpviz-camera-security/index.html https://matthewd.org/writing/anpviz-camera-security/ 301
+/images/anpviz-evidence-map.svg https://matthewd.org/images/anpviz-evidence-map.svg 301
+/images/anpviz-evidence-excerpts.svg https://matthewd.org/images/anpviz-evidence-excerpts.svg 301

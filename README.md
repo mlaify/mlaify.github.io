@@ -57,8 +57,8 @@ Workers & Pages → `mlaify-io` → Settings → Build:
 `build:cf` lives in [`package.json`](package.json) so the actual steps stay in
 version control and the dashboard holds only the entry point. It runs `npm ci`,
 Hugo, Pagefind, then [`scripts/check-build.sh`](scripts/check-build.sh), which
-fails the build if `index.html`, `404.html`, `pagefind/`, `security.txt`, or
-`_headers` are missing. A build that fails never becomes a deployment.
+fails the build if `index.html`, `404.html`, `pagefind/`, `security.txt`,
+`_headers`, or `_redirects` are missing. A build that fails never becomes a deployment.
 
 ### Toolchain pinning
 
@@ -85,6 +85,15 @@ and cache headers. Hugo copies it to `public/_headers`, Cloudflare consumes it a
 deploy time, and it is not itself served. If a Cloudflare Transform Rule also
 sets these headers, remove one side — duplicated security headers are worse than
 none.
+
+### Redirects
+
+[`static/_redirects`](static/_redirects) holds 301s for content that moved off
+this site. Cloudflare reads `public/_redirects` at deploy time, before `_headers`
+and asset lookup, on every hostname the Worker serves. The Anpviz camera security
+research moved to the personal site on 2026-11-07, so
+`/writing/anpviz-camera-security/` and its two images redirect to
+`https://matthewd.org/…`. Keep those rules: CERT/CC and the vendor have the old URL.
 
 ### Local
 
