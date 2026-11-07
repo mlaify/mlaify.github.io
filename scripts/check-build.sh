@@ -30,7 +30,7 @@ note() {
 [ -f public/_headers ] || note "public/_headers missing — static/_headers did not reach the build output"
 
 # Same for public/_redirects: without it the deploy succeeds and every moved URL
-# (for example the Anpviz research, now on matthewd.org) silently 404s.
+# (all writing, including the Anpviz research, now on matthewd.xyz) silently 404s.
 [ -f public/_redirects ] || note "public/_redirects missing — static/_redirects did not reach the build output"
 
 if [ "$fail" -ne 0 ]; then
