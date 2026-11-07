@@ -55,6 +55,11 @@
   weight = 50
 
 [[footer]]
+  name = "Personal site"
+  url = "https://matthewd.xyz/"
+  weight = 55
+
+[[footer]]
   name = "AttackMap docs"
   url = "https://docs.mlaify.io"
   weight = 60
