@@ -16,6 +16,7 @@ All projects are open source under github.com/mlaify. Security reports go to sec
   - [How it works](https://mlaify.io/grrclone/how-it-works/): One rclone daemon, a loopback NFS server per connection, and mounts with options that keep Finder responsive.
   - [Install](https://mlaify.io/grrclone/install/): Homebrew or the DMG.
   - [Changelog](https://mlaify.io/grrclone/changelog/): Every release.
+  - [Documentation](https://docs.mlaify.io/grrclone/): Install, first run, the usage document, limitations and benchmarks.
 - [Documentation](https://docs.mlaify.io/): Docs for every product.
 
 ## About
