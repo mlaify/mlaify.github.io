@@ -8,6 +8,7 @@ type: "product"
 cascade:
   type: "product"
   comments: false
+docs: "https://docs.mlaify.io/grrclone/"
 repo: "https://github.com/mlaify/grrclone"
 ---
 
