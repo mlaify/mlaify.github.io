@@ -6,9 +6,17 @@ All projects are open source under github.com/mlaify. Security reports go to sec
 
 ## Projects
 
+- [Products](https://mlaify.io/products/): Every project, in one list.
 - [AttackMap](https://mlaify.io/attackmap/): Local-first, AI-assisted defensive security analysis for codebases. Maps the attack surface, traces request-to-sink data flow, scores exploitability, and writes a prioritized, evidence-grounded review. Beta; under active development, but progress may be slow until more contributors join.
-- [AttackMap documentation](https://docs.mlaify.io/): Install, quickstart, CLI reference, AI review, CI, the macOS app, and the analyzer SDK.
+  - [How it works](https://mlaify.io/attackmap/how-it-works/): The analyzers, the whole-repo passes (taint, dependencies, CI workflows, authorization, anomalies), scoring, outputs, and the optional AI review.
+  - [Install](https://mlaify.io/attackmap/install/): Homebrew, uv or pip from pkg.mlaify.io, and the macOS app.
+  - [Changelog](https://mlaify.io/attackmap/changelog/): Every release.
+  - [Documentation](https://docs.mlaify.io/attackmap/): Install, quickstart, CLI reference, AI review, CI, the macOS app, and the analyzer SDK.
 - [grrclone](https://mlaify.io/grrclone/): A free, open-source macOS menu bar app that connects rclone remotes as Finder volumes. No licence key, no phone-home, no kernel extension, no root.
+  - [How it works](https://mlaify.io/grrclone/how-it-works/): One rclone daemon, a loopback NFS server per connection, and mounts with options that keep Finder responsive.
+  - [Install](https://mlaify.io/grrclone/install/): Homebrew or the DMG.
+  - [Changelog](https://mlaify.io/grrclone/changelog/): Every release.
+- [Documentation](https://docs.mlaify.io/): Docs for every product.
 
 ## About
 

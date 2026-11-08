@@ -4,6 +4,12 @@ description: "Local-first, AI-assisted defensive security analysis for codebases
 lead: "Local-first, AI-assisted defensive security analysis for codebases."
 draft: false
 comments: false
+type: "product"
+cascade:
+  type: "product"
+  comments: false
+docs: "https://docs.mlaify.io/attackmap/"
+repo: "https://github.com/mlaify/AttackMap"
 ---
 
 {{< status "help" "Looking for help" >}} {{< status "beta" >}}
@@ -18,7 +24,8 @@ Everything runs on your machine. Nothing is uploaded unless you explicitly turn 
 an LLM backend, and the output is aimed entirely at remediation: no exploit code,
 no offensive payloads.
 
-{{< cta url="https://docs.mlaify.io" variant="primary" label="Read the docs" >}}
+{{< cta url="/attackmap/install/" variant="primary" label="Install" >}}
+{{< cta url="https://docs.mlaify.io/attackmap/" variant="ghost" label="Read the docs" >}}
 {{< cta url="https://github.com/mlaify/AttackMap" variant="ghost" label="View on GitHub" >}}
 
 ![The AttackMap macOS app after scanning OWASP Juice Shop: 29 findings, 22 exploitable sinks, and the most exploitable route-to-sink path ranked first](/images/attackmap/overview.png)
@@ -75,34 +82,16 @@ SARIF 2.1.0, Mermaid and Graphviz diagrams, baseline diff gating with `--fail-on
 
 ## Get started
 
-AttackMap needs Python 3.11 or later and installs straight from GitHub:
-
 ```bash
-pipx install git+https://github.com/mlaify/AttackMap.git
-```
-
-Or install the core plus every official analyzer plugin, and run your first scan:
-
-```bash
-pip install "attackmap[all] @ git+https://github.com/mlaify/AttackMap.git"
+brew install mlaify/tap/attackmap           # the CLI and all 15 analyzer plugins
 attackmap analyze /path/to/repo --output reports
 ```
 
-A few common runs:
-
-```bash
-attackmap analyze <path> --cve            # dependency CVEs (OSV.dev)
-attackmap analyze <path> --llm            # AI narrative (--llm-provider claude|openai)
-attackmap analyze <path> --hunt --verify  # exploit-hypothesis hunt, adjudicated against source
-attackmap analyze <path> --baseline prev.json --fail-on-new-high   # PR gate
-attackmap analyze ./svc-a ./svc-b ./gw    # cross-repo fleet scan
-attackmap suggest ./repo                  # recommend analyzer plugins
-```
-
 Start with `reports/defensive-review.md`. Every run also writes JSON
-(`attackmap-report.json`), SARIF, and diagram artifacts. The
-[quickstart](https://docs.mlaify.io/quickstart/), [CLI reference](https://docs.mlaify.io/cli/),
-and [outputs reference](https://docs.mlaify.io/scanning/) cover the rest.
+(`attackmap-report.json`), SARIF, diagrams and Sigma rules. [Install](/attackmap/install/)
+has uv, pip and the macOS app; [how it works](/attackmap/how-it-works/) explains what a
+scan does; the [quickstart](https://docs.mlaify.io/attackmap/quickstart/) and
+[CLI reference](https://docs.mlaify.io/attackmap/cli/) cover the rest.
 
 ## Supported ecosystems
 
@@ -111,15 +100,16 @@ Fourteen analyzer plugins, each installable on its own (`[all]` installs every o
 (Spring), **C#** (ASP.NET Core), **Rust**, **PHP** (web, Laminas, Omeka-S), **C**,
 **C++**, **Terraform**, **IaC** (Docker, Compose, GitHub Actions), and the
 **AT Protocol**. A Swift analyzer is an early scaffold. To cover something else, write
-your own against the [analyzer SDK](https://docs.mlaify.io/sdk/).
+your own against the [analyzer SDK](https://docs.mlaify.io/attackmap/sdk/).
 
 ## The macOS app
 
 A native macOS front end drives the same CLI and renders every result view —
 overview, findings, exploitability, attack surface, attack-path diagrams, and the
-review — with watch mode and fleet scans. Build it from source at
+review — with watch mode and fleet scans. Install it with
+`brew install --cask mlaify/tap/attackmap-app`, or build it from source at
 [mlaify/AttackMap-mac](https://github.com/mlaify/AttackMap-mac); the
-[macOS app guide](https://docs.mlaify.io/gui/) walks through it.
+[macOS app guide](https://docs.mlaify.io/attackmap/gui/) walks through it.
 
 ![The AttackMap macOS app ranking route-to-sink paths by exploitability](/images/attackmap/exploitability.png)
 
@@ -132,7 +122,7 @@ review — with watch mode and fleet scans. Build it from source at
 
 ## Links
 
-- [docs.mlaify.io](https://docs.mlaify.io) — install, quickstart, CLI, AI review, CI, the macOS app, and the SDK
+- [docs.mlaify.io](https://docs.mlaify.io/attackmap/) — install, quickstart, CLI, AI review, CI, the macOS app, and the SDK
 - [mlaify/AttackMap](https://github.com/mlaify/AttackMap) — the core engine (MIT)
 - [Analyzer plugins](https://github.com/orgs/mlaify/repositories?q=attackmap-analyzer) — one repo per ecosystem
 - [mlaify/AttackMap-mac](https://github.com/mlaify/AttackMap-mac) — the macOS app

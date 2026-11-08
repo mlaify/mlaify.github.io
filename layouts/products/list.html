@@ -1,0 +1,25 @@
+{{ define "main" }}
+{{- /* Every section whose type is "product" (its _index.md sets `type: "product"`). */ -}}
+<section class="container-page py-12 lg:py-16">
+  {{ partial "breadcrumbs.html" . }}
+  <header class="mb-10 max-w-3xl">
+    <h1 class="text-balance text-4xl font-semibold tracking-tight text-ink-900 sm:text-5xl dark:text-white">{{ .Title }}</h1>
+    {{ with .Params.lead | default .Description }}<p class="mt-4 text-lg text-ink-600 dark:text-ink-300">{{ . }}</p>{{ end }}
+  </header>
+  <div class="grid gap-6 md:grid-cols-2">
+    {{- range where site.Sections "Type" "product" }}
+    <div class="card flex flex-col">
+      <h2 class="text-xl font-semibold text-ink-900 dark:text-white"><a class="hover:underline" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      <p class="mt-2 flex-1 text-sm text-ink-600 dark:text-ink-400">{{ .Params.lead | default .Description }}</p>
+      <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+        {{- range .Pages.ByWeight }}
+        <li><a class="accent-text hover:underline" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+        {{- end }}
+        {{- with .Params.docs }}<li><a class="accent-text hover:underline" href="{{ . }}">Docs ↗</a></li>{{ end }}
+      </ul>
+      <div class="mt-5"><a href="{{ .RelPermalink }}" class="btn btn-primary">Learn more</a></div>
+    </div>
+    {{- end }}
+  </div>
+</section>
+{{ end }}

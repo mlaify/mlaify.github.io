@@ -9,6 +9,11 @@
   weight = 25
 
 [[main]]
+  name = "Docs"
+  url = "https://docs.mlaify.io/"
+  weight = 28
+
+[[main]]
   name = "About"
   url = "/about/"
   weight = 30
@@ -60,8 +65,13 @@
   weight = 55
 
 [[footer]]
-  name = "AttackMap docs"
-  url = "https://docs.mlaify.io"
+  name = "Products"
+  url = "/products/"
+  weight = 5
+
+[[footer]]
+  name = "Docs"
+  url = "https://docs.mlaify.io/"
   weight = 60
 
 [[social]]

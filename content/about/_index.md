@@ -30,7 +30,7 @@ See [build principles](/principles/) for the longer version.
 
 ## What I build
 
-**[AttackMap](/attackmap/)** is a local-first, open-source defensive security analysis engine. It reads a repository's source code, reconstructs the attack surface — routes, data stores, trust crossings, secrets in the wrong places — and produces prioritized, evidence-anchored findings mapped to MITRE ATT&CK. Code never leaves the machine, and the output is oriented entirely toward remediation: no exploit code, no offensive payloads. Full documentation lives at [docs.mlaify.io](https://docs.mlaify.io).
+**[AttackMap](/attackmap/)** is a local-first, open-source defensive security analysis engine. It reads a repository's source code, reconstructs the attack surface — routes, data stores, trust crossings, secrets in the wrong places — and produces prioritized, evidence-anchored findings mapped to MITRE ATT&CK. Code never leaves the machine, and the output is oriented entirely toward remediation: no exploit code, no offensive payloads. Full documentation lives at [docs.mlaify.io](https://docs.mlaify.io/attackmap/).
 
 {{< status "help" "Looking for help" >}} AttackMap is looking for contributors and co-maintainers. It's under active development, but progress may be slow until more help or co-maintainers join — if you'd like to help with the core engine, an analyzer, the macOS app, or the docs, [open an issue](https://github.com/mlaify/AttackMap/issues) to say hello.
 
@@ -40,4 +40,4 @@ See [build principles](/principles/) for the longer version.
 
 - [matthewd.xyz](https://matthewd.xyz/) — my personal site and writing
 - [GitHub](https://github.com/mlaify) — code
-- [AttackMap docs](https://docs.mlaify.io) — documentation
+- [Docs](https://docs.mlaify.io/) — documentation for AttackMap and the other projects

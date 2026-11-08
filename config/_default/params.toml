@@ -8,7 +8,7 @@ twitterHandle = ""
 # Repo / org links
 githubOrg = "https://github.com/mlaify"
 siteRepo = "https://github.com/mlaify/mlaify.github.io"
-attackmapDocs = "https://docs.mlaify.io"
+attackmapDocs = "https://docs.mlaify.io/attackmap/"
 
 # Footer toggles
 showBuildInfo = false

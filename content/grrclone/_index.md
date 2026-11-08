@@ -4,6 +4,11 @@ description: "A free, open-source macOS menu bar app that connects rclone remote
 lead: "A free, open-source macOS menu bar app that connects rclone remotes as Finder volumes."
 draft: false
 comments: false
+type: "product"
+cascade:
+  type: "product"
+  comments: false
+repo: "https://github.com/mlaify/grrclone"
 ---
 
 No licence key. No phone-home. No kernel extension. No root.
@@ -25,14 +30,8 @@ way, asks for nothing, and tells no one.
 brew install --cask mlaify/tap/grrclone
 ```
 
-Or download the latest DMG from [Releases](https://github.com/mlaify/grrclone/releases)
-and drag it to Applications. It's signed and notarised, so Gatekeeper opens it
-without argument. Apple Silicon only; requires macOS 14 or later.
-
-grrclone appears in the menu bar with no Dock icon, finds the remotes already in your
-`rclone.conf`, and lists them. Homebrew owns updates
-(`brew update && brew upgrade --cask grrclone`); grrclone can check for new releases
-if you ask it to, but it never replaces its own bundle.
+Or download the [latest DMG](https://github.com/mlaify/grrclone/releases/latest). Apple
+Silicon, macOS 14 or later. More in [Install](/grrclone/install/).
 
 ## What it does
 
@@ -94,24 +93,9 @@ up, or App Transport Security is weakened.
 ## How it works
 
 grrclone runs one bundled `rclone` daemon, starts an NFS server on loopback per
-connection, and performs the mount itself:
-
-```
-soft,intr,timeo=600,retrans=2,nolocks,locallocks,nfc,rsize=131072,wsize=131072
-```
-
-`nolocks` matters because rclone's NFS server runs no lock daemon, so anything taking
-a file lock — SQLite, Office, Adobe — would otherwise hang waiting on a daemon that
-doesn't exist. Against a real WebDAV remote over the internet:
-
-| | `rclone copy` | Through the mount |
-|---|---|---|
-| Cold read | 15.0 MB/s | 9.2 MB/s |
-| Write, end to end | 15.3 MB/s | 11.9 MB/s |
-| List 1,000 entries | 1.79 s | 0.64 s |
-
-Method and full numbers are in
-[docs/benchmarks.md](https://github.com/mlaify/grrclone/blob/main/docs/benchmarks.md).
+connection, and performs the mount itself, with `soft,intr` and `nolocks,locallocks`
+so a dead backend gives an error instead of a hung Finder. [How it works](/grrclone/how-it-works/)
+has the parts, the safety rules and the benchmarks.
 
 ## Privacy
 
@@ -138,6 +122,6 @@ has the detail and the measurements.
 
 - [mlaify/grrclone](https://github.com/mlaify/grrclone) — source, issues, and releases (MIT)
 - [Migrating from a hand-rolled launchd mount](https://github.com/mlaify/grrclone/blob/main/docs/migrating.md) without changing your paths
-- [Changelog](https://github.com/mlaify/grrclone/blob/main/CHANGELOG.md) · [Contributing](https://github.com/mlaify/grrclone/blob/main/CONTRIBUTING.md) · [Security policy](https://github.com/mlaify/grrclone/blob/main/SECURITY.md)
+- [Changelog](/grrclone/changelog/) · [Contributing](https://github.com/mlaify/grrclone/blob/main/CONTRIBUTING.md) · [Security policy](https://github.com/mlaify/grrclone/blob/main/SECURITY.md)
 
 grrclone is not affiliated with the rclone project.
