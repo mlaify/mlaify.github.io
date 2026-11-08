@@ -45,6 +45,8 @@
 <!-- Self-hosted system fonts; native UI fallback if not provided. -->
 <link rel="preconnect" href="https://rsms.me/" crossorigin />
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+<!-- Pagefind UI base styles; the variables in app.css theme them. -->
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
 
 {{- $css := resources.Get "css/app.css" | postCSS (dict "config" "./postcss.config.js") -}}
 {{- if hugo.IsProduction -}}

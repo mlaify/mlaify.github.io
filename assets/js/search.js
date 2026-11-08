@@ -34,13 +34,15 @@
     if (initialized) return;
     initialized = true;
     try {
+      // pagefind-ui.js is a classic script, not an ES module: importing it runs
+      // it, and it sets window.PagefindUI. It exports nothing, so the old check
+      // for mod.PagefindUI failed on every build.
       const mod = await import("/pagefind/pagefind-ui.js");
-      if (!mod.PagefindUI) {
-        throw new Error(
-          "/pagefind/pagefind-ui.js loaded but did not export PagefindUI",
-        );
+      const PagefindUI = mod.PagefindUI || window.PagefindUI;
+      if (!PagefindUI) {
+        throw new Error("/pagefind/pagefind-ui.js loaded but PagefindUI is not defined");
       }
-      new mod.PagefindUI({
+      new PagefindUI({
         element: "#pagefind-search",
         showSubResults: true,
         showImages: false,

@@ -12,6 +12,9 @@
     color-scheme: light dark;
     --accent-50: theme("colors.brand.50");
     --accent-100: theme("colors.brand.100");
+    /* Used by .accent-text and the Pagefind theme in dark mode. It was never
+       defined, so accent text fell back to the body colour there. */
+    --accent-400: theme("colors.brand.400");
     --accent-500: theme("colors.brand.500");
     --accent-600: theme("colors.brand.600");
     --accent-700: theme("colors.brand.700");
