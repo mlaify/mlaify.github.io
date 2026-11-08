@@ -13,7 +13,7 @@ lead: "My open source work lives on GitHub. Pick the repository you care about a
 ## Where everything lives
 
 - **GitHub**: [github.com/mlaify](https://github.com/mlaify)
-- **This site's source**: [mlaify/mlaify.github.io](https://github.com/mlaify/mlaify.github.io)
+- **This site's source**: [mlaify/mlaify.io](https://github.com/mlaify/mlaify.io)
 
 Each repository is the canonical source of truth for its code, docs, issues, and discussion.
 
@@ -21,7 +21,7 @@ Each repository is the canonical source of truth for its code, docs, issues, and
 
 You don't have to write code to be useful.
 
-- **File an issue when something is wrong on this site.** Broken link, wrong status, missing info, typo, accessibility problem — file against [mlaify/mlaify.github.io](https://github.com/mlaify/mlaify.github.io).
+- **File an issue when something is wrong on this site.** Broken link, wrong status, missing info, typo, accessibility problem — file against [mlaify/mlaify.io](https://github.com/mlaify/mlaify.io).
 - **Run something on your own hardware and tell me what happened.** Real-world reports on real devices and real deployments are how validation coverage grows.
 - **Watch a repo.** Releases are announced through GitHub releases.
 
