@@ -182,3 +182,15 @@
   --pagefind-ui-border: theme("colors.ink.700");
   --pagefind-ui-tag: theme("colors.ink.800");
 }
+
+/* Product sections (/attackmap/, /grrclone/): the tab row under the title. */
+@layer components {
+  .product-tab {
+    @apply block whitespace-nowrap border-b-2 border-transparent px-3 py-2.5 font-medium text-ink-600 hover:text-ink-900;
+    @apply dark:text-ink-400 dark:hover:text-white;
+  }
+  .product-tab.active {
+    border-color: var(--accent-600);
+    @apply text-ink-900 dark:text-white;
+  }
+}

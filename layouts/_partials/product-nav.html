@@ -1,0 +1,26 @@
+{{- /*
+  The product's own pages as tabs: Overview, then its pages by weight, then the
+  docs (front matter `docs` on the product's _index.md) and the source.
+*/ -}}
+{{- $root := cond .IsSection . .Parent -}}
+{{- $current := .RelPermalink -}}
+{{- $tabs := slice (dict "title" "Overview" "url" $root.RelPermalink) -}}
+{{- range $root.Pages.ByWeight -}}
+  {{- $tabs = $tabs | append (dict "title" .LinkTitle "url" .RelPermalink) -}}
+{{- end -}}
+<nav aria-label="{{ $root.Title }}" class="border-b border-ink-200 dark:border-ink-800">
+  <ul class="-mb-px flex gap-1 overflow-x-auto text-sm">
+    {{- range $tabs }}
+      {{- $active := eq .url $current }}
+      <li>
+        <a href="{{ .url }}" class="product-tab{{ if $active }} active{{ end }}"{{ if $active }} aria-current="page"{{ end }}>{{ .title }}</a>
+      </li>
+    {{- end }}
+    {{- with $root.Params.docs }}
+      <li><a href="{{ . }}" class="product-tab">Docs ↗</a></li>
+    {{- end }}
+    {{- with $root.Params.repo }}
+      <li><a href="{{ . }}" class="product-tab">GitHub ↗</a></li>
+    {{- end }}
+  </ul>
+</nav>
