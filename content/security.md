@@ -30,7 +30,7 @@ Please give us at least **90 days** from your initial report to resolve the issu
 
 When participating in our vulnerability disclosure program in good faith, we ask that you:
 
-- Follow our [Vulnerability Disclosure Policy](https://github.com/mlaify/mlaify.github.io/blob/main/SECURITY.md) and any other applicable agreements;
+- Follow our [Vulnerability Disclosure Policy](https://github.com/mlaify/mlaify.io/blob/main/SECURITY.md) and any other applicable agreements;
 - Report vulnerabilities promptly and avoid violating the privacy of others or disrupting our systems;
 - Limit data access to the minimum required for a Proof of Concept;
 - Cease testing and report immediately if you encounter any user data (PII, PHI, financial data); and
@@ -51,7 +51,7 @@ We consider security research conducted under this policy to be authorized under
 
 ---
 
-For the complete policy text, see [SECURITY.md](https://github.com/mlaify/mlaify.github.io/blob/main/SECURITY.md) in our repository.
+For the complete policy text, see [SECURITY.md](https://github.com/mlaify/mlaify.io/blob/main/SECURITY.md) in our repository.
 
 > This policy follows the [disclose.io](https://disclose.io) vulnerability disclosure framework.
 

@@ -31,8 +31,8 @@ By participating, you agree to follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ```sh
 # Clone with submodules (PaperMod theme)
-git clone --recurse-submodules https://github.com/mlaify/mlaify.github.io.git
-cd mlaify.github.io
+git clone --recurse-submodules https://github.com/mlaify/mlaify.io.git
+cd mlaify.io
 
 # Run a local dev server
 hugo server -D
