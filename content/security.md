@@ -57,4 +57,16 @@ For the complete policy text, see [SECURITY.md](https://github.com/mlaify/mlaify
 
 ---
 
+## Acknowledgements
+
+We thank the researchers who have reported vulnerabilities to us under this
+policy.
+
+| Date | Researcher | Finding | Reference |
+|---|---|---|---|
+| 2026-11-11 | 0xhyu | AttackMap: a pull request could silence its own findings under `--suppress-from-ref` | [GHSA-677m-4884-vg22](https://github.com/mlaify/AttackMap/security/advisories/GHSA-677m-4884-vg22) |
+| 2026-11-11 | 0xhyu | AttackMap: Markdown injection in generated reports | [GHSA-3qwr-cfpj-hgjr](https://github.com/mlaify/AttackMap/security/advisories/GHSA-3qwr-cfpj-hgjr) |
+
+---
+
 Thank you for helping keep this site secure.
