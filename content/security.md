@@ -64,8 +64,8 @@ policy.
 
 | Date | Researcher | Finding | Reference |
 |---|---|---|---|
-| 2026-11-11 | 0xhyu | AttackMap: a pull request could silence its own findings under `--suppress-from-ref` | [GHSA-677m-4884-vg22](https://github.com/mlaify/AttackMap/security/advisories/GHSA-677m-4884-vg22) |
-| 2026-11-11 | 0xhyu | AttackMap: Markdown injection in generated reports | [GHSA-3qwr-cfpj-hgjr](https://github.com/mlaify/AttackMap/security/advisories/GHSA-3qwr-cfpj-hgjr) |
+| 2026-11-11 | [0xhyu](https://github.com/0xhyu) | AttackMap: a pull request could silence its own findings under `--suppress-from-ref` | [GHSA-677m-4884-vg22](https://github.com/mlaify/AttackMap/security/advisories/GHSA-677m-4884-vg22) |
+| 2026-11-11 | [0xhyu](https://github.com/0xhyu) | AttackMap: Markdown injection in generated reports | [GHSA-3qwr-cfpj-hgjr](https://github.com/mlaify/AttackMap/security/advisories/GHSA-3qwr-cfpj-hgjr) |
 
 ---
 
