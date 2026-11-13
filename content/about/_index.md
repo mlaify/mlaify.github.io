@@ -36,6 +36,8 @@ See [build principles](/principles/) for the longer version.
 
 **[grrclone](/grrclone/)** is a free, open-source macOS menu bar app that connects [rclone](https://rclone.org) remotes as Finder volumes. It auto-discovers remotes, reconnects at login, and repairs mounts after sleep or a network change. No licence key, no phone-home, no kernel extension, no root. Install it with `brew install --cask mlaify/tap/grrclone`.
 
+**[openlens-fw](/openlens-fw/)** is hardened, open-source replacement firmware for the Anpviz IPC-D240W-S IP camera, written after [the camera security research](https://matthewd.xyz/writing/anpviz-camera-security/) found 24 vulnerabilities in its stock firmware. It keeps the stock kernel and replaces the whole userland: no shared credentials, nothing that parses the network running as root, a certificate authority on each camera, and updates signed with the owner's own key. Its documentation is at [docs.mlaify.io](https://docs.mlaify.io/openlens-fw/).
+
 ## Elsewhere
 
 - [matthewd.xyz](https://matthewd.xyz/) — my personal site and writing
