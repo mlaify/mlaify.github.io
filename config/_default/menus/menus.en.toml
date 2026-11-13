@@ -9,6 +9,11 @@
   weight = 25
 
 [[main]]
+  name = "openlens-fw"
+  url = "/openlens-fw/"
+  weight = 26
+
+[[main]]
   name = "Docs"
   url = "https://docs.mlaify.io/"
   weight = 28

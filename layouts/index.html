@@ -76,6 +76,21 @@
           <a href="https://github.com/mlaify/grrclone" class="btn btn-ghost">Source</a>
         </div>
       </div>
+      <div class="card flex flex-col">
+        <div class="flex items-center justify-between gap-3">
+          <span class="feature-icon">{{ partial "svg-icon.html" (dict "name" "device-cctv" "class" "h-5 w-5") }}</span>
+          <span class="status-badge status-beta">beta</span>
+        </div>
+        <h3 class="text-xl font-semibold text-ink-900 dark:text-white">openlens-fw</h3>
+        <p class="mt-2 flex-1 text-sm text-ink-600 dark:text-ink-400">
+          Hardened, open-source replacement firmware for the Anpviz IPC-D240W-S IP camera, whose stock firmware had 24 published vulnerabilities. You build it, sign it with your own key, and claim each camera yourself: no shared credentials, nothing that parses the network running as root, HTTPS with a certificate authority on each camera, and RTSP and ONVIF for your NVR.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a href="/openlens-fw/" class="btn btn-primary">Learn more</a>
+          <a href="https://docs.mlaify.io/openlens-fw/" class="btn btn-ghost">Read the docs</a>
+          <a href="https://github.com/mlaify/openlens-fw" class="btn btn-ghost">Source</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
